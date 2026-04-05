@@ -162,3 +162,49 @@ document.addEventListener('DOMContentLoaded', () => {
     // Iniciar
     animationId = requestAnimationFrame(step);
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    const btn = document.getElementById('submitBtn');
+
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Evita que la página se recargue
+        
+        // 1. Estado visual de "Procesando"
+        btn.disabled = true;
+        btn.innerHTML = 'Procesando... <span class="spinner"></span>';
+        
+        const data = new FormData(contactForm);
+
+        // 2. Envío de datos vía Fetch API
+        // REEMPLAZA 'tu_id_formspree' por el código que te da Formspree.io
+        try {
+            const response = await fetch('https://formspree.io/f/mzdkyzdj', {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // 3. Éxito: Look Sandvik (Limpio y directo)
+                status.innerHTML = "Mensaje enviado con éxito. Un especialista se contactará en breve.";
+                status.className = "form-status-message success";
+                contactForm.reset(); // Limpia los campos
+            } else {
+                throw new Error();
+            }
+        } catch (error) {
+            // 4. Error técnico
+            status.innerHTML = "Error al enviar. Por favor, intente vía email directo.";
+            status.className = "form-status-message error";
+        } finally {
+            // Restaurar botón
+            btn.disabled = false;
+            btn.innerHTML = 'Enviar Solicitud <span class="arrow">→</span>';
+        }
+    });
+});
+

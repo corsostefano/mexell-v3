@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/style_pages.css">
-    <title>Mexell - Galería de Imágenes</title>
+    <title>Mexell - Especificaciones Técnicas</title>
 </head>
 <body>
    <nav class="mx-navbar">
@@ -49,112 +49,119 @@
             </div>
         </div>
     </nav>
-    <main>
-        <section class="service-hero gallery-hero">
-            <div class="service-hero__container container">
-                <div class="hero-content-accent">
-                    <span class="service-pretitle">Portfolio Técnico</span>
-                    <h1>Proyectos y <br><span class="text-accent">Aplicaciones.</span></h1>
-                    <p>Piezas, componentes y soluciones de alta precisión desarrolladas por Mexell para la industria exigente.</p>
+    <main class="specs-page">
+        <header class="specs-hero">
+            <div class="container">
+                <div class="specs-meta">CÓDIGO DE CAPACIDAD: MX-SPEC-2026</div>
+                <h1>Especificaciones <span>Técnicas</span></h1>
+                <p class="hero-description">Estándares de precisión, rangos de manufactura y capacidades de ingeniería avanzada de Mexell.</p>
+            </div>
+        </header>
+
+        <section class="specs-section">
+            <div class="container">
+                <h2 class="section-tag">01. Capacidades de Mecanizado</h2>
+                <div class="table-responsive">
+                    <table class="specs-table">
+                        <thead>
+                            <tr>
+                                <th>Proceso de Producción</th>
+                                <th>Dimensiones Máx. (XYZ)</th>
+                                <th>Tolerancias Estándar</th>
+                                <th>Acabado (Ra)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Torneado CNC</strong></td>
+                                <td>Ø 650 mm x 2000 mm</td>
+                                <td>± 0.005 mm</td>
+                                <td>0.4 - 0.8 µm</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fresado / Centro 5 Ejes</strong></td>
+                                <td>1200 x 800 x 600 mm</td>
+                                <td>± 0.010 mm</td>
+                                <td>0.8 - 1.6 µm</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rectificado Cilíndrico</strong></td>
+                                <td>Ø 300 mm x 1000 mm</td>
+                                <td>± 0.002 mm</td>
+                                <td>0.1 - 0.4 µm</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Electroerosión (EDM)</strong></td>
+                                <td>500 x 350 x 300 mm</td>
+                                <td>± 0.005 mm</td>
+                                <td>0.4 µm</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
 
-        <section class="section-padding bg-white">
+        <section class="specs-section dark-bg">
             <div class="container">
-                <div class="row g-4">
-                    
-                    <div class="col-md-6 col-lg-4">
-                        <div class="action-card gallery-item">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1775417007/hero2_rrkkgt.png" alt="Mecanizado CNC">
-                            <div class="action-legend">Mecanizado CNC de Precisión</div>
+                <h2 class="section-tag light">02. Matriz de Materiales</h2>
+                <div class="materials-grid">
+                    <div class="material-card">
+                        <h3>Aceros Especiales</h3>
+                        <ul>
+                            <li>AISI 4140 / 4340 (Bonificados)</li>
+                            <li>Aceros para Herramientas (K110, K310)</li>
+                            <li>Durezas: Hasta 62 HRC (Post-Térmico)</li>
+                        </ul>
+                    </div>
+                    <div class="material-card">
+                        <h3>Superaleaciones</h3>
+                        <ul>
+                            <li>Inconel 625 / 718</li>
+                            <li>Titanio Grado 5</li>
+                            <li>Inoxidables Duplex y Super Duplex</li>
+                        </ul>
+                    </div>
+                    <div class="material-card">
+                        <h3>Polímeros Técnicos</h3>
+                        <ul>
+                            <li>PEEK / Delrin (POM)</li>
+                            <li>Grilon / Teflón (PTFE)</li>
+                            <li>UHMW-PE</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="specs-section">
+            <div class="container">
+                <div class="metrology-layout">
+                    <div class="metrology-text">
+                        <h2 class="section-tag">03. Validación y Metrología</h2>
+                        <h3>Aseguramiento de Calidad 100%</h3>
+                        <p>Cada componente fabricado en Mexell atraviesa un proceso de validación dimensional en nuestro laboratorio climatizado.</p>
+                        <ul class="check-list">
+                            <li><strong>CMM:</strong> Medición por coordenadas Hexagon (±0.001mm).</li>
+                            <li><strong>Perfilometría:</strong> Control de rugosidad superficial.</li>
+                            <li><strong>Trazabilidad:</strong> Reporte de materiales y certificados de origen.</li>
+                        </ul>
+                       
+                    </div>
+                   <div class="metrology-visual">
+                        <div class="blueprint-box">
+                            <div class="grid-overlay"></div> <div class="line-x"></div>
+                            <div class="line-y"></div>
+                            
+                            <div class="tech-piece-draw">
+                                <div class="measure-line-top">65.00mm</div>
+                                <div class="measure-line-side">42.05mm</div>
+                            </div>
+
+                            <span class="precision-label">PRECISIÓN: ISO 2768-mK</span>
                         </div>
                     </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="action-card gallery-item">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1775417008/Screenshot_2026-03-30_160333_rmtpga.png" alt="Matriz de Corte">
-                            <div class="action-legend">Matriz de Corte Instalada</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="action-card gallery-item">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1775417002/Copia_de_higienizadora_real_dn0swh.jpg" alt="Equipo Higienizadora">
-                            <div class="action-legend">Sistema de Higienizado Real</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="action-card gallery-item">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1775417006/fym_iobnuz.png" alt="Componente FYM">
-                            <div class="action-legend">Componente FYM - Vista Técnica</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="action-card gallery-item">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1775416999/bomba_lobulos_1_o1yiow.jpg" alt="Bomba de Lóbulos">
-                            <div class="action-legend">Bomba de Lóbulos Intervenida</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="action-card gallery-item">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1775416999/Copia_de_conjunto_x8jxst.jpg" alt="Conjunto Mecánico">
-                            <div class="action-legend">Conjunto Mecánico Completo</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="action-card gallery-item">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1775417004/fym_uwdbzv.jpg" alt="Detalle Fabricación">
-                            <div class="action-legend">Detalle de Fabricación FYM</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="action-card gallery-item">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1775417003/fym_1_gk0d5l.jpg" alt="Ensamblaje final">
-                            <div class="action-legend">Proceso de Ensamblaje Final</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="action-card gallery-item">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1775417000/20251217_091407_jlgyi5.jpg" alt="Intervención en planta">
-                            <div class="action-legend">Intervención y Ajuste en Planta</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="action-card gallery-item">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1775416999/20190923_104441_c9aant.jpg" alt="Pieza terminada">
-                            <div class="action-legend">Pieza Terminada - Control de Calidad</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="action-card gallery-item">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1775417009/Screenshot_2026-03-30_160434_e3lnjh.png" alt="Desarrollo CAD">
-                            <div class="action-legend">Desarrollo y Simulación CAD</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="action-card gallery-item">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1775417008/Screenshot_2026-03-30_160333_rmtpga.png" alt="Optimización OEE">
-                            <div class="action-legend">Estudio de Optimización OEE</div>
-                        </div>
-                    </div>
-
-                </div> </div> </section>
-
-        <section class="about-cta">
-            <div class="container text-center">
-                <h2>¿Tiene un proyecto en mente?</h2>
-                <p class="text-white opacity-75 mb-4">Nuestro equipo de ingenieros está listo para materializar su solución.</p>
-                <a href="/pages/contacto.html" class="btn-industrial-lg">Solicitar Cotización Técnica</a>
+                </div>
             </div>
         </section>
     </main>

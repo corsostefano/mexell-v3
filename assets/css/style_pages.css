@@ -537,3 +537,711 @@
         padding: 10px;
     }
 }
+
+/* --- CONTACT HERO --- */
+.contact-hero {
+    background-color: var(--brand-dark);
+    color: var(--bg-white);
+    /* Se cambió padding-top a un valor que asegure visibilidad y padding-bottom para balance */
+    padding: 180px 0 100px; 
+    border-bottom: 8px solid var(--brand-light);
+}
+
+.hero-label {
+    text-transform: uppercase;
+    letter-spacing: 4px; /* Un toque más de aire industrial */
+    font-size: 0.8rem;
+    color: var(--brand-light);
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: block; /* Asegura que respete márgenes */
+}
+
+.contact-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem); /* Un poco más agresivo el tamaño máximo */
+    font-weight: 900; /* Estilo Sandvik es muy pesado/bold */
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 0;
+}
+
+.hero-subtitle {
+    max-width: 650px;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    opacity: 0.85;
+    margin-top: 30px;
+}
+
+/* --- GRID DE CONTACTO --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr; /* Ligero ajuste de proporción */
+    gap: 100px; /* Más espacio para dejar respirar la info técnica */
+    padding: 100px 0;
+}
+
+/* --- FORMULARIO INDUSTRIAL --- */
+.industrial-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--brand-dark); /* Texto más oscuro para mejor lectura */
+    letter-spacing: 1.5px;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    padding: 18px;
+    border: 1px solid #e0e0e0; /* Gris más sutil */
+    background: #fcfcfc;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--brand-dark);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0; /* Estética ortogonal obligatoria */
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--brand-dark);
+    background: #fff;
+    /* Sombra más técnica y plana */
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.02); 
+}
+
+.btn-industrial {
+    padding: 22px 50px;
+    background: var(--brand-dark);
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-industrial:hover {
+    background: var(--brand-light);
+    transform: translateY(-2px); /* Efecto de elevación técnica */
+}
+
+/* --- PANEL DE INFO --- */
+.info-block {
+    margin-bottom: 50px;
+    border-left: 4px solid var(--brand-light); /* Más grueso para mayor impacto */
+    padding-left: 25px;
+}
+
+.info-block h3 {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: #999; /* Título de sección más sutil */
+}
+
+.info-link {
+    display: block;
+    color: var(--brand-dark);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 8px;
+    transition: all 0.3s ease;
+}
+
+.info-link:hover { 
+    color: var(--brand-light);
+    transform: translateX(5px);
+}
+
+/* --- ESTADO DEL FORMULARIO --- */
+.form-status-message {
+    margin-top: 25px;
+    padding: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 0;
+}
+
+.form-status-message.success {
+    display: block;
+    background-color: #f0fff4;
+    color: #276749;
+    border-left: 5px solid #48bb78;
+}
+
+.form-status-message.error {
+    display: block;
+    background-color: #fff5f5;
+    color: #9b2c2c;
+    border-left: 5px solid #f56565;
+}
+
+
+/* --- OPTIMIZACIÓN RESPONSIVE (MÓVIL) --- */
+@media screen and (max-width: 992px) {
+    /* 1. Hero: Menos espacio arriba, más impacto visual */
+    .contact-hero {
+        padding: 120px 20px 60px; /* Reducimos padding para que el contenido suba */
+        text-align: left;
+    }
+
+    .contact-hero h1 {
+        font-size: 2.5rem; /* Forzamos un tamaño legible pero imponente */
+        line-height: 1.1;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-top: 20px;
+    }
+
+    /* 2. Grid: Reordenamos para que el formulario no sea lo único que se vea */
+    .contact-grid {
+        display: flex;
+        flex-direction: column; /* Cambiamos grid por flex para mayor control */
+        gap: 50px;
+        padding: 50px 15px;
+    }
+
+    /* 3. Formulario: Ajustes de inputs */
+    .industrial-form {
+        gap: 20px;
+        order: 1; /* El formulario queda arriba */
+    }
+
+    .form-row {
+        grid-template-columns: 1fr; /* Una sola columna siempre */
+        gap: 20px;
+    }
+
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+        padding: 14px; /* Un poco más pequeño para ganar espacio en pantalla */
+        font-size: 16px; /* Evita que iOS haga zoom automático al clickear */
+    }
+
+    .btn-industrial {
+        width: 100%; /* Botón de acción principal en todo el ancho */
+        padding: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* 4. Panel de Información: Estilo más compacto */
+    .contact-info-panel {
+        order: 2; /* Info debajo del formulario */
+        background: #f9f9f9; /* Un fondo sutil para diferenciar secciones */
+        padding: 30px 20px;
+        margin: 0 -15px; /* Rompemos el padding del contenedor para que toque los bordes */
+    }
+
+    .info-block {
+        margin-bottom: 35px;
+    }
+
+    .info-link {
+        font-size: 1.1rem; /* Números de teléfono y emails fáciles de tocar */
+        padding: 5px 0;
+    }
+
+    /* 5. Mapa: Ajuste de altura para no cansar el scroll */
+    .contact-map {
+        margin-top: 20px;
+        height: 200px;
+    }
+}
+
+/* Ajuste extra para celulares muy pequeños (iPhone SE, etc) */
+@media screen and (max-width: 380px) {
+    .contact-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .trust-impact.compact .number {
+        font-size: 1.8rem;
+    }
+}
+
+/* --- PAGINA DE ESPECIFICACIONES (BASE) --- */
+.specs-page {
+    background-color: #fff;
+    color: var(--brand-dark);
+    overflow-x: hidden; /* Evita scrolls horizontales accidentales */
+}
+
+/* --- HERO: AJUSTE DINÁMICO --- */
+.specs-hero {
+    padding: clamp(120px, 15vh, 180px) 0 80px;
+    background-color: var(--brand-dark);
+    color: #fff;
+    border-bottom: 8px solid var(--brand-light);
+}
+
+.specs-meta {
+    font-family: monospace;
+    color: var(--brand-light);
+    letter-spacing: 2px;
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.specs-hero h1 {
+    font-size: clamp(2rem, 8vw, 4.5rem);
+    text-transform: uppercase;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.hero-description {
+    max-width: 600px;
+    margin-top: 20px;
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    opacity: 0.8;
+}
+
+/* --- SECCIONES --- */
+.specs-section { 
+    padding: clamp(60px, 8vw, 100px) 0; 
+    border-bottom: 1px solid #eee; 
+}
+
+.dark-bg { 
+    background-color: var(--brand-dark); 
+    color: #fff; 
+}
+
+.section-tag {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    color: #999;
+}
+.section-tag.light { color: var(--brand-light); }
+
+/* --- TABLAS RESPONSIVE (SOLUCIÓN DEFINITIVA) --- */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto; /* Permite scroll lateral en móviles */
+    -webkit-overflow-scrolling: touch;
+    margin-top: 20px;
+    border: 1px solid #eee; /* Contenedor sutil para el scroll */
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px; /* Asegura que los datos no se amontonen en móviles */
+}
+
+.specs-table th {
+    text-align: left;
+    padding: 20px;
+    background: #f4f4f4;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--brand-dark);
+    white-space: nowrap;
+}
+
+.specs-table td {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+}
+
+/* --- GRID DE MATERIALES --- */
+.materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.material-card {
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 35px;
+    transition: 0.3s ease;
+    background: rgba(255,255,255,0.02);
+}
+
+.material-card:hover { 
+    border-color: var(--brand-light); 
+    background: rgba(255,255,255,0.05);
+}
+
+/* --- METROLOGÍA Y BLUEPRINT (RESPONSIVE GRID) --- */
+.metrology-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.blueprint-box {
+    width: 100%;
+    height: 350px;
+    background-color: #f0f0f0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+}
+
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(#ddd 1px, transparent 1px),
+        linear-gradient(90deg, #ddd 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.4;
+}
+
+.tech-piece-draw {
+    width: clamp(140px, 20vw, 200px);
+    height: clamp(100px, 15vw, 140px);
+    border: 2px solid var(--brand-dark);
+    position: relative;
+    background: rgba(255,255,255,0.9);
+    z-index: 2;
+}
+
+.precision-label {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    font-family: monospace;
+    font-size: 0.65rem;
+    background: var(--brand-dark);
+    color: #fff;
+    padding: 4px 8px;
+    z-index: 3;
+}
+
+/* --- BOTONES --- */
+.btn-download {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 18px 35px;
+    border: 2px solid var(--brand-dark);
+    text-decoration: none;
+    color: var(--brand-dark);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.btn-download:hover {
+    background: var(--brand-dark);
+    color: #fff;
+}
+
+/* --- MEDIA QUERIES (100% RESPONSIVE) --- */
+
+@media (max-width: 992px) {
+    .metrology-layout {
+        grid-template-columns: 1fr; /* Colapsa a una columna */
+        gap: 40px;
+    }
+    
+    .metrology-visual {
+        order: -1; /* El dibujo técnico sube para ser visualizado antes del texto */
+    }
+}
+
+@media (max-width: 768px) {
+    .specs-hero {
+        padding-top: 140px;
+        text-align: center;
+    }
+    
+    .hero-description {
+        margin: 20px auto 0;
+    }
+
+    .material-card {
+        padding: 25px;
+    }
+    
+    .btn-download {
+        width: 100%; /* Botón ancho completo en móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    .specs-section {
+        padding: 50px 0;
+    }
+    
+    .section-tag {
+        margin-bottom: 30px;
+    }
+
+    .blueprint-box {
+        height: 250px; /* Altura reducida en pantallas muy pequeñas */
+    }
+    
+    /* Ajuste para las cotas de medición en móvil */
+    .measure-line-side {
+        right: -35px;
+        font-size: 8px;
+    }
+}
+
+/* --- PAGINA DE CALIDAD (OPTIMIZADA) --- */
+.quality-page {
+    background-color: #fff;
+    color: var(--brand-dark);
+    overflow-x: hidden;
+}
+
+/* --- HERO: ADAPTABLE --- */
+.quality-hero {
+    /* Padding dinámico para que el texto nunca quede pegado al navbar en móvil */
+    padding: clamp(120px, 15vh, 200px) 5% 80px; 
+    background-color: var(--brand-dark);
+    color: #fff;
+    text-align: left;
+    position: relative;
+}
+
+.quality-label {
+    color: var(--brand-light);
+    text-transform: uppercase;
+    letter-spacing: clamp(2px, 1vw, 4px);
+    font-weight: 700;
+    font-size: 0.75rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.quality-hero h1 {
+    font-size: clamp(2.2rem, 8vw, 4.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.quality-intro {
+    max-width: 650px;
+    margin-top: clamp(20px, 4vw, 30px);
+    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+    opacity: 0.85;
+    line-height: 1.6;
+}
+
+/* --- GRID DE POLÍTICAS: LIMPIEZA TÉCNICA --- */
+.policy-grid-section {
+    padding: clamp(60px, 10vw, 120px) 0;
+}
+
+.policy-header {
+    margin-bottom: clamp(40px, 8vw, 80px);
+}
+
+.policy-header h2 {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+.divider-line {
+    width: 60px;
+    height: 6px;
+    background: var(--brand-light);
+}
+
+/* Grid que se adapta de 1 a 3 columnas automáticamente */
+.policy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(30px, 5vw, 60px);
+}
+
+.policy-item {
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.policy-item:hover {
+    border-top-color: var(--brand-dark);
+    transform: translateY(-5px);
+}
+
+.policy-num {
+    font-family: 'Inter', monospace;
+    color: var(--brand-light);
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.policy-item h3 {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    color: var(--brand-dark);
+}
+
+.policy-item p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* --- BANNER ISO: FLEXIBILIDAD TOTAL --- */
+.iso-banner {
+    background-color: #f9f9f9;
+    padding: clamp(60px, 8vw, 100px) 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.iso-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(40px, 6vw, 80px);
+}
+
+.iso-badge {
+    background: var(--brand-dark);
+    color: #fff;
+    padding: 8px 16px;
+    font-weight: 800;
+    display: inline-block;
+    margin-bottom: 25px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+.iso-text h2 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.iso-text p {
+    max-width: 600px;
+    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* El Sello ISO ahora es proporcional al tamaño de pantalla */
+.seal-circle {
+    flex-shrink: 0; /* Evita que se aplaste */
+    width: clamp(140px, 15vw, 180px);
+    height: clamp(140px, 15vw, 180px);
+    border: clamp(3px, 0.5vw, 5px) solid var(--brand-dark);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--brand-dark);
+    letter-spacing: 1px;
+    background: #fff;
+    box-shadow: 15px 15px 0px rgba(0,0,0,0.03);
+}
+
+.seal-year {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    color: var(--brand-light);
+    line-height: 1;
+}
+
+/* --- AJUSTES ESPECÍFICOS PARA DISPOSITIVOS --- */
+
+@media (max-width: 992px) {
+    .iso-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .iso-text p {
+        margin: 0 auto;
+    }
+    
+    .seal-circle {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .quality-hero {
+        padding-bottom: 60px;
+    }
+    
+    .policy-grid {
+        grid-template-columns: 1fr; /* Forzamos una columna en móviles medianos */
+    }
+    
+    .policy-item {
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .quality-hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .quality-intro {
+        font-size: 1rem;
+    }
+    
+    .iso-text h2 {
+        font-size: 1.4rem;
+    }
+}
