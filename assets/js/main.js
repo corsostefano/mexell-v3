@@ -93,71 +93,72 @@ document.querySelectorAll('.js-footer-toggle').forEach(header => {
     });
 });
 
-const track = document.getElementById('logoTrack');
-const viewport = document.getElementById('sliderViewport');
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('logoTrack');
+    const viewport = document.getElementById('sliderViewport');
 
-let isDragging = false;
-let startX;
-let scrollLeft;
-let animationId;
-let currentTranslate = 0;
-let lastTime = 0;
-const speed = 0.5; // Velocidad del auto-scroll
+    // Si no existen los elementos, no ejecutar (evita errores en consola)
+    if (!track || !viewport) return;
 
-// Función de animación automática
-function step(timestamp) {
-    if (!isDragging) {
-        currentTranslate -= speed;
-        
-        // Reset infinito: Si llegamos a la mitad del track (donde empiezan los duplicados)
-        const halfWidth = track.scrollWidth / 2;
-        if (Math.abs(currentTranslate) >= halfWidth) {
-            currentTranslate = 0;
+    let isDragging = false;
+    let startX;
+    let scrollLeft;
+    let animationId;
+    let currentTranslate = 0;
+    const speed = 0.6; 
+
+    function step() {
+        if (!isDragging) {
+            currentTranslate -= speed;
+            const halfWidth = track.scrollWidth / 2;
+            
+            if (Math.abs(currentTranslate) >= halfWidth) {
+                currentTranslate = 0;
+            }
+            track.style.transform = `translateX(${currentTranslate}px)`;
         }
-        
+        animationId = requestAnimationFrame(step);
+    }
+
+    function startDrag(e) {
+        isDragging = true;
+        viewport.style.cursor = 'grabbing';
+        // Soporte para mouse y touch
+        startX = (e.pageX || e.touches[0].pageX);
+        scrollLeft = currentTranslate;
+        cancelAnimationFrame(animationId);
+    }
+
+    function drag(e) {
+        if (!isDragging) return;
+        const x = (e.pageX || e.touches[0].pageX);
+        const walk = (x - startX);
+        currentTranslate = scrollLeft + walk;
+
+        // Loop infinito manual
+        const halfWidth = track.scrollWidth / 2;
+        if (currentTranslate > 0) currentTranslate = -halfWidth;
+        if (Math.abs(currentTranslate) >= halfWidth) currentTranslate = 0;
+
         track.style.transform = `translateX(${currentTranslate}px)`;
     }
+
+    function endDrag() {
+        isDragging = false;
+        viewport.style.cursor = 'grab';
+        animationId = requestAnimationFrame(step);
+    }
+
+    // Listeners
+    viewport.addEventListener('mousedown', startDrag);
+    viewport.addEventListener('touchstart', startDrag, {passive: true});
+
+    window.addEventListener('mousemove', drag);
+    window.addEventListener('touchmove', drag, {passive: false});
+
+    window.addEventListener('mouseup', endDrag);
+    window.addEventListener('touchend', endDrag);
+
+    // Iniciar
     animationId = requestAnimationFrame(step);
-}
-
-// Eventos de Mouse y Touch
-viewport.addEventListener('mousedown', startDrag);
-viewport.addEventListener('touchstart', startDrag);
-
-window.addEventListener('mousemove', drag);
-window.addEventListener('touchmove', drag);
-
-window.addEventListener('mouseup', endDrag);
-window.addEventListener('touchend', endDrag);
-
-function startDrag(e) {
-    isDragging = true;
-    viewport.classList.add('grabbing');
-    startX = e.pageX || e.touches[0].pageX;
-    scrollLeft = currentTranslate;
-    cancelAnimationFrame(animationId);
-}
-
-function drag(e) {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX || e.touches[0].pageX;
-    const walk = (x - startX); 
-    currentTranslate = scrollLeft + walk;
-    
-    // Lógica de loop mientras arrastras
-    const halfWidth = track.scrollWidth / 2;
-    if (currentTranslate > 0) currentTranslate = -halfWidth;
-    if (Math.abs(currentTranslate) >= halfWidth) currentTranslate = 0;
-
-    track.style.transform = `translateX(${currentTranslate}px)`;
-}
-
-function endDrag() {
-    isDragging = false;
-    viewport.classList.remove('grabbing');
-    requestAnimationFrame(step); // Reanudar auto-scroll
-}
-
-// Iniciar animación
-requestAnimationFrame(step);
+});

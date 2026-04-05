@@ -1258,8 +1258,8 @@ body {
 
 .logo-track {
     display: flex;
-    width: calc(180px * 16); /* Ajustado para móvil */
-    animation: scroll-logos 25s linear infinite;
+    user-select: none;
+    will-change: transform;
 }
 
 .logo-slide {
@@ -1276,10 +1276,7 @@ body {
     filter: grayscale(1) opacity(0.6);
 }
 
-@keyframes scroll-logos {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-180px * 8)); }
-}
+
 
 /* Ajustes compactos para el texto en móvil */
 @media (max-width: 991px) {
