@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--====== Favicon ======-->
+  <link rel="shortcut icon" href="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523081/favicon_zqeiyy.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -10,33 +12,31 @@
     <title>Mexell</title>
 </head>
 <body>
-   <nav class="navbar">
-        <div class="nav-container">
+   <nav class="mx-navbar">
+        <div class="mx-nav-container">
             <div class="logo">
-               <img src="assets/images/logo-blanco.png" alt="Logo Mexell" class="logo-light">
-    
-                <img src="assets/images/logo-negro.png" alt="Logo Mexell" class="logo-dark">
+                <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523120/logo_original_bj5ajq.png" class="logo-dark" alt="Mexell Logo">
             </div>
             
-            <div class="nav-wrapper">
-                <ul class="nav-links">
+            <div class="mx-nav-wrapper">
+                <ul class="mx-nav-links">
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#nosotros">Sobre Nosotros</a></li>
-                    <li class="dropdown">
+                    <li class="mx-dropdown">
                         <a href="#servicios">Servicios</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#ingenieria">Ingeniería y Diseño a Medida</a></li>
-                            <li><a href="#fabricacion">Fabricación y mecanizado de precisión</a></li>
-                            <li><a href="#smed">Cambios de Formato (SMED)</a></li>
-                            <li><a href="#reparaciones">Reparaciones y mantenimiento</a></li>
+                        <ul class="mx-dropdown-menu">
+                            <li><a href="pages/services/ingenieria_diseño.html">Ingeniería y Diseño a Medida</a></li>
+                            <li><a href="pages/services/fabricacion.html">Fabricación y mecanizado de precisión</a></li>
+                            <li><a href="pages/services/smed.html">Cambios de Formato (SMED)</a></li>
+                            <li><a href="pages/services/reparaciones.html">Reparaciones y mantenimiento</a></li>
                         </ul>
                     </li>
                     <li><a href="#contacto" class="separator">Contacto</a></li>
                 </ul>
                 
-                <div class="nav-phone">
+                <div class="mx-nav-phone">
                     <a href="tel:+1234567890">+54 (011) 4542-7353</a>
-                    <a href="mailto:contacto@mexell.com">contacto@mexell.com</a>
+                    <a href="mailto:contacto@mexell.com">mexell@mexell.com.ar</a>
                 </div>
             </div>
 
@@ -49,8 +49,7 @@
     <header class="hero" id="inicio">
         <div class="video-container">
             <video autoplay muted loop playsinline class="hero-video">
-                <source src="assets/videos/hero_mexell.webm" type="video/webm">
-                <source src="assets/videos/hero_mexell.mp4" type="video/mp4">
+                <source src="https://res.cloudinary.com/dfgs3uyiu/video/upload/q_auto/f_auto/v1775411131/hero_mexell_wuldb5.webm" type="video/webm">
             </video>
         </div>
         <div class="overlay"></div>
@@ -119,144 +118,79 @@
                 </div>
             </div>
         </section>
-        <section class="trust-grid">
-            <div class="trust-grid__container">
-                
-                <div class="trust-impact">
-                    <div class="impact-number">
-                        <span class="number">+500</span>
-                        <span class="label">Proyectos ejecutados</span>
-                    </div>
-                    <div class="impact-text">
-                        <h2>Soluciones de Ingeniería para <span>Líderes Globales</span></h2>
-                        <p>Nuestra trayectoria de 70 años en mecanizado de precisión nos ha permitido consolidar alianzas estratégicas con las industrias más exigentes del mundo.</p>
-                    </div>
-                </div>
-
-                <div class="logo-matrix">
-                    <div class="logo-card"><img src="assets/images/logos/baggio.png" alt="Unilever" class="client-logo"></div>
-                    <div class="logo-card"><img src="assets/images/logos/BAT.png" alt="P&G" class="client-logo"></div>
-                    <div class="logo-card"><img src="assets/images/logos/Bayer.png" alt="YPF" class="client-logo"></div>
-                    <div class="logo-card"><img src="assets/images/logos/DREAMCO.png" alt="Siemens" class="client-logo"></div>
-                    <div class="logo-card"><img src="assets/images/logos/Johnson.png" alt="Bayer" class="client-logo"></div>
-                    <div class="logo-card"><img src="assets/images/logos/Nucete.png" alt="Roemmers" class="client-logo"></div>
-                    <div class="logo-card"><img src="assets/images/logos/newsan.png" alt="Softys" class="client-logo"></div>
-                    <div class="logo-card"><img src="assets/images/logos/p&g.png" alt="Philip Morris" class="client-logo"></div>
-                    <div class="logo-card"><img src="assets/images/logos/Philip_Morris_International.png" alt="Philip Morris" class="client-logo"></div>
-                    <div class="logo-card"><img src="assets/images/logos/roemmers.png" alt="Philip Morris" class="client-logo"></div>
-                    <div class="logo-card"><img src="assets/images/logos/sc_johnson.png" alt="Philip Morris" class="client-logo"></div>
-                    <div class="logo-card"><img src="assets/images/logos/siemens.png" alt="Philip Morris" class="client-logo"></div>
-                    <div class="logo-card"><img src="assets/images/logos/softys.png" alt="Philip Morris" class="client-logo"></div>
-                    <div class="logo-card"><img src="assets/images/logos/Unilever.png" alt="Philip Morris" class="client-logo"></div>
-                    <div class="logo-card"><img src="assets/images/logos/ypf.png" alt="Philip Morris" class="client-logo"></div>
-                </div>
-            </div>
-        </section>
-        <section class="technical-services" id="servicios">
+        <section class="trust-section section-padding">
             <div class="container">
-                <div class="services__header">
-                    <h2>Capacidades y Soluciones Industriales</h2>
-                    <p>Ingeniería de precisión respaldada por 70 años de trayectoria operativa.</p>
-                </div>
-
-                <div class="tabs-wrapper">
-                    <div class="tabs-nav">
-                        <button class="tab-btn active" data-target="tab-ingenieria">
-                            <span class="tab-num">01</span> Ingeniería y Diseño CAD/CAE
-                        </button>
-                        <button class="tab-btn" data-target="tab-mecanizado">
-                            <span class="tab-num">02</span> Fabricación de Precisión CNC
-                        </button>
-                        <button class="tab-btn" data-target="tab-smed">
-                            <span class="tab-num">03</span> Optimización OEE / SMED
-                        </button>
-                        <button class="tab-btn" data-target="tab-mantenimiento">
-                            <span class="tab-num">04</span> Mantenimiento y Retrofitting
-                        </button>
+                
+                <div class="desktop-trust-view d-none d-lg-block">
+                    <div class="trust-impact">
+                        <div class="impact-number">
+                            <span class="number">+500</span>
+                            <span class="label">Proyectos ejecutados</span>
+                        </div>
+                        <div class="impact-text">
+                            <h2>Soluciones de Ingeniería para <span>Líderes Globales</span></h2>
+                            <p>Nuestra trayectoria de 70 años en mecanizado de precisión nos ha permitido consolidar alianzas estratégicas.</p>
+                        </div>
                     </div>
 
-                    <div class="tabs-content-area">
-                        
-                        <div class="tab-panel active" id="tab-ingenieria">
-                            <div class="panel-layout">
-                                <div class="panel-info">
-                                    <h3>Diseño y Desarrollo a Medida</h3>
-                                    <ul class="tech-specs">
-                                        <li><strong>Tecnología:</strong> Aplicación de CAD/CAE, Simulación y Escaneo 3D.</li>
-                                        <li><strong>Ingeniería Inversa:</strong> Digitalización de componentes críticos descatalogados.</li>
-                                        <li><strong>Personalización:</strong> Diseño de módulos innovadores para desafíos únicos.</li>
-                                        <li><strong>Validación:</strong> Análisis de estrés y fatiga de materiales pre-producción.</li>
-                                    </ul>
-                                    <a href="ingenieria-diseno.html" class="btn-text">Ver Soluciones de Ingeniería &#8594;</a>
-                                </div>
-                                <div class="panel-image">
-                                    <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523106/ingenieria-diseno_conceptual_01_documentacion_bjouxk.jpg" alt="Ingeniería y Diseño">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-panel" id="tab-mecanizado">
-                            <div class="panel-layout">
-                                <div class="panel-info">
-                                    <h3>Mecanizados de Alta Complejidad</h3>
-                                    <ul class="tech-specs">
-                                        <li><strong>Calidad:</strong> Metrología avanzada con tolerancias exactas garantizadas.</li>
-                                        <li><strong>Materiales:</strong> Expertos en aleaciones especiales y polímeros técnicos.</li>
-                                        <li><strong>Capacidad:</strong> Producción ágil desde piezas únicas hasta series medianas.</li>
-                                        <li><strong>Experiencia:</strong> 70 años fabricando para las industrias más competitivas.</li>
-                                    </ul>
-                                    <a href="fabricacion-mecanizados.html" class="btn-text">Explorar Capacidades CNC &#8594;</a>
-                                </div>
-                                <div class="panel-image">
-                                    <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523094/index_servicios_fabricacion-mecanizado_u1isit.jpg" alt="Fabricación de Precisión">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-panel" id="tab-smed">
-                            <div class="panel-layout">
-                                <div class="panel-info">
-                                    <h3>Soluciones "QuickShift" (OEE)</h3>
-                                    <ul class="tech-specs">
-                                        <li><strong>Patente:</strong> Sistema <strong>"QuickShift"</strong> para cambios de formato ultra-rápidos.</li>
-                                        <li><strong>Eficiencia:</strong> Reducción drástica de tiempos muertos en líneas de producción.</li>
-                                        <li><strong>Innovación:</strong> Herramentales de anclaje rápido y estandarización de procesos.</li>
-                                        <li><strong>Impacto:</strong> Maximización del indicador OEE (Overall Equipment Effectiveness).</li>
-                                    </ul>
-                                    <a href="oee-smed.html" class="btn-text">Optimizar mi producción &#8594;</a>
-                                </div>
-                                <div class="panel-image">
-                                    <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523095/index_servicios_oee-smed_y3akbv.jpg" alt="Optimización SMED">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-panel" id="tab-mantenimiento">
-                            <div class="panel-layout">
-                                <div class="panel-info">
-                                    <h3>Continuidad y Retrofitting</h3>
-                                    <ul class="tech-specs">
-                                        <li><strong>Repuestos:</strong> Fabricación bajo demanda para asegurar la operatividad.</li>
-                                        <li><strong>Modernización:</strong> Proyectos de Retrofitting para extender la vida útil de activos.</li>
-                                        <li><strong>Soporte:</strong> Asistencia técnica especializada y mantenimiento preventivo.</li>
-                                        <li><strong>Garantía:</strong> Soluciones robustas para industrias de procesos críticos.</li>
-                                    </ul>
-                                    <a href="mantenimiento-retrofit.html" class="btn-text">Asegurar continuidad operativa &#8594;</a>
-                                </div>
-                                <div class="panel-image">
-                                    <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523095/index_Mantenimiento_Repuestos_Maquinas_collage_1_az83zx.jpg" alt="Mantenimiento y Retrofitting">
-                                </div>
-                            </div>
-                        </div>
-
+                    <div class="logo-matrix">
+                        <div class="logo-card"><img src="assets/images/logos/baggio.png" alt="Baggio" class="client-logo"></div>
+                        <div class="logo-card"><img src="assets/images/logos/BAT.png" alt="BAT" class="client-logo"></div>
+                        <div class="logo-card"><img src="assets/images/logos/Bayer.png" alt="Bayer" class="client-logo"></div>
+                        <div class="logo-card"><img src="assets/images/logos/DREAMCO.png" alt="Dreamco" class="client-logo"></div>
+                        <div class="logo-card"><img src="assets/images/logos/Johnson.png" alt="Johnson" class="client-logo"></div>
+                        <div class="logo-card"><img src="assets/images/logos/Nucete.png" alt="Nucete" class="client-logo"></div>
+                        <div class="logo-card"><img src="assets/images/logos/newsan.png" alt="Newsan" class="client-logo"></div>
+                        <div class="logo-card"><img src="assets/images/logos/p&g.png" alt="P&G" class="client-logo"></div>
+                        <div class="logo-card"><img src="assets/images/logos/Philip_Morris_International.png" alt="Philip Morris" class="client-logo"></div>
+                        <div class="logo-card"><img src="assets/images/logos/roemmers.png" alt="Roemmers" class="client-logo"></div>
+                        <div class="logo-card"><img src="assets/images/logos/sc_johnson.png" alt="SC Johnson" class="client-logo"></div>
+                        <div class="logo-card"><img src="assets/images/logos/siemens.png" alt="Siemens" class="client-logo"></div>
+                        <div class="logo-card"><img src="assets/images/logos/softys.png" alt="Softys" class="client-logo"></div>
+                        <div class="logo-card"><img src="assets/images/logos/Unilever.png" alt="Unilever" class="client-logo"></div>
+                        <div class="logo-card"><img src="assets/images/logos/ypf.png" alt="YPF" class="client-logo"></div>
                     </div>
                 </div>
+
+                <div class="mobile-trust-view d-block d-lg-none">
+                    <div class="trust-impact compact">
+                        <div class="impact-number">
+                            <span class="number"></span>
+                        </div>
+                        <div class="impact-text">
+                            <h2>Líderes que <span>Confían</span></h2>
+                        </div>
+                    </div>
+
+                    <div class="logo-slider-viewport" id="sliderViewport">
+                        <div class="logo-track" id="logoTrack">
+                            <div class="logo-slide"><img src="assets/images/logos/baggio.png" alt="Baggio"></div>
+                            <div class="logo-slide"><img src="assets/images/logos/BAT.png" alt="BAT"></div>
+                            <div class="logo-slide"><img src="assets/images/logos/Bayer.png" alt="Bayer"></div>
+                            <div class="logo-slide"><img src="assets/images/logos/DREAMCO.png" alt="Dreamco"></div>
+                            <div class="logo-slide"><img src="assets/images/logos/Johnson.png" alt="Johnson"></div>
+                            <div class="logo-slide"><img src="assets/images/logos/newsan.png" alt="Newsan"></div>
+                            <div class="logo-slide"><img src="assets/images/logos/Unilever.png" alt="Unilever"></div>
+                            <div class="logo-slide"><img src="assets/images/logos/ypf.png" alt="YPF"></div>
+                            
+                            <div class="logo-slide"><img src="assets/images/logos/baggio.png" alt="Baggio"></div>
+                            <div class="logo-slide"><img src="assets/images/logos/BAT.png" alt="BAT"></div>
+                            <div class="logo-slide"><img src="assets/images/logos/Bayer.png" alt="Bayer"></div>
+                            <div class="logo-slide"><img src="assets/images/logos/DREAMCO.png" alt="Dreamco"></div>
+                            <div class="logo-slide"><img src="assets/images/logos/Johnson.png" alt="Johnson"></div>
+                            <div class="logo-slide"><img src="assets/images/logos/newsan.png" alt="Newsan"></div>
+                            <div class="logo-slide"><img src="assets/images/logos/Unilever.png" alt="Unilever"></div>
+                            <div class="logo-slide"><img src="assets/images/logos/ypf.png" alt="YPF"></div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
-        <section class="heritage" id="nosotros">
+         <section class="heritage" id="nosotros">
             <div class="container heritage-grid">
                 <div class="heritage__image-container">
-                    <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523104/index_sobre-nosotros-teaser_fachada_fmtgop.jpg" alt="Instalaciones Mexell" class="heritage__img">
+                    <img  src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523259/sobre-nosotros_historia_fundador_zgl8qg.png" alt="Instalaciones Mexell" class="heritage__img">
                     <div class="heritage__badge">
                         <span class="years">70</span>
                         <span class="label">Años de <br>Excelencia</span>
@@ -264,36 +198,105 @@
                 </div>
                 <div class="heritage__content">
                     <span class="section__pretitle">Nuestra Trayectoria</span>
-                    <h2 class="section__title">Líderes en Metalurgia de Precisión desde 1955</h2>
+                    <h2 class="section__title">Un legado de precisión</h2>
                     <p class="section__description">
-                        Más que un proveedor, somos el socio estratégico de las industrias más exigentes, 
-                        entregando soluciones de ingeniería que potencian la rentabilidad global.
+                       Desde 1955, Mexell desarrolla soluciones mecánicas para la industria, integrando ingeniería y capacidad de fabricación. Más de 70 años acompañando a nuestros clientes con precisión, calidad y compromiso.
                     </p>
                     <div class="heritage__actions">
-                        <a href="sobre-nosotros.html" class="btn-industrial">Conocer nuestra historia</a>
+                        <a href="pages/sobre_nosotros.html" class="btn-industrial">Conocer nuestra historia</a>
                     </div>
                 </div>
             </div>
         </section>
+        <section class="technical-services" id="servicios">
+            <div class="container-industrial">
+                <div class="services__header">
+                    <span class="section__pretitle">Nuestras Capacidades</span>
+                    <h2 class="section__title">Servicios de Ingeniería de Precisión</h2>
+                    <div class="title-underline"></div>
+                </div>
 
+               
+                    
+                <div class="services-cards-grid">
+                                    
+                    <a href="pages/services/ingenieria_diseño.html" class="service-card">
+                        <div class="card-image-wrapper">
+                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523106/ingenieria-diseno_conceptual_01_documentacion_bjouxk.jpg" alt="Ingeniería y Diseño">
+                            <div class="card-arrow">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                            </div>
+                            <div class="card-label">
+                                <span>Ingeniería y Diseño CAD/CAE</span>
+                            </div>
+                        </div>
+                        <div class="card-info-overlay">
+                            <p>Diseño a medida con CAD/CAE, simulación y escaneo 3D para soluciones precisas y adaptadas.</p>
+                        </div>
+                    </a>
+                    <a href="oee-smed.html" class="service-card">
+                        <div class="card-image-wrapper">
+                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523095/index_servicios_oee-smed_y3akbv.jpg" alt="Optimización">
+                            <div class="card-arrow">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                            </div>
+                            <div class="card-label">
+                                <span>Optimización (OEE) y Cambios de Formato (SMED)</span>
+                            </div>
+                        </div>
+                        <div class="card-info-overlay">
+                            <p>Reducción de tiempos muertos y mejora continua con metodologías OEE y SMED.</p>
+                        </div>
+                    </a>
+
+                    <a href="fabricacion-mecanizados.html" class="service-card">
+                        <div class="card-image-wrapper">
+                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/q_auto/f_auto/v1775339405/hero1_zk0jim.png">
+                            <div class="card-arrow">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                            </div>
+                            <div class="card-label">
+                                <span>Fabricación y Mecanizado de Precisión</span>
+                            </div>
+                        </div>
+                        <div class="card-info-overlay">
+                            <p>Fabricación CNC de alta precisión con control riguroso y metrología avanzada.</p>
+                        </div>
+                    </a>
+
+
+                    <a href="mantenimiento-retrofit.html" class="service-card">
+                        <div class="card-image-wrapper">
+                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523095/index_Mantenimiento_Repuestos_Maquinas_collage_1_az83zx.jpg" alt="Mantenimiento">
+                            <div class="card-arrow">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                            </div>
+                            <div class="card-label">
+                                <span>Mantenimiento, Reparaciones y Retrofitting</span>
+                            </div>
+                        </div>
+                        <div class="card-info-overlay">
+                            <p>Modernización de equipos y fabricación de repuestos críticos para máxima continuidad operativa.</p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
         <section class="contact-industrial" id="contacto">
             <div class="container">
                 <div class="contact-header">
-                    <h2 class="contact-title">Sedes y Contacto Directo</h2>
+                    <h2 class="contact-title">Sede y Contacto Directo</h2>
                     <div class="title-underline"></div>
                 </div>
 
                 <div class="contact-main-grid">
                     <div class="contact__info">
                         <div class="contact__block">
-                            <h3>Sedes Operativas</h3>
+                            <h3>Sede Operativa</h3>
                             <div class="info-group">
                                 <strong>Centro de Ingeniería (CABA):</strong>
                                 <p>Machaín 4729, Ciudad Autónoma de Buenos Aires</p>
-                            </div>
-                            <div class="info-group">
-                                <strong>Planta Industrial:</strong>
-                                <p>Parque Industrial Pilar, Buenos Aires</p>
                             </div>
                         </div>
 
@@ -305,7 +308,7 @@
                             </div>
                             <div class="info-group">
                                 <strong>Email Técnico:</strong>
-                                <p>info@mexell.com.ar</p>
+                                <p>mexell@mexell.com.ar</p>
                             </div>
                         </div>
                     </div>
@@ -330,7 +333,7 @@
             
             <div class="footer-col brand-col">
                 <h2 class="footer-logo">MEXELL</h2>
-                <p class="footer-tagline">70 Años forjando soluciones de ingeniería y precisión para industrias de alta exigencia.</p>
+                <p class="footer-tagline">Ingeniería y soluciones metalúrgicas de precisión para la industria. Innovación eficiencia y calidad al servicio de su producción.</p>
                 <div class="footer-social">
                     <a href="#" aria-label="LinkedIn"><i class="ri-linkedin-box-fill"></i></a>
                     <a href="#" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
@@ -338,7 +341,7 @@
             </div>
 
             <div class="footer-col">
-                <h3 class="footer-title">Navegación</h3>
+                <h3 class="footer-title js-footer-toggle">Navegación</h3>
                 <ul class="footer-links">
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="sobre-nosotros.html">Nuestra Historia</a></li>
@@ -348,9 +351,9 @@
             </div>
 
             <div class="footer-col">
-                <h3 class="footer-title">Soporte Técnico</h3>
+                <h3 class="footer-title js-footer-toggle">Soporte Técnico</h3>
                 <ul class="footer-links">
-                    <li><a href="faq.html" class="highlight-link">Centro de Ayuda / FAQ</a></li>
+                    <li><a href="pages/faq.html" class="highlight-link">Centro de Ayuda / FAQ</a></li>
                     <li><a href="#contacto">Solicitar Cotización</a></li>
                     <li><a href="#">Especificaciones Técnicas</a></li>
                     <li><a href="#">Política de Calidad</a></li>

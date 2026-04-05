@@ -1,125 +1,61 @@
 window.addEventListener('load', () => {
-  const video = document.querySelector('.hero-video');
-  // Solo mostramos el video cuando esté listo para reproducirse
-  video.oncanplaythrough = function() {
-    video.style.opacity = 1;
-  };
-});
-
-// 1. Efecto Scroll de la Navbar (Se mantiene igual, funciona perfecto)
-window.addEventListener('scroll', function() {
-    const nav = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
+    const video = document.querySelector('.hero-video');
+    if (video) {
+        video.oncanplaythrough = function() {
+            video.style.opacity = 1;
+        };
     }
 });
 
-// Selecciones principales para el menú móvil
+// Selección de elementos
 const hamburger = document.querySelector('.hamburger');
-const navWrapper = document.querySelector('.nav-wrapper');
-const body = document.body; // Seleccionamos el body para controlar el scroll
+const navWrapper = document.querySelector('.mx-nav-wrapper');
+const body = document.body;
 
-// 2. Menú Móvil (Hamburguesa) y Bloqueo de Scroll
+// 1. Menú Móvil (Hamburguesa)
 hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
     navWrapper.classList.toggle('active');
     
-    // Si el menú está abierto, evitamos que la página de fondo haga scroll
     if (navWrapper.classList.contains('active')) {
         body.style.overflow = 'hidden';
     } else {
-        body.style.overflow = ''; // Restaura el comportamiento normal
+        body.style.overflow = ''; 
     }
 });
 
-// 3. Dropdown en Móvil (Efecto Acordeón)
-const dropdownMenu = document.querySelector('.dropdown');
-const dropMenuContent = document.querySelector('.dropdown-menu');
+// 2. Dropdown en Móvil (Efecto Acordeón)
+const dropdownMenu = document.querySelector('.mx-dropdown');
+const dropMenuContent = document.querySelector('.mx-dropdown-menu');
 
 dropdownMenu.addEventListener('click', (e) => {
-    // Solo activar comportamiento en pantallas móviles/tablets
     if (window.innerWidth <= 992) {
-        // Verificamos si se hizo clic en el enlace principal "Servicios" y no en los sub-enlaces
+        // Verifica si se hizo clic en el enlace principal
         if(e.target.tagName.toLowerCase() === 'a' && e.target.nextElementSibling) {
-            e.preventDefault(); // Evita el salto en la página
-            
-            // Alternamos las clases para girar el ícono (+) y mostrar el submenú
-            dropdownMenu.classList.toggle('active'); 
-            dropMenuContent.classList.toggle('active'); 
+            e.preventDefault(); 
+            dropdownMenu.classList.toggle('active');
+            dropMenuContent.classList.toggle('active');
         }
     }
 });
 
-// 4. (NUEVO) Cerrar el menú automáticamente al hacer clic en un enlace
-// Seleccionamos todos los links del menú, EXCEPTO el que abre el dropdown ("Servicios")
-const navLinks = document.querySelectorAll('.nav-links a:not(.dropdown > a)'); 
+// 3. Cerrar menú al hacer clic en cualquier link (Lógica que tenías cortada)
+const navLinks = document.querySelectorAll('.nav-links a:not(.mx-dropdown > a)');
 
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        // Solo ejecutamos el cierre si el menú móvil está abierto
+        // Solo cerramos si el menú móvil está abierto
         if (navWrapper.classList.contains('active')) {
             hamburger.classList.remove('active');
             navWrapper.classList.remove('active');
-            body.style.overflow = ''; // Devolvemos el scroll a la página
+            body.style.overflow = '';
             
-            // Opcional: Contraemos el menú "Servicios" para que esté cerrado la próxima vez
+            // Opcional: Cerrar también el dropdown si estaba abierto
             dropdownMenu.classList.remove('active');
             dropMenuContent.classList.remove('active');
         }
     });
 });
-
-document.addEventListener('DOMContentLoaded', () => {
-    const observerOptions = {
-        threshold: 0.5 // Se activa cuando el 50% de la sección es visible
-    };
-
-    const countUp = (entry) => {
-        const target = entry.target;
-        const endValue = parseInt(target.innerText.replace('+', '')); // Extrae el 500
-        let startValue = 0;
-        const duration = 4000; // 4 segundos de animación
-        const stepTime = Math.abs(Math.floor(duration / endValue));
-
-        const timer = setInterval(() => {
-            startValue += 5; // Incrementos de 5 para que sea más fluido
-            if (startValue >= endValue) {
-                target.innerText = `+${endValue}`;
-                clearInterval(timer);
-            } else {
-                target.innerText = `+${startValue}`;
-            }
-        }, stepTime);
-    };
-
-    // Dentro de tu DOMContentLoaded...
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Si es el número, lo contamos
-                if (entry.target.classList.contains('number')) {
-                    countUp(entry);
-                } 
-                // Si es la grilla de logos, los revelamos uno a uno
-                else if (entry.target.classList.contains('logo-matrix')) {
-                    const cards = entry.target.querySelectorAll('.logo-card');
-                    cards.forEach(card => card.classList.add('reveal'));
-                }
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Observamos tanto el número como la grilla completa
-    const numberElement = document.querySelector('.impact-number .number');
-    const logoMatrix = document.querySelector('.logo-matrix');
-
-    if (numberElement) observer.observe(numberElement);
-    if (logoMatrix) observer.observe(logoMatrix);
-});
-
 document.addEventListener('DOMContentLoaded', () => {
     // Lógica para las Pestañas Técnicas
     const tabBtns = document.querySelectorAll('.tab-btn');
@@ -140,3 +76,88 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.querySelectorAll('.js-footer-toggle').forEach(header => {
+    header.addEventListener('click', () => {
+        // Solo ejecutar en pantallas pequeñas (menores a 600px)
+        if (window.innerWidth <= 600) {
+            const parent = header.parentElement;
+            
+            // Opcional: Cerrar otros acordeones al abrir uno (estilo único)
+            document.querySelectorAll('.footer-col').forEach(col => {
+                if (col !== parent) col.classList.remove('active');
+            });
+
+            parent.classList.toggle('active');
+        }
+    });
+});
+
+const track = document.getElementById('logoTrack');
+const viewport = document.getElementById('sliderViewport');
+
+let isDragging = false;
+let startX;
+let scrollLeft;
+let animationId;
+let currentTranslate = 0;
+let lastTime = 0;
+const speed = 0.5; // Velocidad del auto-scroll
+
+// Función de animación automática
+function step(timestamp) {
+    if (!isDragging) {
+        currentTranslate -= speed;
+        
+        // Reset infinito: Si llegamos a la mitad del track (donde empiezan los duplicados)
+        const halfWidth = track.scrollWidth / 2;
+        if (Math.abs(currentTranslate) >= halfWidth) {
+            currentTranslate = 0;
+        }
+        
+        track.style.transform = `translateX(${currentTranslate}px)`;
+    }
+    animationId = requestAnimationFrame(step);
+}
+
+// Eventos de Mouse y Touch
+viewport.addEventListener('mousedown', startDrag);
+viewport.addEventListener('touchstart', startDrag);
+
+window.addEventListener('mousemove', drag);
+window.addEventListener('touchmove', drag);
+
+window.addEventListener('mouseup', endDrag);
+window.addEventListener('touchend', endDrag);
+
+function startDrag(e) {
+    isDragging = true;
+    viewport.classList.add('grabbing');
+    startX = e.pageX || e.touches[0].pageX;
+    scrollLeft = currentTranslate;
+    cancelAnimationFrame(animationId);
+}
+
+function drag(e) {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX || e.touches[0].pageX;
+    const walk = (x - startX); 
+    currentTranslate = scrollLeft + walk;
+    
+    // Lógica de loop mientras arrastras
+    const halfWidth = track.scrollWidth / 2;
+    if (currentTranslate > 0) currentTranslate = -halfWidth;
+    if (Math.abs(currentTranslate) >= halfWidth) currentTranslate = 0;
+
+    track.style.transform = `translateX(${currentTranslate}px)`;
+}
+
+function endDrag() {
+    isDragging = false;
+    viewport.classList.remove('grabbing');
+    requestAnimationFrame(step); // Reanudar auto-scroll
+}
+
+// Iniciar animación
+requestAnimationFrame(step);
