@@ -1277,26 +1277,15 @@ body {
 }
 
 
-
-/* Ajustes compactos para el texto en móvil */
-@media (max-width: 991px) {
-    .trust-impact.compact {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        border-left: 4px solid var(--brand-light);
-        padding-left: 15px;
-    }
-    .trust-impact.compact .number { font-size: 2rem; color: var(--brand-dark); font-weight: 800; }
-    .trust-impact.compact h2 { font-size: 1.1rem; text-transform: uppercase; margin: 0; }
-}
 .logo-slider-viewport {
     overflow: hidden;
     width: 100%;
+    padding: 20px 0;
     position: relative;
-    cursor: grab; /* Indica que se puede arrastrar */
+    cursor: grab;
     touch-action: pan-y; /* Permite scroll vertical de la página pero captura el horizontal */
     mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
 .logo-slider-viewport:active {
@@ -1307,13 +1296,34 @@ body {
     display: flex;
     user-select: none;
     will-change: transform;
+    /* Evitamos que el flexbox encoja los elementos si son muchos */
+    width: max-content; 
 }
 
 .logo-slide {
-    flex: 0 0 180px; /* Ancho fijo para cada logo */
-    height: 100px;
+    flex: 0 0 180px; /* Evita que se encojan, mantiene el ancho fijo */
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0 30px;
 }
+
+.logo-slide img {
+    max-height: 35px;
+    filter: grayscale(1) opacity(0.6);
+    transition: filter 0.3s ease; /* Transición suave si decides agregar hover */
+}
+    
+    /* Ajustes compactos para el texto en móvil */
+    @media (max-width: 991px) {
+        .trust-impact.compact {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-left: 4px solid var(--brand-light);
+            padding-left: 15px;
+        }
+        .trust-impact.compact .number { font-size: 2rem; color: var(--brand-dark); font-weight: 800; }
+        .trust-impact.compact h2 { font-size: 1.1rem; text-transform: uppercase; margin: 0; }
+    }

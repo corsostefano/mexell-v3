@@ -97,24 +97,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const track = document.getElementById('logoTrack');
     const viewport = document.getElementById('sliderViewport');
 
-    // Si no existen los elementos, no ejecutar (evita errores en consola)
     if (!track || !viewport) return;
+
+    // 1. CLONAR CONTENIDO PARA EL LOOP PERFECTO
+    // Tomamos los logos originales y los duplicamos al final del track
+    const slides = Array.from(track.children);
+    slides.forEach(slide => {
+        const clone = slide.cloneNode(true);
+        track.appendChild(clone);
+    });
 
     let isDragging = false;
     let startX;
     let scrollLeft;
     let animationId;
     let currentTranslate = 0;
-    const speed = 0.6; 
+    
+    // Velocidad constante (ajústala a tu gusto, 0.5 a 1.5 suelen ser ideales)
+    const speed = 0.8; 
+
+    // Función que maneja el loop sin saltos bruscos
+    function checkLoop() {
+        // Al haber duplicado los nodos, la mitad exacta del ancho total corresponde
+        // al final de la lista original de logos.
+        const halfWidth = track.scrollWidth / 2;
+
+        // Si hemos desplazado todo el set original hacia la izquierda...
+        if (currentTranslate <= -halfWidth) {
+            // ...le sumamos esa mitad en lugar de ponerlo a 0. Esto evita micro-saltos.
+            currentTranslate += halfWidth; 
+        } 
+        // Si el usuario arrastra hacia la derecha (valores positivos)...
+        else if (currentTranslate > 0) {
+            currentTranslate -= halfWidth;
+        }
+    }
 
     function step() {
         if (!isDragging) {
             currentTranslate -= speed;
-            const halfWidth = track.scrollWidth / 2;
-            
-            if (Math.abs(currentTranslate) >= halfWidth) {
-                currentTranslate = 0;
-            }
+            checkLoop();
             track.style.transform = `translateX(${currentTranslate}px)`;
         }
         animationId = requestAnimationFrame(step);
@@ -123,23 +145,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function startDrag(e) {
         isDragging = true;
         viewport.style.cursor = 'grabbing';
-        // Soporte para mouse y touch
-        startX = (e.pageX || e.touches[0].pageX);
+        
+        // Soporte unificado para mouse y touch
+        startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
         scrollLeft = currentTranslate;
+        
         cancelAnimationFrame(animationId);
     }
 
     function drag(e) {
         if (!isDragging) return;
-        const x = (e.pageX || e.touches[0].pageX);
+        
+        const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
         const walk = (x - startX);
         currentTranslate = scrollLeft + walk;
 
-        // Loop infinito manual
-        const halfWidth = track.scrollWidth / 2;
-        if (currentTranslate > 0) currentTranslate = -halfWidth;
-        if (Math.abs(currentTranslate) >= halfWidth) currentTranslate = 0;
-
+        checkLoop();
         track.style.transform = `translateX(${currentTranslate}px)`;
     }
 
@@ -149,17 +170,20 @@ document.addEventListener('DOMContentLoaded', () => {
         animationId = requestAnimationFrame(step);
     }
 
-    // Listeners
+    // --- Listeners para Mouse ---
     viewport.addEventListener('mousedown', startDrag);
-    viewport.addEventListener('touchstart', startDrag, {passive: true});
-
     window.addEventListener('mousemove', drag);
-    window.addEventListener('touchmove', drag, {passive: false});
-
     window.addEventListener('mouseup', endDrag);
+    window.addEventListener('mouseleave', () => {
+        if (isDragging) endDrag(); // Evita que se quede "pegado" si el mouse sale del área
+    });
+
+    // --- Listeners para Touch (Móviles) ---
+    viewport.addEventListener('touchstart', startDrag, {passive: true});
+    window.addEventListener('touchmove', drag, {passive: true});
     window.addEventListener('touchend', endDrag);
 
-    // Iniciar
+    // Iniciar animación
     animationId = requestAnimationFrame(step);
 });
 
