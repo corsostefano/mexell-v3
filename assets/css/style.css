@@ -1309,7 +1309,7 @@ body {
         display: flex;
         align-items: center;
         gap: 15px;
-        border-left: 4px solid #your-brand-color; /* Cambia por tu color real */
+        border-left: 4px solid; /* Cambia por tu color real */
         padding-left: 15px;
         margin-bottom: 20px;
     }
