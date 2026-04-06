@@ -118,6 +118,10 @@
     border: 1px solid #e0e0e0;
     position: relative;
     background: var(--bg-white);
+    
+    /* Mantiene una proporción 4:5 (ideal para retratos/historia) */
+    aspect-ratio: 4 / 5; 
+    display: flex;
 }
 
 .image-frame::after {
@@ -131,14 +135,15 @@
     border-right: 4px solid var(--brand-light);
     z-index: 1;
 }
-
 .industrial-img {
     width: 100%;
-    height: 450px;
-    object-fit: cover;
-    filter: grayscale(10%) contrast(1.05);
-    display: block;
+    height: 100%;
+    object-fit: cover; /* Evita que la imagen se estire, la recorta sutilmente para llenar el marco */
+    object-position: center;
 }
+
+
+
 
 .col-3 img,
 .grayscale-hover {
@@ -386,7 +391,12 @@
 @media (max-width: 991px) {
     .section-padding { padding: 60px 0; }
     .method-grid { grid-template-columns: repeat(3, 1fr); }
-    .industrial-img { height: 350px; }
+    .industrial-img { 
+        height: 400px; /* Un poco más de aire para tablets */
+        object-fit: cover; 
+        object-position: top; /* Prioriza ver la cara del fundador si es retrato */
+        width: 100%;
+    }
     .action-grid-5 { grid-template-columns: repeat(3, 1fr); }
     .action-card img { height: 250px; }
     .order-lg-2 { order: 1 !important; }
@@ -417,9 +427,24 @@
     .action-card img { height: 220px; }
 
     /* Imágenes y extras */
-    .image-frame { padding: 8px; }
-    .image-frame::after { width: 40px; height: 40px; top: -5px; right: -5px; }
-    .industrial-img { height: 280px; }
+    .image-frame { 
+        padding: 8px; 
+        margin-top: 20px; /* Separa la imagen del texto que quedó arriba */
+    }
+    .image-frame::after { 
+        width: 40px; 
+        height: 40px; 
+        top: -5px; 
+        right: -5px; 
+        border-top-width: 3px; /* Bordes un poco más finos para móvil */
+        border-right-width: 3px;
+    }
+    .industrial-img { 
+        /* En lugar de altura fija, usamos una proporción visual */
+        height: auto;
+        aspect-ratio: 1 / 1; /* La hace cuadrada en móviles para que luzca como ficha técnica */
+        object-fit: cover;
+    }
 
     .section__title { font-size: 1.5rem; }
     .technical-list li { font-size: 0.95rem; }
