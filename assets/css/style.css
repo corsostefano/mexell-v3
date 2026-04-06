@@ -1248,82 +1248,87 @@ body {
 
 .empty-cell { background-color: #f9f9f9; }
 
-/* --- ESTILOS SLIDER (MÓVIL) --- */
-.logo-slider {
-    overflow: hidden;
-    padding: 20px 0;
-    position: relative;
-    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-}
-
-.logo-track {
-    display: flex;
-    user-select: none;
-    will-change: transform;
-}
-
-.logo-slide {
-    width: 180px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 30px;
-}
-
-.logo-slide img {
-    max-height: 35px;
-    filter: grayscale(1) opacity(0.6);
-}
-
-
+/* --- CONTENEDOR GENERAL DEL SLIDER --- */
 .logo-slider-viewport {
-    overflow: hidden;
     width: 100%;
-    padding: 20px 0;
+    overflow: hidden;
+    padding: 30px 0;
     position: relative;
     cursor: grab;
-    touch-action: pan-y; /* Permite scroll vertical de la página pero captura el horizontal */
-    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    touch-action: pan-y; /* Permite scroll vertical normal en móvil */
+    
+    /* Efecto de desvanecimiento en los bordes (Máscara) */
     -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
 .logo-slider-viewport:active {
     cursor: grabbing;
 }
 
+/* --- EL TRACK (LO QUE SE MUEVE) --- */
 .logo-track {
     display: flex;
+    width: max-content; 
     user-select: none;
     will-change: transform;
-    /* Evitamos que el flexbox encoja los elementos si son muchos */
-    width: max-content; 
+    
+    /* IMPORTANTE: Nunca pongas 'transition: transform' aquí, 
+       porque entraría en conflicto con el movimiento de JavaScript */
+    transition: none !important; 
 }
 
+/* --- CADA LOGO --- */
 .logo-slide {
-    flex: 0 0 180px; /* Evita que se encojan, mantiene el ancho fijo */
-    height: 70px;
+    flex: 0 0 180px; /* Ancho fijo para consistencia */
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 30px;
+    padding: 0 25px;
 }
 
 .logo-slide img {
-    max-height: 35px;
+    max-width: 100%;
+    max-height: 40px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
     filter: grayscale(1) opacity(0.6);
-    transition: filter 0.3s ease; /* Transición suave si decides agregar hover */
+    transition: filter 0.3s ease, opacity 0.3s ease;
 }
-    
-    /* Ajustes compactos para el texto en móvil */
-    @media (max-width: 991px) {
-        .trust-impact.compact {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            border-left: 4px solid var(--brand-light);
-            padding-left: 15px;
-        }
-        .trust-impact.compact .number { font-size: 2rem; color: var(--brand-dark); font-weight: 800; }
-        .trust-impact.compact h2 { font-size: 1.1rem; text-transform: uppercase; margin: 0; }
+
+/* Efecto opcional: resaltar al pasar el mouse (solo en PC) */
+.logo-slide:hover img {
+    filter: grayscale(0) opacity(1);
+}
+
+/* --- AJUSTES RESPONSIVOS (MÓVIL) --- */
+@media (max-width: 991px) {
+    .trust-impact.compact {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border-left: 4px solid #your-brand-color; /* Cambia por tu color real */
+        padding-left: 15px;
+        margin-bottom: 20px;
     }
+    
+    .trust-impact.compact .number { 
+        font-size: 1.8rem; 
+        font-weight: 800; 
+        line-height: 1;
+    }
+
+    .trust-impact.compact h2 { 
+        font-size: 1rem; 
+        text-transform: uppercase; 
+        margin: 0; 
+        line-height: 1.2;
+    }
+
+    .logo-slide {
+        flex: 0 0 140px; /* Logos un poco más pequeños en móvil */
+        padding: 0 15px;
+    }
+}

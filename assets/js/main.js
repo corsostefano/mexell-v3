@@ -99,8 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!track || !viewport) return;
 
-    // 1. CLONAR CONTENIDO PARA EL LOOP PERFECTO
-    // Tomamos los logos originales y los duplicamos al final del track
+    // 1. CLONAR CONTENIDO PARA EL LOOP
     const slides = Array.from(track.children);
     slides.forEach(slide => {
         const clone = slide.cloneNode(true);
@@ -110,25 +109,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let isDragging = false;
     let startX;
     let scrollLeft;
-    let animationId;
+    let animationId = null; // Inicializamos en null
     let currentTranslate = 0;
     
-    // Velocidad constante (ajústala a tu gusto, 0.5 a 1.5 suelen ser ideales)
     const speed = 0.8; 
 
-    // Función que maneja el loop sin saltos bruscos
     function checkLoop() {
-        // Al haber duplicado los nodos, la mitad exacta del ancho total corresponde
-        // al final de la lista original de logos.
         const halfWidth = track.scrollWidth / 2;
-
-        // Si hemos desplazado todo el set original hacia la izquierda...
         if (currentTranslate <= -halfWidth) {
-            // ...le sumamos esa mitad en lugar de ponerlo a 0. Esto evita micro-saltos.
             currentTranslate += halfWidth; 
-        } 
-        // Si el usuario arrastra hacia la derecha (valores positivos)...
-        else if (currentTranslate > 0) {
+        } else if (currentTranslate > 0) {
             currentTranslate -= halfWidth;
         }
     }
@@ -139,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             checkLoop();
             track.style.transform = `translateX(${currentTranslate}px)`;
         }
+        // Guardamos el ID para poder cancelarlo luego
         animationId = requestAnimationFrame(step);
     }
 
@@ -146,11 +137,14 @@ document.addEventListener('DOMContentLoaded', () => {
         isDragging = true;
         viewport.style.cursor = 'grabbing';
         
-        // Soporte unificado para mouse y touch
+        // IMPORTANTE: Cancelamos cualquier animación activa al empezar a arrastrar
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
+
         startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
         scrollLeft = currentTranslate;
-        
-        cancelAnimationFrame(animationId);
     }
 
     function drag(e) {
@@ -165,25 +159,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function endDrag() {
+        if (!isDragging) return; // Evita ejecuciones extra
         isDragging = false;
         viewport.style.cursor = 'grab';
+        
+        // IMPORTANTE: Limpiamos antes de reiniciar para evitar duplicados
+        cancelAnimationFrame(animationId);
         animationId = requestAnimationFrame(step);
     }
 
-    // --- Listeners para Mouse ---
+    // Listeners
     viewport.addEventListener('mousedown', startDrag);
     window.addEventListener('mousemove', drag);
     window.addEventListener('mouseup', endDrag);
-    window.addEventListener('mouseleave', () => {
-        if (isDragging) endDrag(); // Evita que se quede "pegado" si el mouse sale del área
-    });
-
-    // --- Listeners para Touch (Móviles) ---
+    
+    // Touch
     viewport.addEventListener('touchstart', startDrag, {passive: true});
     window.addEventListener('touchmove', drag, {passive: true});
     window.addEventListener('touchend', endDrag);
 
-    // Iniciar animación
+    // Iniciar animación por primera vez
     animationId = requestAnimationFrame(step);
 });
 
