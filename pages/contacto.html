@@ -29,10 +29,10 @@
                     <li class="mx-dropdown">
                         <a href="../index.html#servicios">Servicios</a>
                         <ul class="mx-dropdown-menu">
-                            <li><a href="services/ingenieria_diseño.html">Ingeniería y Diseño a Medida</a></li>
-                            <li><a href="services/fabricacion_mecanizado.html">Fabricación y mecanizado de precisión</a></li>
-                            <li><a href="services/optimizacion.html">Cambios de Formato (SMED)</a></li>
-                            <li><a href="services/mantenimiento_reparaciones.html">Reparaciones y mantenimiento</a></li>
+                            <li><a href="services/ingenieria_diseño.html">Ingeniería y Diseño a medida</a></li>
+                            <li><a href="services/fabricacion_mecanizado.html">Fabricación y Mecanizado de Precisión</a></li>
+                            <li><a href="services/optimizacion.html">Optimización (OEE) y Cambios de Formato (SMED)</a></li>
+                            <li><a href="services/mantenimiento_reparaciones.html">Mantenimiento, Reparaciones y Retrofitting</a></li>
                         </ul>
                     </li>
                     <li><a href="contacto.html" class="separator">Contacto</a></li>
@@ -52,9 +52,9 @@
     <main>
     <section class="contact-hero section-padding">
         <div class="container">
-            <div class="hero-label">Contacto Directo</div>
+            <div class="hero-label">Contacto</div>
             <h1>Ingeniería a su <span>Servicio</span></h1>
-            <p class="hero-subtitle">Conecte con nuestros especialistas para optimizar sus procesos de manufactura y mecanizado de precisión.</p>
+            <p class="hero-subtitle">Deje su consulta y nos contactaremos a la brevedad.</p>
         </div>
     </section>
 
@@ -66,18 +66,24 @@
                     <form class="industrial-form" id="contactForm">
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Nombre Completo</label>
+                                <label>Nombre y apellido</label>
                                 <input type="text" name="nombre" placeholder="Ej: Ing. Alberto Rossi" required>
                             </div>
                             <div class="form-group">
-                                <label>Empresa / Industria</label>
+                                <label>Empresa</label>
                                 <input type="text" name="empresa" placeholder="Nombre de su organización" required>
                             </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label>Correo Corporativo</label>
-                            <input type="email" name="email" placeholder="email@empresa.com" required>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Correo electrónico</label>
+                                <input type="email" name="email" placeholder="email@empresa.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Teléfono</label>
+                                <input type="tel" name="telefono" placeholder="Ej: +54 9 11 1234 5678" required>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -92,12 +98,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Detalles del Proyecto</label>
-                            <textarea name="mensaje" rows="5" placeholder="Describa brevemente sus requerimientos técnicos..."></textarea>
+                            <label>Detalle de la consulta</label>
+                            <textarea name="mensaje" rows="5" placeholder="Describa brevemente su requerimiento…"></textarea>
                         </div>
 
                         <button type="submit" class="btn-industrial" id="submitBtn">
-                            Enviar Solicitud <span class="arrow">→</span>
+                            Enviar consulta <span class="arrow">→</span>
                         </button>
                         
                         <div id="formStatus" class="form-status-message"></div>
@@ -106,7 +112,6 @@
 
                 <div class="contact-info-panel">
                     <div class="info-block">
-                        <h3>Sede Operativa</h3>
                         <p>Centro de Ingeniería (CABA)</p>
                         <p>Machaín 4729</p>
                         <p>Ciudad Autónoma de Buenos Aires, Argentina.</p>
@@ -169,15 +174,7 @@
             </div>
 
             <div class="footer-col">
-                <h3 class="footer-title">Estándares</h3>
-                <div class="footer-badges">
-                    <div class="badge-item">
-                        <span class="badge-text">Industria 4.0</span>
-                    </div>
-                    <div class="badge-item">
-                        <span class="badge-text">ISO 9001 Ready</span>
-                    </div>
-                </div>
+             
                 <p class="footer-location">Buenos Aires, Argentina.</p>
             </div>
 
@@ -186,10 +183,7 @@
         <div class="footer-bottom">
             <div class="container bottom-content">
                 <p>&copy; 2026 Mexell S.A. Todos los derechos reservados.</p>
-                <div class="legal-links">
-                    <a href="#">Privacidad</a>
-                    <a href="#">Términos Legales</a>
-                </div>
+               
             </div>
         </div>
     </footer>

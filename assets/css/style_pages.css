@@ -124,16 +124,19 @@
     display: flex;
 }
 
-.image-frame::after {
-    content: "";
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    width: 60px;
-    height: 60px;
-    border-top: 4px solid var(--brand-light);
-    border-right: 4px solid var(--brand-light);
-    z-index: 1;
+.history-img-clean {
+    width: 100%;
+    /* Mantenemos la proporción técnica 4:5 que tenías */
+    aspect-ratio: 4 / 5; 
+    object-fit: cover;
+    object-position: center;
+    
+    /* Eliminamos bordes, paddings y sombras si las hubiera */
+    border: none;
+    padding: 0;
+    
+    /* Opcional: un detalle de "precisión" sutil */
+    filter: contrast(1.05); 
 }
 .industrial-img {
     width: 100%;
@@ -614,9 +617,13 @@
 }
 
 .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
+    display: flex;
+    gap: 20px; /* Espacio entre columnas */
+    margin-bottom: 15px;
+}
+
+.form-row .form-group {
+    flex: 1; /* Hace que ambos campos midan lo mismo */
 }
 
 .form-group {
@@ -764,9 +771,9 @@
         order: 1; /* El formulario queda arriba */
     }
 
-    .form-row {
-        grid-template-columns: 1fr; /* Una sola columna siempre */
-        gap: 20px;
+  .form-row {
+        flex-direction: column; /* En móviles se apilan */
+        gap: 0;
     }
 
     .form-group input, 
@@ -1268,5 +1275,98 @@
     
     .iso-text h2 {
         font-size: 1.4rem;
+    }
+}
+
+/* --- Galería de Precisión Mexell --- */
+.mx-tech-gallery {
+    padding-bottom: 5rem;
+    background-color: var(--bg-white);
+}
+
+.border-color-main {
+    border-color: var(--border-color) !important;
+}
+
+.mx-gallery-item {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+    background-color: var(--bg-dark); /* Fondo para cuando la imagen está filtrada */
+}
+
+.mx-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+    opacity: 0.7;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Si usas la Opción 1, este estilo ayuda a la caja de texto */
+.bg-light-gray {
+    background-color: var(--bg-light-gray);
+}
+
+/* Etiquetas Superiores (Look de especificación técnica) */
+.mx-item-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    padding: 10px 15px;
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mx-num {
+    color: var(--brand-light);
+    font-weight: 800;
+    font-size: 0.75rem;
+}
+
+.mx-label {
+    color: var(--brand-dark);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-left: 5px;
+    text-transform: uppercase;
+}
+
+/* Pie de imagen (Solo aparece en Hover) */
+.mx-item-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background: var(--brand-dark);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 400;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+/* --- Estados Hover --- */
+.mx-gallery-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.mx-gallery-item:hover .mx-item-footer {
+    transform: translateY(0);
+}
+
+/* Ajustes Responsivos */
+@media (max-width: 768px) {
+    .mx-gallery-item {
+        height: 250px;
+    }
+    .mx-item-footer {
+        transform: translateY(0);
+        background: rgba(11, 53, 88, 0.9); /* var(--brand-dark) con transparencia */
     }
 }
