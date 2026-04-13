@@ -437,6 +437,7 @@ body {
 }
 
 .industries__header_simple {
+    margin-left: 10px;
     margin-bottom: 30px;
     border-left: 4px solid var(--brand-light); /* Acento de marca */
     padding-left: 20px;
