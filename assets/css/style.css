@@ -470,7 +470,7 @@ body {
 
 .industry-node:hover {
     background-color: #f8f9fa;
-    box-shadow: inset 3px 0 0 0 var(--brand-light);
+    
 }
 
 .industry-node span {
@@ -482,6 +482,10 @@ body {
     letter-spacing: 0.5px;
 }
 
+.industry-node:hover span {
+    opacity: 1;
+    color: var(--brand-dark);
+}
 /* --- SECCIÓN DE CONFIANZA --- */
 .trust-grid { background-color: var(--bg-white); }
 
@@ -1134,10 +1138,22 @@ body {
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    .heritage-grid { gap: 80px; }
-    .heritage__image-container { order: 1; display: flex; justify-content: center; }
-    .heritage__img { margin-left: 0; width: 60%; }
-    .heritage__content { order: 2; text-align: center; align-items: center; }
+    .heritage-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "content"
+            "image";
+    }
+
+    .heritage__content {
+        grid-area: content;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .heritage__image-container {
+        grid-area: image;
+    }
     .section__description { text-align: center; }
     
     .contact-main-grid { grid-template-columns: 1fr; }
@@ -1184,40 +1200,36 @@ body {
     }
 
     .industry-node {
-        padding: 15px 12px; 
-        background: var(--bg-white);
-        border-right: 1px solid #e0e0e0;
-        border-bottom: 1px solid #e0e0e0;
-        min-height: 60px; /* Altura uniforme para que todo alinee */
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        position: relative;
+      position: relative;
     }
 
-    /* Acento azul Sandvik: línea vertical fina a la izquierda */
-    .industry-node::before {
+    .industry-node::after {
         content: "";
         position: absolute;
+        bottom: -8px;
         left: 0;
-        top: 0;
-        bottom: 0;
-        width: 3px;
-        background-color: var(--brand-light);
+
+        width: 0%;
+        height: 2px;
+        background: var(--brand-light);
+
+        transition: width 0.3s ease;
+    }
+
+    .industry-node:hover::after {
+        width: 100%;
     }
 
     .industry-node span {
-        font-size: 0.65rem;
-        font-weight: 700;
-        line-height: 1.2;
+         font-size: 0.75rem;
+        font-weight: 800;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 1.5px;
+
         color: var(--brand-dark);
-        /* Evita que el texto largo rompa la simetría */
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        opacity: 0.6;
+
+        transition: all 0.3s ease;
     }
 
     /* Si el último elemento queda solo, que ocupe las 2 columnas para cerrar la tabla */
@@ -1349,14 +1361,13 @@ body {
 .logo-slider-viewport {
     width: 100%;
     overflow: hidden;
-    padding: 30px 0;
+    padding: 40px 0;;
     position: relative;
     cursor: grab;
     touch-action: pan-y; /* Permite scroll vertical normal en móvil */
     
-    /* Efecto de desvanecimiento en los bordes (Máscara) */
-    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+   -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
 }
 
 .logo-slider-viewport:active {
@@ -1462,13 +1473,18 @@ body {
 
 /* --- Adaptación de Nodos de Industria al Slider --- */
 #industriesTrack .industry-node {
-    flex: 0 0 280px; /* Ancho fijo para consistencia técnica */
-    margin-right: 20px;
-    border: 1px solid var(--border-color);
-    background: var(--bg-white);
+      flex: 0 0 auto; /* 🔥 ancho dinámico */
+    margin-right: 60px; /* 🔥 espacio tipo premium */
+    
+    border: none;
+    background: transparent;
+
+    min-height: auto;
+    padding: 10px 0;
+    
+    display: flex;
+    align-items: center;
     justify-content: center;
-    text-align: center;
-    min-height: 80px;
 }
 
 #industriesTrack .industry-node::before {
@@ -1543,3 +1559,4 @@ body {
 #nosotros.section-padding {
     padding-top: 80px; /* Un poco menos que los 100px estándar para mayor fluidez */
 }
+
