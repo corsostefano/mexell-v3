@@ -25,22 +25,25 @@ hamburger.addEventListener('click', () => {
 });
 
 // 2. Dropdown en Móvil (Efecto Acordeón)
-const dropdownMenu = document.querySelector('.mx-dropdown');
-const dropMenuContent = document.querySelector('.mx-dropdown-menu');
+const dropdowns = document.querySelectorAll('.mx-dropdown');
 
-dropdownMenu.addEventListener('click', (e) => {
-    if (window.innerWidth <= 992) {
-        // Verifica si se hizo clic en el enlace principal
-        if(e.target.tagName.toLowerCase() === 'a' && e.target.nextElementSibling) {
-            e.preventDefault(); 
-            dropdownMenu.classList.toggle('active');
-            dropMenuContent.classList.toggle('active');
+dropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector('a');
+    const menu = dropdown.querySelector('.mx-dropdown-menu');
+
+    dropdown.addEventListener('click', (e) => {
+        if (window.innerWidth <= 992) {
+            if (e.target === trigger && menu) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+                menu.classList.toggle('active');
+            }
         }
-    }
+    });
 });
 
 // 3. Cerrar menú al hacer clic en cualquier link (Lógica que tenías cortada)
-const navLinks = document.querySelectorAll('.nav-links a:not(.mx-dropdown > a)');
+const navLinks = document.querySelectorAll('.mx-nav-links a:not(.mx-dropdown > a), .lang-link');
 
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -51,8 +54,8 @@ navLinks.forEach(link => {
             body.style.overflow = '';
             
             // Opcional: Cerrar también el dropdown si estaba abierto
-            dropdownMenu.classList.remove('active');
-            dropMenuContent.classList.remove('active');
+            document.querySelectorAll('.mx-dropdown').forEach(d => d.classList.remove('active'));
+            document.querySelectorAll('.mx-dropdown-menu').forEach(m => m.classList.remove('active'));
         }
     });
 });
@@ -94,92 +97,102 @@ document.querySelectorAll('.js-footer-toggle').forEach(header => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const track = document.getElementById('logoTrack');
-    const viewport = document.getElementById('sliderViewport');
-
-    if (!track || !viewport) return;
-
-    // 1. CLONAR CONTENIDO PARA EL LOOP
-    const slides = Array.from(track.children);
-    slides.forEach(slide => {
-        const clone = slide.cloneNode(true);
-        track.appendChild(clone);
-    });
-
-    let isDragging = false;
-    let startX;
-    let scrollLeft;
-    let animationId = null; // Inicializamos en null
-    let currentTranslate = 0;
     
-    const speed = 0.8; 
+    function initInfiniteSlider(viewportId, trackId, customSpeed = 0.8) {
+        const viewport = document.getElementById(viewportId);
+        const track = document.getElementById(trackId);
 
-    function checkLoop() {
-        const halfWidth = track.scrollWidth / 2;
-        if (currentTranslate <= -halfWidth) {
-            currentTranslate += halfWidth; 
-        } else if (currentTranslate > 0) {
-            currentTranslate -= halfWidth;
+        if (!viewport || !track) return;
+
+        // 1. CLONAR CONTENIDO
+        const slides = Array.from(track.children);
+        slides.forEach(slide => {
+            const clone = slide.cloneNode(true);
+            track.appendChild(clone);
+        });
+
+        let isDragging = false;
+        let startX;
+        let scrollLeft;
+        let animationId = null;
+        let currentTranslate = 0;
+        const speed = customSpeed;
+
+        function checkLoop() {
+            const halfWidth = track.scrollWidth / 2;
+            if (currentTranslate <= -halfWidth) {
+                currentTranslate += halfWidth;
+            } else if (currentTranslate > 0) {
+                currentTranslate -= halfWidth;
+            }
         }
-    }
 
-    function step() {
-        if (!isDragging) {
-            currentTranslate -= speed;
+        function step() {
+            if (!isDragging) {
+                currentTranslate -= speed;
+                checkLoop();
+                track.style.transform = `translateX(${currentTranslate}px)`;
+            }
+            animationId = requestAnimationFrame(step);
+        }
+
+        function startDrag(e) {
+            // Evita que el navegador intente "arrastrar" la imagen como archivo
+            if (e.type === 'mousedown') e.preventDefault(); 
+            
+            isDragging = true;
+            viewport.style.cursor = 'grabbing';
+            
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+
+            startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+            scrollLeft = currentTranslate;
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            
+            const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+            const walk = (x - startX);
+            currentTranslate = scrollLeft + walk;
+
             checkLoop();
             track.style.transform = `translateX(${currentTranslate}px)`;
         }
-        // Guardamos el ID para poder cancelarlo luego
-        animationId = requestAnimationFrame(step);
-    }
 
-    function startDrag(e) {
-        isDragging = true;
-        viewport.style.cursor = 'grabbing';
-        
-        // IMPORTANTE: Cancelamos cualquier animación activa al empezar a arrastrar
-        if (animationId) {
+        function endDrag() {
+            if (!isDragging) return;
+            isDragging = false;
+            viewport.style.cursor = 'grab';
+            
             cancelAnimationFrame(animationId);
-            animationId = null;
+            animationId = requestAnimationFrame(step);
         }
 
-        startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-        scrollLeft = currentTranslate;
-    }
+        // Eventos del Viewport
+        viewport.addEventListener('mousedown', startDrag);
+        viewport.addEventListener('touchstart', startDrag, {passive: true});
 
-    function drag(e) {
-        if (!isDragging) return;
+        // Eventos Globales (para capturar el "soltar" fuera del área)
+        window.addEventListener('mousemove', drag);
+        window.addEventListener('touchmove', drag, {passive: true});
+        window.addEventListener('mouseup', endDrag);
+        window.addEventListener('touchend', endDrag);
         
-        const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
-        const walk = (x - startX);
-        currentTranslate = scrollLeft + walk;
+        // Evitar que las imágenes se vuelvan "arrastrables" nativamente
+        track.querySelectorAll('img').forEach(img => {
+            img.addEventListener('dragstart', (e) => e.preventDefault());
+        });
 
-        checkLoop();
-        track.style.transform = `translateX(${currentTranslate}px)`;
-    }
-
-    function endDrag() {
-        if (!isDragging) return; // Evita ejecuciones extra
-        isDragging = false;
-        viewport.style.cursor = 'grab';
-        
-        // IMPORTANTE: Limpiamos antes de reiniciar para evitar duplicados
-        cancelAnimationFrame(animationId);
         animationId = requestAnimationFrame(step);
     }
 
-    // Listeners
-    viewport.addEventListener('mousedown', startDrag);
-    window.addEventListener('mousemove', drag);
-    window.addEventListener('mouseup', endDrag);
-    
-    // Touch
-    viewport.addEventListener('touchstart', startDrag, {passive: true});
-    window.addEventListener('touchmove', drag, {passive: true});
-    window.addEventListener('touchend', endDrag);
-
-    // Iniciar animación por primera vez
-    animationId = requestAnimationFrame(step);
+    // Inicialización
+    initInfiniteSlider('trustSlider', 'trustTrack', 0.8);
+    initInfiniteSlider('industriesSlider', 'industriesTrack', 0.6); 
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -219,5 +232,38 @@ document.addEventListener('DOMContentLoaded', () => {
             // Ajustado para mantener consistencia con el HTML
             btn.innerHTML = 'Enviar consulta <span class="arrow">→</span>';
         }
+    });
+});
+
+
+// --- Lógica de Selector de Idiomas (Estilo Sandvik) ---
+document.addEventListener('DOMContentLoaded', () => {
+    const langLinks = document.querySelectorAll('.lang-link');
+    
+    // 1. Detectar el idioma actual por la URL (ej: ?lang=en)
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentLang = urlParams.get('lang') || 'es'; // 'es' por defecto
+
+    // 2. Marcar como activo el idioma correspondiente al cargar la página
+    langLinks.forEach(link => {
+        const langTarget = link.getAttribute('href').split('=')[1];
+        if (langTarget === currentLang) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+
+        // 3. Efecto visual inmediato al hacer clic
+        link.addEventListener('click', (e) => {
+            // Si el menú móvil está abierto, lo cerramos al cambiar idioma
+            if (navWrapper.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navWrapper.classList.remove('active');
+                body.style.overflow = '';
+            }
+            
+            langLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+        });
     });
 });

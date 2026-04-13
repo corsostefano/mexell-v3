@@ -229,6 +229,75 @@ body {
 
 .mx-dropdown-menu a::after { display: none; }
 
+/* --- Selector de Idioma (Estilo de Precisión Sandvik) --- */
+.mx-lang-selector {
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+    padding-left: 1.5rem;
+    border-left: 1.5px solid var(--border-color); /* Línea un poco más firme */
+    height: 24px; /* Altura fija para asegurar alineación vertical perfecta con el texto */
+}
+
+.lang-link {
+    text-decoration: none;
+    font-size: 0.75rem; /* Ligeramente más pequeño para enfatizar que es una utilidad */
+    font-weight: 600;
+    color: var(--text-gray);
+    transition: all 0.2s ease-in-out;
+    letter-spacing: 1.5px; /* Más aire entre letras para un look premium */
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 4px;
+}
+
+/* Estado No Activo: Sutil */
+.lang-link:not(.active) {
+    opacity: 0.6;
+}
+
+.lang-link:hover {
+    color: var(--brand-light);
+    opacity: 1;
+}
+
+/* Estado Activo: Definido y Técnico */
+.lang-link.active {
+    color: var(--brand-dark);
+    font-weight: 800;
+    opacity: 1;
+}
+
+/* Indicador de precisión (El punto debajo) */
+.lang-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; /* Ajustado para no chocar con el borde de la navbar */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 3px;
+    background-color: var(--brand-light);
+    border-radius: 50%;
+    box-shadow: 0 0 2px var(--brand-light); /* Pequeño brillo "led" de precisión */
+}
+
+.lang-divider {
+    margin: 0 4px;
+    color: var(--border-color);
+    font-size: 0.7rem;
+    font-weight: 300;
+    user-select: none; /* Evita que se seleccione como texto */
+}
+
+/* Ajuste de alineación para el contenedor de utilidades */
+.mx-nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Empuja todo hacia la derecha */
+}
+
 /* --- Hero Section --- */
 .hero {
     position: relative;
@@ -359,6 +428,7 @@ body {
     opacity: 0.9;
     line-height: 1.2;
 }
+
 
 /* --- SECCIÓN INDUSTRIAS (Versión Compacta) --- */
 .industries-section { 
@@ -531,201 +601,157 @@ body {
     border-left: 5px solid var(--brand-light);
     padding-left: 25px;
 }
-
+/* --- GRID CORPORATIVO --- */
 .services-cards-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    gap: 20px; /* 🔥 aire entre cards */
 }
 
-.service-card, 
-.service-card:hover, 
-.service-card:active {
-    text-decoration: none !important;
-    outline: none;
-}
-
+/* --- CARD BASE --- */
 .service-card {
-    position: relative;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    background: var(--bg-white);
-    border-radius: 0;
-    border: 1px solid var(--border-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    
+
+    text-decoration: none;
+    transition: background 0.25s ease;
 }
 
-.service-card:hover {
-    box-shadow: 0 15px 35px rgba(11, 53, 88, 0.15);
-    transform: translateY(-5px);
+/* Hover sutil */
+
+
+/* --- CONTENEDOR INTERNO (CLAVE NUEVO) --- */
+.card-inner {
+    padding: 18px; /* 🔥 separa TODO del borde */
 }
 
+/* --- IMAGEN --- */
 .card-image-wrapper {
     position: relative;
     aspect-ratio: 16 / 9;
     overflow: hidden;
-    background-color: var(--brand-dark);
+    background: #f2f2f2;
 }
 
+/* Imagen SIN filtro */
 .card-image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
-    vertical-align: middle;
-    filter: grayscale(60%);
-    opacity: 0.7;
-    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), filter 0.5s ease, opacity 0.5s ease;
+
+    transition: transform 0.6s ease;
 }
 
-.service-card:hover .card-image-wrapper img {
-    transform: scale(1.08);
-    filter: grayscale(0%);
-    opacity: 1;
+/* Hover imagen */
+.service-card:hover img {
+    transform: scale(1.04);
 }
 
-.card-label {
+/* --- CONTENIDO --- */
+.card-content {
+    padding: 20px 6px 10px 6px; /* menos padding lateral (ya lo da card-inner) */
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Línea azul */
+.card-content::before {
+    content: "";
     position: absolute;
-    bottom: 0;
     left: 0;
-    background-color: var(--brand-light);
-    color: white;
-    padding: 16px 30px;
+    top: 20px;
+    width: 3px;
+    height: 34px;
+    background: var(--brand-light);
+}
+
+/* TÍTULO */
+.card-content span {
+    font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 1.5px;
-    z-index: 3;
+    letter-spacing: 1.2px;
+    color: var(--brand-dark);
+    line-height: 1.4;
+    padding-left: 12px;
+}
+
+/* --- DESCRIPCIÓN OCULTA --- */
+.card-info-overlay {
+    padding: 0 6px 10px 6px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
     transition: all 0.3s ease;
 }
 
-.card-label::after {
-    content: '';
-    position: absolute;
-    right: -20px;
-    top: 0;
-    border-bottom: 54px solid var(--brand-light);
-    border-right: 20px solid transparent;
-}
-
-.service-card:hover .card-label {
-    padding-left: 40px;
-    background-color: var(--brand-dark);
-}
-
-.service-card:hover .card-label::after {
-    border-bottom-color: var(--brand-dark);
-}
-
-.card-arrow {
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.card-arrow svg {
-    width: 20px;
-    height: 20px;
-    color: var(--brand-dark);
-    transition: color 0.3s;
-}
-
-.service-card:hover .card-arrow {
-    background: var(--brand-light);
-    transform: translate(5px, -5px) rotate(45deg);
-}
-
-.service-card:hover .card-arrow svg { color: white; }
-
-.card-info-overlay {
-    background: var(--bg-white);
-    padding: 25px 30px;
-    border-top: 1px solid var(--border-color);
-    margin-top: -1px;
-    position: relative;
-    z-index: 2;
+.service-card:hover .card-info-overlay {
+    max-height: 80px;
+    opacity: 1;
 }
 
 .card-info-overlay p {
-    color: #666;
-    font-size: 0.95rem;
     margin: 0;
-    line-height: 1.6;
-    font-weight: 400;
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.5;
 }
+
+/* --- ELIMINAMOS LABEL --- */
+.card-label {
+    display: none;
+}
+
 
 /* --- SECCIÓN HERENCIA --- */
 .heritage { background: var(--bg-white); }
 
 .heritage-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 60px;
-    align-items: center;
+    align-items: center; /* 🔥 esto equilibra verticalmente */
 }
 
 .heritage__image-container {
-    position: relative;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* Imagen proporcional y alineada con el contenido */
 .heritage__img {
-    margin-top: 20px;
-    margin-left: 100px;
-    width: 50%;
+  width: 60%;
+    max-width: 480px; /* 🔥 antes era muy grande */
+    
     height: auto;
+    max-height: 420px; /* 🔥 controla la altura visual */
+    
+    object-fit: cover; /* evita deformaciones */
+    
     display: block;
+    margin: 0;
+
     filter: grayscale(100%);
-    transition: filter 0.5s ease, transform 0.5s ease;
+    transition: filter 0.4s ease, transform 0.4s ease;
 }
 
+/* Hover sutil */
 .heritage__image-container:hover .heritage__img {
     filter: grayscale(0%);
     transform: scale(1.02);
 }
 
+/* Eliminamos completamente el badge */
 .heritage__badge {
-    position: absolute;
-    bottom: -15px;
-    right: -15px;
-    background: var(--brand-dark);
-    color: white;
-    padding: 25px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    box-shadow: 10px 10px 0px rgba(42, 161, 208, 0.15); 
-    z-index: 2;
+    display: none;
 }
-
-.heritage__badge .years { 
-    font-size: 3.5rem; 
-    font-weight: 900; 
-    line-height: 1; 
-    letter-spacing: -2px;
-}
-
-.heritage__badge .label { 
-    font-size: 0.8rem; 
-    text-transform: uppercase; 
-    line-height: 1.2; 
-    font-weight: 600; 
-    letter-spacing: 1px;
-}
-
 .heritage__content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+
+      max-width: 520px;
 }
 
 .btn-industrial {
@@ -1042,6 +1068,11 @@ body {
         flex-direction: column; align-items: flex-start;
         padding: 90px 30px 40px;
         transition: right 0.4s ease; z-index: 999;
+        display: flex;
+        flex-direction: column; 
+        align-items: flex-start; /* Alinea todo a la izquierda */
+        justify-content: flex-start; /* Reset: evita que todo se vaya al fondo */
+        padding: 100px 40px 40px; /* Más aire arriba para que no choque con el logo */
     }
     .mx-nav-wrapper.active { right: 0; }
     
@@ -1070,6 +1101,33 @@ body {
     .mx-nav-phone { margin-top: 40px; width: 100%; }
     .mx-nav-phone a { color: var(--brand-light); margin-bottom: 15px; }
     
+    .mx-lang-selector {
+        margin: 40px 0 0 0; /* Separación clara después del contacto */
+        padding-left: 0;
+        border-left: none; /* Quitamos la línea vertical de desktop */
+        border-top: 1px solid rgba(255,255,255,0.1); /* Línea horizontal sutil */
+        width: 100%;
+        padding-top: 25px;
+        justify-content: flex-start; /* Alineación a la izquierda con el texto */
+    }
+
+    .mx-lang-selector a{
+        color: rgba(255,255,255,0.7) !important;
+        padding: 10px 0;
+        display: block;
+    }
+
+    .lang-link {
+        font-size: 0.9rem; /* Un poco más grande para facilitar el toque (touch) */
+        padding: 10px 5px;
+    }
+    .lang-link.active::after {
+        bottom: 2px; /* Ajuste fino para que no quede volando */
+    }
+    .lang-divider {
+        margin: 0 15px; /* Más espacio para no fallar el clic en móvil */
+        color: rgba(255,255,255,0.2);
+    }
     .hamburger { display: block; position: relative; z-index: 1100; }
     .hamburger.active span { background-color: var(--bg-white); }
     .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
@@ -1105,8 +1163,8 @@ body {
     .impact-text h2 { font-size: 1.8rem; }
     
     
-    .technical-services { padding: 60px 5%; }
-    .services-cards-grid { grid-template-columns: 1fr; gap: 30px; }
+    .technical-services { padding-left: 5%; padding-right: 5%; }
+    .services-cards-grid {grid-template-columns: 1fr;}
     .services__header { border-left-width: 4px; padding-left: 15px; }
     .services__header .section__title { font-size: 1.8rem; }
     
@@ -1342,6 +1400,7 @@ body {
     filter: grayscale(0) opacity(1);
 }
 
+
 /* --- AJUSTES RESPONSIVOS (MÓVIL) --- */
 @media (max-width: 991px) {
     .trust-impact.compact {
@@ -1370,4 +1429,117 @@ body {
         flex: 0 0 140px; /* Logos un poco más pequeños en móvil */
         padding: 0 15px;
     }
+}
+
+/* Solo aplicar el flex-end en desktop */
+@media screen and (min-width: 993px) {
+    .mx-nav-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end; 
+    }
+}
+
+
+/* --- Slider Universal (Base) --- */
+.logo-slider-viewport {
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    position: relative;
+    cursor: grab;
+    /* Máscara de desvanecimiento para look premium */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.logo-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 0; /* Controlamos el espacio dentro del slide */
+}
+
+/* --- Adaptación de Nodos de Industria al Slider --- */
+#industriesTrack .industry-node {
+    flex: 0 0 280px; /* Ancho fijo para consistencia técnica */
+    margin-right: 20px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-white);
+    justify-content: center;
+    text-align: center;
+    min-height: 80px;
+}
+
+#industriesTrack .industry-node::before {
+    /* Mantenemos el acento azul pero más sutil */
+    width: 4px;
+}
+
+/* --- Adaptación de Logos al Slider --- */
+.logo-slide {
+    flex: 0 0 200px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+}
+
+.logo-slide img {
+    max-width: 100%;
+    max-height: 45px;
+    filter: grayscale(1) opacity(0.5);
+    transition: all 0.3s ease;
+}
+
+.logo-slide:hover img {
+    filter: grayscale(0) opacity(1);
+    transform: scale(1.05);
+}
+
+/* Ajustes para Desktop: eliminamos las clases d-none innecesarias */
+@media (min-width: 992px) {
+    .trust-impact {
+        flex-direction: row; /* Aseguramos que el texto sea horizontal en PC */
+    }
+}
+
+
+.logo-slider-viewport {
+    user-select: none; /* Evita seleccionar texto al arrastrar */
+    -webkit-user-drag: none; /* Evita arrastre nativo de imágenes en Safari/Chrome */
+}
+
+.logo-track img {
+    pointer-events: none; /* Opcional: hace que las imágenes sean invisibles al clic para el JS */
+}
+
+/* --- CONTROL MAESTRO DE ESPACIADO DE SECCIONES --- */
+.section-padding {
+    padding: 100px 0; /* Espacio generoso en escritorio para un look premium */
+}
+
+/* En tu CSS vi que usas un max-width: 768px, así que ajustamos ahí */
+@media screen and (max-width: 768px) {
+    .section-padding {
+        padding: 60px 0; /* Reduce el espacio vertical en móviles */
+    }
+}
+
+/* Clase de utilidad para eliminar padding inferior */
+.pb-0 {
+    padding-bottom: 0 !important;
+}
+
+/* Ajuste específico para el slider de industrias */
+.industries-section .logo-slider-viewport {
+    padding-bottom: 0; /* Eliminamos el padding interno del slider si existe */
+    margin-bottom: 0;
+}
+
+/* Opcional: Si sientes que aún hay mucho aire, 
+   puedes reducir el padding-top de la sección Heritage */
+#nosotros.section-padding {
+    padding-top: 80px; /* Un poco menos que los 100px estándar para mayor fluidez */
 }
