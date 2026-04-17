@@ -44,3 +44,100 @@
   text-align: left; /* Alineación a la izquierda, típica de planos y manuales técnicos */
   line-height: 1.5;
 }
+
+
+.work-flow-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    background-color: transparent; /* Mantiene la estética limpia */
+}
+
+/* Item de la Galería */
+.work-flow-item {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    position: relative; /* Necesario para la flecha */
+}
+
+/* Caja de Imagen con Proporción Fija */
+.work-flow-image-box {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: #f4f4f5;
+    border: 1px solid #eee; /* Define el límite técnico de la imagen */
+}
+
+.work-flow-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Caption Estilo Ingeniería */
+.work-flow-caption {
+    margin-top: 1.2rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #0b3558; /* Tu azul corporativo */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+/* --- INDICADOR DE FLUJO (Flecha) --- */
+@media (min-width: 992px) {
+    /* La flecha aparece después del primer y segundo item */
+    .work-flow-item:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: -2rem; /* Centrada en el gap */
+        top: 40%;    /* Centrada con la imagen */
+        width: 15px;
+        height: 15px;
+        border-right: 2px solid #0b3558;
+        border-bottom: 2px solid #0b3558;
+        transform: translateY(-50%) rotate(-45deg);
+        opacity: 0.4;
+    }
+}
+
+@media (max-width: 991px) {
+    /* Centramos el contenido para que el flujo vertical sea claro */
+    .work-flow-item {
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Creamos la flecha hacia abajo entre cada item */
+    .work-flow-item:not(:last-child)::after {
+        content: "";
+        position: relative; /* Cambiamos de absolute a relative para que ocupe espacio */
+        display: block;
+        margin: 20px auto; /* Espaciado vertical entre la descripción y la siguiente imagen */
+        width: 12px;
+        height: 12px;
+        border-right: 2px solid #0b3558;
+        border-bottom: 2px solid #0b3558;
+        
+        /* Rotamos 45 grados para que apunte hacia abajo */
+        transform: rotate(45deg); 
+        
+        opacity: 0.5;
+        /* Limpiamos valores del modo desktop */
+        right: auto;
+        top: auto;
+    }
+    
+    .work-flow-caption {
+        margin-top: 1rem;
+        width: 100%; /* Asegura que el texto use todo el ancho antes de la flecha */
+    }
+}

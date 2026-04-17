@@ -382,8 +382,8 @@
    ========================================= */
 .about-cta {
     padding: 100px 0;
-    background-color: var(--brand-dark);
-    color: var(--bg-white);
+    background-color: var(--bg-white);
+    color: var(--bg-dark);
     text-align: center;
 }
 
@@ -1529,118 +1529,249 @@
 
 
 
+:root {
+    --ind-blue: #0b3558;
+    --ind-text-main: #0B3558;
+    --ind-text-soft: #666666;
+    --ind-accent: #0b3558; /* Ajustable al azul de acción si prefieres */
+}
 
-/* Base del Hero con estética industrial */
-.about-hero, .engineering-hero, .fabrication-hero, .maintenance-hero, .oee-hero {
-    height: 80vh;
-    min-height: 550px;
+/* --- Estructura Base --- */
+.ind-hero {
+    background-color: #ffffff;
+    padding-top: clamp(80px, 12vh, 150px);
+    overflow: hidden;
+}
+
+.ind-hero__container {
+    margin-top: -60px;
+    margin-bottom: 60px; /* Espacio antes de la franja de imagen */
+}
+
+/* --- Breadcrumbs --- */
+.ind-hero__breadcrumbs {
     display: flex;
     align-items: center;
-    position: relative;
-    background-color: #0b3558; /* Color base Sandvik */
-    overflow: hidden;
-    color: var(--bg-white);
-}
-
-/* Capa de Imagen: Aquí controlamos la visibilidad sin ensuciar el texto */
-.about-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background-image: var(--bg-img);
-    background-size: cover;
-    background-position: center right;
-    /* Filtro industrial: desatura un poco para que el azul mande */
-    filter: grayscale(40%) brightness(0.7) contrast(1.1);
-    z-index: 1;
-}
-
-/* Gradiente Quirúrgico: Más sólido donde hay texto, invisible donde hay imagen */
-.about-hero::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg, 
-        rgba(11, 53, 88, 1) 0%,     /* Sólido en el texto */
-        rgba(11, 53, 88, 0.9) 30%,  /* Empieza a desvanecer */
-        rgba(11, 53, 88, 0.4) 60%,  /* Deja ver la imagen */
-        transparent 100%
-    );
-    z-index: 2;
-}
-
-/* Contenido: Siempre por encima de todo */
-.about-hero__container {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-}
-
-.about-hero__content {
-    max-width: 750px;
-    /* Línea lateral estilo Sandvik / Precisión */
-    border-left: 4px solid var(--brand-light);
-    padding: 10px 0 10px 40px;
-}
-
-
-/* Pre-título tipo "Tag Industrial" */
-.about-pretitle {
-    display: inline-block;
+    gap: 10px;
+    margin-bottom: 40px;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    color: var(--brand-light);
-    opacity: 0.9;
+    letter-spacing: 2px;
 }
 
-/* Tipografía de Título */
-.about-hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+.ind-hero__breadcrumbs a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.ind-hero__breadcrumbs a:hover {
+    color: var(--ind-blue);
+}
+
+.ind-hero__sep {
+    color: #ddd;
+}
+
+.ind-hero__current {
+    color: var(--ind-blue);
+    font-weight: 700;
+}
+
+/* --- Grilla de Texto --- */
+.ind-hero__grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 50px;
+    align-items: flex-end; /* Alineación base tipo plano técnico */
+}
+
+.ind-hero__main-title {
+   
+    font-size: clamp(3rem, 8vw, 4rem); 
+    font-weight: 500; 
+    line-height: 1.0; 
+    letter-spacing: -2px; 
+    color: var(--ind-text-main);
+    margin: 0;
+    text-transform: none;
+}
+
+.ind-hero__statement {
+    border-left: 4px solid var(--ind-blue);
+    padding: 5px 0 5px 30px;
+    max-width: 450px;
+}
+
+.ind-hero__highlight {
+    display: block;
+    font-size: 1.25rem;
     font-weight: 800;
-    line-height: 0.95;
+    color: var(--ind-blue);
+    margin-bottom: 12px;
     text-transform: uppercase;
-    letter-spacing: -2px;
-    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
 }
 
-/* Subtítulo con mayor legibilidad */
-.about-hero p {
-    font-size: 1.2rem;
+.ind-hero__copy {
+    font-size: 1.1rem;
     line-height: 1.6;
-    max-width: 550px;
-    color: rgba(255,255,255,0.8);
-    font-weight: 300;
+    color: var(--ind-text-soft);
+    margin: 0;
 }
 
-@media (max-width: 767px) {
-    .about-hero::after {
-        background: linear-gradient(
-            to bottom,
-            rgba(11, 53, 88, 1) 0%,
-            rgba(11, 53, 88, 0.8) 40%,
-            rgba(11, 53, 88, 0.4) 100%
-        );
+/* --- La Franja Visual (Ajustada) --- */
+.ind-hero__visual {
+    width: 100%;
+    height: 450px; /* Altura de franja fija para desktop */
+    overflow: hidden;
+    background-color: #f0f0f0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.ind-hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%; /* Ajusta esto para centrar lo mejor de tu foto */
+    filter: contrast(1.05) brightness(1);
+    transition: transform 0.8s ease;
+}
+
+.ind-hero:hover .ind-hero__img {
+    transform: scale(1.02);
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .ind-hero__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        align-items: flex-start;
     }
     
-    .about-hero__content {
-        border-left: none;
-        border-top: 3px solid var(--brand-light); /* Cambiamos línea a horizontal */
-        padding: 30px 0 0 0;
-        text-align: center;
+    .ind-hero__main-title {
+        letter-spacing: -2px;
     }
+}
+
+@media (max-width: 768px) {
+    .ind-hero {
+        padding-top: 100px;
+    }
+
+    .ind-hero__visual {
+        height: 300px; /* Franja más delgada en móviles */
+    }
+
+    .ind-hero__main-title {
+       line-height: 1.05; /* En móvil necesitamos un poco más de aire */
+        letter-spacing: -1.5px;
+    }
+
+    .ind-hero__statement {
+        padding-left: 20px;
+    }
+}
+
+
+/*Modificaciones contacto*/
+.hr_contact {
+    border: none;
+    border-top: 2px solid var(--brand-light);
+    margin: 60px 0;
+}
+.contact-main-section{
+    margin-top: -90px;
+}
+
+
+
+
+
+/* --- Bloque de Sección --- */
+.ind-feature {
+    background-color: #ffffff;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* --- Contenido y Títulos --- */
+.ind-feature__content {
+    /* Eliminamos el margin-bottom que se usaba para separar de la imagen en móvil */
+    margin-bottom: 0; 
+}
+
+.ind-feature__title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem); /* Un poco más grande al ser el foco principal */
+    font-weight: 500;
+    color: var(--ind-text-main);
+    margin-bottom: 10px; /* Reducido para acercarlo al underline */
+    letter-spacing: -1px;
+}
+
+/* Estilo para el subrayado del título centrado */
+.title-underline {
+    width: 60px;
+    height: 3px;
+    background-color: var(--ind-blue);
+    margin: 0 auto 40px auto; /* Centrado y con espacio hacia las listas */
+}
+
+/* --- Lista Técnica Estilo Catálogo --- */
+.ind-feature__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid #eee; /* Ambas columnas nacen de una línea */
+}
+
+.ind-feature__list li {
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 1.05rem;
+    color: #444;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.ind-feature__list li::before {
+    content: "";
+    width: 15px;
+    height: 1px;
+    background-color: var(--ind-blue);
+    margin-right: 15px;
+    display: inline-block;
+}
+
+.ind-feature__list li:hover {
+    padding-left: 10px;
+    color: var(--ind-blue);
+    background-color: #fafafa; /* Sutil feedback al pasar el mouse */
+}
+
+/* --- Eliminación de bordes duplicados en la base --- */
+.ind-feature__list li:last-child {
+    /* En desktop mantenemos el borde para cerrar el bloque si no hay más contenido */
+}
+
+/* --- Ajustes Responsive --- */
+@media (max-width: 991px) {
+    /* Ya no necesitamos flex-direction: column ni order, 
+       Bootstrap maneja el apilado de las col-md-6 automáticamente */
     
-    .about-hero h1 {
+    .ind-feature__title {
         font-size: 2.2rem;
-        letter-spacing: -1px;
+    }
+
+    /* En móvil, la segunda lista no debe tener doble línea superior */
+    .col-md-6 + .col-md-6 .ind-feature__list {
+        border-top: none;
+    }
+
+    .ind-feature__list li {
+        padding: 14px 0;
+        font-size: 1rem;
     }
 }
