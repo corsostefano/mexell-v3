@@ -1,0 +1,46 @@
+/* Contenedor principal usando CSS Grid */
+.industrial-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem; /* Espaciado limpio entre imágenes. El espacio vacío reemplaza los marcos */
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Tarjeta sin marco */
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background: transparent; 
+  border: none; /* Ausencia estricta de marcos y bordes */
+}
+
+/* Contenedor de la imagen para asegurar proporciones exactas */
+.image-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3; /* Unifica el tamaño visual de todas las imágenes sin distorsionarlas */
+  overflow: hidden;
+  background-color: #f4f4f5; /* Tono técnico muy sutil mientras carga la imagen */
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garantiza que todas las imágenes llenen el espacio exactamente igual */
+  display: block;
+}
+
+/* Descripción de la imagen en azul y con tamaño uniforme */
+.gallery-caption {
+  margin-top: 1.2rem;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Tipografía limpia */
+  font-size: 1rem; /* Tamaño de letra estricto y totalmente unificado */
+  font-weight: 500;
+  color: #004A99; /* Azul técnico/acero, profesional y sobrio */
+  text-align: left; /* Alineación a la izquierda, típica de planos y manuales técnicos */
+  line-height: 1.5;
+}

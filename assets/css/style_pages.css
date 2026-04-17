@@ -7,7 +7,7 @@
 .bg-dark .section__title { color: white; }
 .bg-dark .title-underline { background-color: var(--brand-light); }
 
-.text-accent { color: var(--brand-light); }
+.text-accent {   color: #3bb3e6; }
 
 /* =========================================
    2. TIPOGRAFÍA GLOBAL
@@ -47,6 +47,15 @@
     margin-bottom: 12px;
 }
 
+.about-pretitle {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 10px;
+    display: block;
+}
+
 /* =========================================
    3. HEROS (ESTRUCTURA UNIFICADA ESTILO SANDVIK)
    ========================================= */
@@ -58,20 +67,28 @@
 .oee-hero {
     height: 80vh;
     min-height: 550px;
-    /* Inyectamos la variable --bg-img que definiremos abajo */
-    background: linear-gradient(
-        90deg, 
-        rgba(11, 53, 88, 0.95) 0%, 
-        rgba(11, 53, 88, 0.4) 50%, 
-        transparent 100%
-    ), var(--bg-img);
+
+    background: 
+        linear-gradient(
+            90deg,
+            rgba(11, 53, 88, 0.98) 0%,
+            rgba(11, 53, 88, 0.85) 35%,
+            rgba(11, 53, 88, 0.55) 60%,
+            rgba(11, 53, 88, 0.2) 80%,
+            transparent 100%
+        ),
+        var(--bg-img);
+
     background-size: cover;
     background-position: center right;
     display: flex;
     align-items: center;
     color: var(--bg-white);
-    border-bottom: none; 
     position: relative;
+}
+.about-hero__content {
+    max-width: 680px;
+    text-align: left;
 }
 
 /* Asignamos solo la imagen a cada clase específica */
@@ -102,12 +119,20 @@
     letter-spacing: -2px;
     line-height: 1;
 }
+.about-hero h1 {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
 
 .service-hero p {
-    font-size: clamp(1rem, 2vw, 1.15rem);
-    color: rgba(255, 255, 255, 0.9);
-    max-width: 600px;
-    line-height: 1.5;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    color: rgba(255,255,255,0.9);
+    margin-top: 15px;
+    max-width: 520px;
 }
 
 /* =========================================
@@ -410,14 +435,48 @@
     .section-padding { padding: 50px 0; }
     
     /* Heros en móvil */
-    .about-hero, .engineering-hero, .fabrication-hero, .maintenance-hero, .oee-hero, .service-hero { 
-        height: 55vh; 
-        min-height: 380px; 
+    .about-hero, 
+    .engineering-hero, 
+    .fabrication-hero, 
+    .maintenance-hero, 
+    .oee-hero {
+        height: 65vh;
+        min-height: 420px;
+
+        /* overlay más fuerte en mobile */
+        background: 
+            linear-gradient(
+                to bottom,
+                rgba(11, 53, 88, 0.95) 0%,
+                rgba(11, 53, 88, 0.85) 50%,
+                rgba(11, 53, 88, 0.6) 100%
+            ),
+            var(--bg-img);
+
+        background-position: center;
     }
+
     
     .about-hero h1, .engineering-hero h1, .fabrication-hero h1, .maintenance-hero h1, .oee-hero h1, .service-hero h1 { 
         font-size: 1.8rem; 
         letter-spacing: -0.8px; 
+    }
+     .about-hero__content {
+        padding: 0 10px;
+        max-width: 100%;
+    }
+
+    .about-hero h1 {
+        font-size: 1.9rem;
+        line-height: 1.1;
+    }
+
+    .about-hero p {
+        font-size: 0.95rem;
+    }
+
+    .about-pretitle {
+        font-size: 0.75rem;
     }
 
     /* Grids en móvil */
@@ -1369,5 +1428,219 @@
     .mx-item-footer {
         transform: translateY(0);
         background: rgba(11, 53, 88, 0.9); /* var(--brand-dark) con transparencia */
+    }
+}
+
+/*sobre nosotros*/
+/* ===== SECCIÓN HISTORIA ===== */
+
+.about-history {
+    position: relative;
+}
+
+/* Título */
+.section__title-history {
+    max-width: 600px;
+}
+
+/* Texto */
+.about-text-history {
+    max-width: 520px;
+}
+
+.about-text-history p {
+    line-height: 1.7;
+    color: #4a4a4a;
+}
+
+.about-text-history .lead {
+    font-size: 1.2rem;
+    color: #1a1a1a;
+}
+
+/* Wrapper de imagen */
+.history-img-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+/* Imagen */
+.history-img-clean {
+    width: 100%;
+    max-width: 360px;
+    height: 420px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin-left: auto;
+
+    /* estilo industrial */
+    filter: grayscale(100%) contrast(1.1) brightness(0.95);
+    transition: filter 0.4s ease;
+}
+
+/* Hover elegante */
+.history-img-clean:hover {
+    filter: grayscale(0%);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 991px) {
+    .about-history .row {
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .about-text-history {
+        max-width: 100%;
+    }
+
+    .history-img-wrapper {
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .history-img-clean {
+        max-width: 100%;
+        height: auto;          /* 👈 clave */
+        object-fit: contain;   /* 👈 evita recorte */
+        margin: 0 auto;
+    }
+}
+
+/* ===== MOBILE EXTRA ===== */
+
+@media (max-width: 576px) {
+    .section__title-history {
+        font-size: 1.8rem;
+    }
+
+    .about-text-history .lead {
+        font-size: 1.1rem;
+    }
+
+    .history-img-clean {
+        height: 260px;
+    }
+}
+
+
+
+
+
+/* Base del Hero con estética industrial */
+.about-hero, .engineering-hero, .fabrication-hero, .maintenance-hero, .oee-hero {
+    height: 80vh;
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: #0b3558; /* Color base Sandvik */
+    overflow: hidden;
+    color: var(--bg-white);
+}
+
+/* Capa de Imagen: Aquí controlamos la visibilidad sin ensuciar el texto */
+.about-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--bg-img);
+    background-size: cover;
+    background-position: center right;
+    /* Filtro industrial: desatura un poco para que el azul mande */
+    filter: grayscale(40%) brightness(0.7) contrast(1.1);
+    z-index: 1;
+}
+
+/* Gradiente Quirúrgico: Más sólido donde hay texto, invisible donde hay imagen */
+.about-hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        rgba(11, 53, 88, 1) 0%,     /* Sólido en el texto */
+        rgba(11, 53, 88, 0.9) 30%,  /* Empieza a desvanecer */
+        rgba(11, 53, 88, 0.4) 60%,  /* Deja ver la imagen */
+        transparent 100%
+    );
+    z-index: 2;
+}
+
+/* Contenido: Siempre por encima de todo */
+.about-hero__container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+}
+
+.about-hero__content {
+    max-width: 750px;
+    /* Línea lateral estilo Sandvik / Precisión */
+    border-left: 4px solid var(--brand-light);
+    padding: 10px 0 10px 40px;
+}
+
+
+/* Pre-título tipo "Tag Industrial" */
+.about-pretitle {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--brand-light);
+    opacity: 0.9;
+}
+
+/* Tipografía de Título */
+.about-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    margin-bottom: 1.5rem;
+}
+
+/* Subtítulo con mayor legibilidad */
+.about-hero p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 550px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 300;
+}
+
+@media (max-width: 767px) {
+    .about-hero::after {
+        background: linear-gradient(
+            to bottom,
+            rgba(11, 53, 88, 1) 0%,
+            rgba(11, 53, 88, 0.8) 40%,
+            rgba(11, 53, 88, 0.4) 100%
+        );
+    }
+    
+    .about-hero__content {
+        border-left: none;
+        border-top: 3px solid var(--brand-light); /* Cambiamos línea a horizontal */
+        padding: 30px 0 0 0;
+        text-align: center;
+    }
+    
+    .about-hero h1 {
+        font-size: 2.2rem;
+        letter-spacing: -1px;
     }
 }
