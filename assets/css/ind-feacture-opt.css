@@ -1,0 +1,210 @@
+/* --- Bloque de Sección --- */
+.ind-feature {
+    background-color: #ffffff;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* --- Contenedor de Imagen (Corrección de desplazamiento) --- */
+.ind-feature__image-wrapper {
+    width: 100%;
+    height: 450px; /* Altura fija en escritorio para consistencia */
+    position: relative;
+    overflow: hidden;
+    background-color: #f8f8f8;
+}
+
+.ind-feature__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%) contrast(1.05);
+    display: block;
+}
+
+/* --- Títulos y Tipografía --- */
+.ind-feature__tag {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--ind-blue);
+    margin-bottom: 10px;
+}
+
+.ind-feature__title {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 500;
+    color: var(--ind-text-main);
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+}
+
+/* --- Lista Técnica --- */
+.ind-feature__list {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid #eee;
+}
+
+.ind-feature__list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    color: #444;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.ind-feature__list li::before {
+    content: "";
+    width: 12px;
+    height: 1px;
+    background-color: var(--ind-blue);
+    margin-right: 15px;
+}
+
+.ind-feature__list li:hover {
+    padding-left: 8px;
+    color: var(--ind-blue);
+}
+
+/* --- Ajustes Responsive --- */
+@media (max-width: 991px) {
+    .ind-feature.section-padding {
+        padding: 50px 0;
+    }
+
+    /* El orden se maneja por las clases order-1 y order-2 en el HTML */
+    
+    .ind-feature__content {
+        margin-bottom: 40px;
+    }
+
+    .ind-feature__image-wrapper {
+        height: 320px; /* Reducción de altura en móvil */
+    }
+
+    .ind-feature__title {
+        font-size: 1.8rem;
+    }
+}
+
+/* --- Grid de Proyectos (Compacto) --- */
+.ind-feature__projects {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.projects-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 12px;
+}
+
+.projects-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.project-thumb {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.project-more {
+    aspect-ratio: 1;
+    background-color: var(--ind-blue);
+    color: white !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.project-more:hover {
+    background-color: var(--brand-dark);
+}
+
+
+
+
+.ind-reveal {
+    border-top: 1px solid #f9f9f9;
+}
+
+.reveal-card {
+    padding: 40px 20px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Línea técnica vertical solo en escritorio */
+    border-left: 1px solid #eee; 
+}
+
+/* El primer elemento no lleva línea a la izquierda */
+.col-lg-3:first-child .reveal-card {
+    border-left: none;
+}
+
+.reveal-text {
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #444;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* --- ANIMACIÓN POR SECUENCIA --- */
+.reveal-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.7s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.reveal-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Retrasos para que no aparezcan todos a la vez (efecto cascada) */
+@media (min-width: 992px) {
+    .col-lg-3:nth-child(1) .reveal-item { transition-delay: 0.1s; }
+    .col-lg-3:nth-child(2) .reveal-item { transition-delay: 0.25s; }
+    .col-lg-3:nth-child(3) .reveal-item { transition-delay: 0.4s; }
+    .col-lg-3:nth-child(4) .reveal-item { transition-delay: 0.55s; }
+}
+
+/* --- AJUSTES MÓVIL (Compacto) --- */
+@media (max-width: 991px) {
+    .reveal-card {
+        border-left: none;
+        border-bottom: 1px solid #eee;
+        padding: 30px 10px;
+    }
+    
+    .col-md-6:last-child .reveal-card {
+        border-bottom: none;
+    }
+
+    .reveal-text {
+        font-size: 1.05rem;
+    }
+}

@@ -13,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/style_pages.css">
+    <link rel="stylesheet" href="../../assets/css/ind-feacture-fab.css">
+    <link rel="stylesheet" href="../../assets/css/gallery.css">
     <title>Mexell - Mantenimiento, Reparaciones y Retrofitting</title>
 </head>
 <body>
@@ -42,6 +44,11 @@
                     <a href="tel:+1234567890">+54 (011) 4542-7353</a>
                     <a href="mailto:mexell@mexell.com.ar">mexell@mexell.com.ar</a>
                 </div>
+                <div class="mx-lang-selector">
+                    <a href="?lang=es" class="lang-link active">ES</a>
+                    <span class="lang-divider">|</span>
+                    <a href="?lang=en" class="lang-link">EN</a>
+                </div>
             </div>
 
             <div class="hamburger">
@@ -50,94 +57,134 @@
         </div>
     </nav>
     <main>
-        <section class="service-hero maintenance-hero">
-            <div class="service-hero__container container">
-                <div class="service-hero__content">
-                    <span class="service-pretitle">Mantenimiento y Reparación</span>
-                    <h1>Equipos Industriales. <br><span class="text-accent">Recuperación y Mejora.</span></h1>
-                    <p>Recuperación, rediseño y mejora de componentes y equipos existentes para extender su vida útil y optimizar su rendimiento.</p>
-                </div>
-            </div>
-        </section>
+          <section class="ind-hero">
+            <div class="ind-hero__container container">
+                <nav class="ind-hero__breadcrumbs">
+                    <a href="../../index.html#inicio">Inicio</a> 
+                    <span class="ind-hero__sep">/</span> 
+                    <a href="../../index.html#servicios">Servicios</a>
+                    <span class="ind-hero__sep">/</span> 
+                    <span class="ind-hero__current">Mantenimiento, Reparaciones y Retrofitting</span>
+                </nav>
 
-        <section class="section-padding bg-white">
-            <div class="container">
-                <div class="row align-items-center g-5">
-                    <div class="col-lg-6">
-                        
-                        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/q_auto/f_auto/v1762523152/mantenimiento_equipo-en-accion_vtqbrs.jpg" alt="Reparación de pieza industrial" class="img-fluid history-img-clean">
-                        
+                <div class="ind-hero__grid">
+                    <div class="ind-hero__left">
+                        <h1 class="ind-hero__main-title">Mantenimiento y reparación de equipos industriales</h1>
                     </div>
-                    <div class="col-lg-6">
-                        <span class="section__pretitle">Soporte Técnico Especializado</span>
-                        <h2 class="section__title">Mantenimiento y Reparación</h2>
-                        <div class="title-underline"></div>
-                        
-                        <ul class="technical-list mt-4">
-                            <li>Diagnóstico de fallas en componentes mecánicos</li>
-                            <li>Reparación y recuperación de piezas</li>
-                            <li>Fabricación de repuestos</li>
-                            <li>Ajuste y puesta a punto</li>
-                            <li>Intervenciones en planta según necesidad</li>
-                        </ul>
-
-                        <div class="mt-5">
-                            <p class="text-uppercase fw-bold mb-3" style="font-size: 0.75rem; letter-spacing: 1px;">Proyectos recientes</p>
-                            <div class="row g-2">
-                                <div class="col-3"><img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523065/bayer_antes_fljmin.jpg" class="img-fluid grayscale-hover" alt="Proyecto 1"></div>
-                                <div class="col-3"><img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523065/bayer_despues_odl69a.jpg" class="img-fluid grayscale-hover" alt="Proyecto 2"></div>
-                                <div class="col-3"><img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523154/Megadisk_Matriz_antes_nsk7bl.jpg" class="img-fluid grayscale-hover" alt="Proyecto 3"></div>
-                                <div class="col-3"><img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523154/Megadisk_Despues_gkycba.jpg" class="img-fluid grayscale-hover" alt="Proyecto 4"></div>
-                            </div>
-                            <div class="text-center mt-4">
-                                <a href="../galeria.html" class="btn-industrial">Ver proyectos</a>
-                            </div>
+                    
+                    <div class="ind-hero__right">
+                        <div class="ind-hero__statement">
+                            <span class="ind-hero__highlight">Soluciones integrales para la continuidad operativa</span>
+                            <p class="ind-hero__copy">
+                                Recuperación, rediseño y mejora de componentes y equipos existentes.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="ind-hero__visual text-center bg-white">
+                <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/q_auto/f_auto/v1776509115/mantenimiento_hero_xi2gi3.png" 
+                    alt="Ingeniería Mexell" 
+                    class="ind-hero__img"
+                    style=" width:100%">
+                  
+            </div>
         </section>
 
-        <section class="section-padding bg-light">
+                <section class="ind-feature section-padding">
             <div class="container">
-                <div class="text-center mb-5">
-                    <span class="section__pretitle">Ingeniería Aplicada</span>
-                    <h2 class="section__title">De la Pieza a la Optimización en Línea</h2>
-                    <p class="mt-3 mx-auto" style="max-width: 700px;">Cada repuesto es una oportunidad para optimizar, reducir el desgaste y aumentar la eficiencia de su operación asegurando la perfecta integración de la pieza.</p>
-                </div>
+                <div class="row align-items-stretch g-5">
+                    
+                    <div class="col-lg-6 order-2 order-lg-2">
+                        <div class="ind-feature__content">
+                            <h2 class="section__title">Mantenimiento y ReparaciónMantenimiento y Reparación</h2>
+                            <div class="title-underline"></div>
+                            
+                            <ul class="ind-feature__list">
+                                <li>Diagnóstico de fallas en componentes mecánicos</li>
+                                <li>Reparación y recuperación de piezas</li>
+                                <li>Fabricación de repuestos</li>
+                                <li>Ajuste y puesta a punto</li>
+                                <li>Intervenciones en planta según necesidad</li>
+                            </ul>
+                            <div class="ind-feature__projects mt-5">
+                                <p class="projects-label">Proyectos Recientes</p>
+                                <div class="projects-strip">
+                                    <div class="project-thumb">
+                                        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523065/bayer_antes_fljmin.jpg" alt="Pieza CNC 1">
+                                    </div>
+                                    <div class="project-thumb">
+                                        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523065/bayer_despues_odl69a.jpg" alt="Pieza CNC 2">
+                                    </div>
+                                    <div class="project-thumb">
+                                        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523154/Megadisk_Despues_gkycba.jpg" alt="Pieza CNC 3">
+                                    </div>
+                                    
+                                    <a href="../galeria.html" class="project-more" title="Ver galería completa">
+                                        <span class="more-icon">+</span>
+                                        <span class="more-text">Ver piezas</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="row g-4 mt-2">
-                    <div class="col-md-4 action-card">
-                        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523136/mantenimiento_aplicado_01_linea-general_pqrjt7.jpg" alt="Análisis del sistema">
-                        <div class="action-legend">Análisis del sistema completo para identificar el punto de mejora</div>
+                    <div class="col-lg-6 order-1 order-lg-1">
+                        <div class="ind-feature__image-wrapper">
+                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/q_auto/f_auto/v1776509878/mantenimeinto-mexell_z16apn.png" alt="Ingeniería Mexell" class="ind-feature__img">
+                        </div>
                     </div>
-                    <div class="col-md-4 action-card">
-                        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523136/mantenimiento_aplicado_02_area-mejora_ztfw2h.jpg" alt="Foco en diseño">
-                        <div class="action-legend">Foco en el área de intervención para un diseño preciso</div>
-                    </div>
-                    <div class="col-md-4 action-card">
-                        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523151/mantenimiento_aplicado_03_componente-mexell_nfdqiv.jpg" alt="Componente a medida">
-                        <div class="action-legend">Componente a medida fabricado para optimizar el rendimiento</div>
-                    </div>
+
                 </div>
             </div>
         </section>
 
-        <section class="section-padding bg-white">
-            <div class="container">
-                <div class="row align-items-center g-5">
-                    <div class="col-lg-6 order-lg-2">
-                        <div class="image-frame">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/q_auto/f_auto/v1762523207/robot_manipulador_arcor_despues_sav8rv.jpg" alt="Equipo intervenido modernizado" class="img-fluid industrial-img">
-                        </div>
+            <section class="section-padding bg-light">
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <h2 class="section__title">De la Pieza a la Optimización en Línea</h2>
+                        <p class="mt-3 mx-auto" style="max-width: 700px;">Ingeniería aplicada que asegura la perfecta integración de la pieza para  mejorar el rendimiento de su equipo. Cada repuesto es una oportunidad para optimizar, reducir el desgaste y aumentar la eficiencia de su operación.</p>
                     </div>
-                    <div class="col-lg-6 order-lg-1">
-                        <span class="section__pretitle">Actualización Industrial</span>
-                        <h2 class="section__title">Retrofitting de Equipos</h2>
-                        <div class="title-underline"></div>
-                        <p class="mt-4">Proyectos de retrofitting mecánico y de automatización para mejorar su velocidad, seguridad, eficiencia energética e integrarla a nuevos procesos productivos.</p>
-                        
-                        <ul class="technical-list mt-4">
+
+                    <section class="industrial-gallery bg-light">
+                <figure class="gallery-item">
+                    <div class="image-wrapper">
+                    <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523136/mantenimiento_aplicado_01_linea-general_pqrjt7.jpg" alt="Descripción de la pieza, maquinaria o servicio">
+                    </div>
+                    <figcaption class="gallery-caption">Análisis del sistema completo para identificar el punto de mejora</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <div class="image-wrapper">
+                    <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523136/mantenimiento_aplicado_02_area-mejora_ztfw2h.jpg" alt="Descripción de la pieza, maquinaria o servicio">
+                    </div>
+                    <figcaption class="gallery-caption">Foco en el área de intervención para un diseño preciso</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <div class="image-wrapper">
+                    <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523151/mantenimiento_aplicado_03_componente-mexell_nfdqiv.jpg" alt="Descripción de la pieza, maquinaria o servicio">
+                    </div>
+                    <figcaption class="gallery-caption">Componente a medida fabricado para optimizar el rendimiento</figcaption>
+                </figure>
+            
+            </section>
+            </div>
+        </section>
+
+        <section class="ind-retro section-padding bg-white">
+            <div class="container">
+                <div class="row align-items-center g-5 d-flex flex-column flex-lg-row">
+                    
+                    <div class="col-lg-7 ind-retro__order-text">
+                        <div class="ind-retro__header">
+                            <h2 class="section__title">Retrofitting de Equipos</h2>
+                            <div class="title-underline ms-0"></div>
+                        </div>
+                        <div class="ind-retro__description mt-4">
+                            <p class="lead">Actualización y mejora de equipos existentes.</p>
+                            <p class="opacity-75">Proyectos de retrofitting mecánico y de automatización para mejorar su velocidad, seguridad, eficiencia energética e integrarla a nuevos procesos productivos.</p>
+                        </div>
+                        <ul class="ind-retro__technical-list mt-4">
                             <li>Reemplazo de componentes obsoletos</li>
                             <li>Mejora de rendimiento y confiabilidad</li>
                             <li>Adaptación a nuevas condiciones de producción</li>
@@ -145,32 +192,42 @@
                             <li>Rediseño de conjuntos existentes</li>
                         </ul>
                     </div>
-                </div>
 
-                <div class="row g-3 mt-5">
-                    <div class="col-md-4">
-                        <div class="action-card" style="height: 200px;">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/q_auto/f_auto/v1762523207/robot_manipulador_arcor_antes_hwriku.jpg" alt="Modernización 1">
+                    <div class="col-lg-5 ind-retro__order-visual">
+                        <div class="retro-stack">
+                            <div class="retro-stack__item">
+                                <div class="retro-stack__img-container">
+                                    <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523093/index_servicios_continuidad-operativa_ANTES_jqpjlh.jpg" alt="Estado Anterior">
+                                    <span class="retro-stack__tag">Antes</span>
+                                </div>
+                            </div>
+                            
+                            <div class="retro-stack__divider">
+                                <span class="retro-stack__arrow">↓</span>
+                            </div>
+
+                            <div class="retro-stack__item">
+                                <div class="retro-stack__img-container retro-stack__img-container--highlight">
+                                    <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523094/index_servicios_continuidad-operativa_DESPUE_ttbwjd.jpg" alt="Estado Después">
+                                    <span class="retro-stack__tag">Después</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="action-card" style="height: 200px;">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523093/index_servicios_continuidad-operativa_ANTES_jqpjlh.jpg" alt="Modernización 2">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="action-card" style="height: 200px;">
-                            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523094/index_servicios_continuidad-operativa_DESPUE_ttbwjd.jpg" alt="Modernización 3">
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </section>
 
+
+
+
+
+
         <section class="about-cta">
             <div class="container text-center">
                 <h2 class="mb-4">¿Busca modernizar su línea de producción?</h2>
-                <a href="../contacto.html" class="btn-industrial-lg">Solicitar Cotización</a>
+                <a href="../contacto.html" class="btn-industrial">Solicitar Cotización</a>
             </div>
         </section>
     </main>
@@ -201,8 +258,7 @@
                 <ul class="footer-links">
                     <li><a href="../faq.html" class="highlight-link">Centro de Ayuda / FAQ</a></li>
                     <li><a href="../contacto.html">Solicitar Cotización</a></li>
-                    <li><a href="../especificaciones_tecnicas.html">Especificaciones Técnicas</a></li>
-                    <li><a href="../politica_calidad.html">Política de Calidad</a></li>
+
                 </ul>
             </div>
 

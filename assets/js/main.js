@@ -267,3 +267,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const observerOptions = {
+        threshold: 0.2 // Se activa cuando el 20% del elemento es visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, observerOptions);
+
+    // Seleccionamos todos los elementos con la clase reveal-item
+    const itemsToReveal = document.querySelectorAll('.reveal-item');
+    itemsToReveal.forEach(el => observer.observe(el));
+});

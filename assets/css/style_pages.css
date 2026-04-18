@@ -1689,10 +1689,11 @@
 }
 
 
-
-/* --- Contenedor de Sección Compacto --- */
+/* ==========================================================================
+   SECCIÓN: MÉTODOS (Tratamientos Anti-desgaste)
+   ========================================================================== */
 .ind-methods.section-padding {
-    padding: 60px 0; /* Reducción de aire vertical */
+    padding: 60px 0;
 }
 
 .ind-methods__title {
@@ -1711,20 +1712,19 @@
     margin: 0;
 }
 
-/* --- Columna Derecha: Lista Técnica --- */
+/* Lista Técnica */
 .method-compact-list {
     display: flex;
-    flex-direction: column; /* Cambiamos a columna para el layout de 2 col principal */
+    flex-direction: column;
     border-top: 1px solid #ddd;
-    margin-top: 0; /* Reset para alinear con el título */
 }
 
 .method-item {
-    padding: 20px 25px;
+    padding: 18px 25px;
     border-bottom: 1px solid #eee;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
-    align-items: center; /* Alineación horizontal de número y nombre */
+    align-items: center;
     gap: 15px;
     background-color: transparent;
 }
@@ -1734,8 +1734,8 @@
     font-weight: 700;
     color: var(--ind-blue);
     opacity: 0.5;
-    font-family: monospace; /* Estética de plano técnico */
-    min-width: 20px;
+    font-family: monospace;
+    min-width: 25px;
 }
 
 .method-name {
@@ -1743,145 +1743,205 @@
     font-weight: 600;
     margin: 0;
     color: #333;
-    line-height: 1.2;
 }
 
-/* --- Interacción --- */
+/* Interacción sutil */
 .method-item:hover {
-    background-color: #ffffff;
-    padding-left: 35px; /* Efecto de desplazamiento lateral */
-    box-shadow: inset 4px 0 0 var(--ind-blue); /* Línea indicadora a la izquierda */
+    background-color: #f9f9f9;
+    padding-left: 35px;
+    box-shadow: inset 4px 0 0 var(--ind-blue);
 }
 
 .method-item:hover .method-name {
     color: var(--ind-blue);
 }
 
-/* --- Ajustes Responsive --- */
+/* ==========================================================================
+   SECCIÓN: SISTEMAS (Fabricación de Equipos)
+   ========================================================================== */
+.ind-systems .row {
+    display: flex;
+}
+
+/* --- MODO ESCRITORIO --- */
+@media (min-width: 992px) {
+    /* Forzamos que los botones ignoren el flujo de la columna de imágenes 
+       y se posicionen justo debajo del texto de la order-1 */
+    .ind-systems .order-3 {
+        margin-top: -120px; /* Incrementado para asegurar cercanía al texto */
+        position: relative;
+        z-index: 10;
+        pointer-events: all;
+    }
+}
+
+/* --- MODO MÓVIL (Texto -> Imágenes -> Botones) --- */
 @media (max-width: 991px) {
     .ind-methods.section-padding {
         padding: 40px 0;
     }
 
-    .method-compact-list {
-        margin-top: 30px; /* Separación del texto en móviles */
+    .ind-systems .row {
+        flex-direction: column !important;
     }
 
-    .method-item {
-        padding: 18px 15px;
+    /* Reordenamiento estricto */
+    .ind-systems .order-1 { order: 1 !important; } /* Título/Texto */
+    .ind-systems .order-2 { order: 2 !important; } /* Imágenes */
+    .ind-systems .order-3 { order: 3 !important; } /* Botones */
+
+    .tech-comparison {
+        margin: 30px 0;
+    }
+
+    .ind-systems__actions {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .btn-industrial {
+        width: 100%;
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
     }
     
-    .method-item:hover {
-        padding-left: 25px;
+    .method-compact-list {
+        margin-top: 25px;
     }
 }
 
-/* --- Sección Principal --- */
-.ind-systems {
-    background-color: #0a0a0b; /* Negro profundo para resaltar metalizados */
-}
-
-.ind-systems__tag {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--ind-blue);
-    display: block;
-    margin-bottom: 10px;
-}
-
-.ind-systems__title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 500;
-    letter-spacing: -1px;
-}
-
-/* --- Comparativa de Imágenes --- */
-.tech-comparison {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
+/* --- Estética de Comparativa --- */
 .tech-comparison__img-wrapper {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
     overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid #f0f0f0;
+    background: #f8f8f8;
 }
 
 .tech-comparison__img-wrapper--final {
-    border: 1px solid var(--ind-blue);
+    border: 2px solid var(--ind-blue);
 }
 
 .tech-comparison__img-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(40%);
-    transition: filter 0.4s ease;
-}
-
-.tech-comparison__box:hover img {
-    filter: grayscale(0%);
 }
 
 .tech-comparison__label {
     position: absolute;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0,0,0,0.85);
     color: #fff;
     font-size: 0.65rem;
-    font-weight: 700;
     padding: 5px 12px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
-.tech-comparison__arrow {
-    color: var(--ind-blue);
-    font-size: 1.5rem;
-    font-weight: 300;
-    opacity: 0.6;
+/* --- Estructura Base --- */
+.ind-retro .row {
+    display: flex;
 }
 
-/* --- Botones Refinados --- */
-.btn-ind-primary {
+/* --- Lista Técnica Estilo Mexell --- */
+.ind-retro__technical-list {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid #eee;
+}
+
+.ind-retro__technical-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    color: #444;
+    display: flex;
+    align-items: center;
+}
+
+.ind-retro__technical-list li::before {
+    content: "";
+    width: 12px;
+    height: 1px;
     background-color: var(--ind-blue);
-    color: white;
-    padding: 14px 28px;
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
+    margin-right: 15px;
 }
 
-.btn-ind-outline {
-    border: 1px solid rgba(255,255,255,0.3);
-    color: white;
-    padding: 14px 28px;
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
+/* --- Stack de Imágenes (Comparativa Vertical) --- */
+.retro-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.btn-ind-outline:hover {
-    border-color: white;
-    background: rgba(255,255,255,0.05);
+.retro-stack__img-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid #eee;
+    background: #f8f8f8;
+}
+
+.retro-stack__img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.retro-stack__img-container--highlight {
+    border: 2px solid var(--ind-blue);
+}
+
+.retro-stack__divider {
+    text-align: center;
+    color: var(--ind-blue);
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1;
+    margin: -5px 0;
+}
+
+.retro-stack__tag {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    font-size: 0.65rem;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    z-index: 2;
 }
 
 /* --- Responsive --- */
+@media (min-width: 992px) {
+    .ind-retro__order-text { order: 1; }
+    .ind-retro__order-visual { order: 2; }
+}
+
 @media (max-width: 991px) {
-    .tech-comparison {
-        margin-top: 40px;
+    .ind-retro.section-padding {
+        padding: 40px 0;
+    }
+
+    .ind-retro__order-text { order: 1 !important; }
+    .ind-retro__order-visual { 
+        order: 2 !important; 
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    .retro-stack__img-container {
+        aspect-ratio: 4 / 3; /* Un poco más cuadrada en móvil para no ocupar tanto alto */
     }
 }
