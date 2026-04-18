@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style_pages.css">
     <title>Mexell - Centro de Ayuda</title>
 </head>
 <body>
@@ -41,6 +42,11 @@
                     <a href="tel:+1234567890">+54 (011) 4542-7353</a>
                     <a href="mailto:mexell@mexell.com.ar">mexell@mexell.com.ar</a>
                 </div>
+                <div class="mx-lang-selector">
+                    <a href="?lang=es" class="lang-link active">ES</a>
+                    <span class="lang-divider">|</span>
+                    <a href="?lang=en" class="lang-link">EN</a>
+                </div>
             </div>
 
             <div class="hamburger">
@@ -49,13 +55,35 @@
         </div>
     </nav>
 <main>
+
+     <section class="ind-hero">
+            <div class="ind-hero__container container">
+                <nav class="ind-hero__breadcrumbs">
+                    <a href="../index.html">Inicio</a> 
+                    <span class="ind-hero__sep">/</span> 
+                    <span class="ind-hero__current">Consultas Frecuentes</span>
+                </nav>
+
+                <div class="ind-hero__grid">
+                    <div class="ind-hero__left">
+                        <h1 class="ind-hero__main-title">Consultas Frecuentes</h1>
+                    </div>
+                    
+                    <div class="ind-hero__right">
+                        <div class="ind-hero__statement">
+                            
+                            <p class="ind-hero__copy">
+                                Encuentre respuestas rápidas sobre nuestros procesos de ingeniería, plazos de ejecución y metodologías de trabajo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+       <hr class="hr_contact">
+    </section>
         <section class="faq-industrial section bg-white py-5" id="faq">
             <div class="container">
-                <div class="text-center mb-5">
-                    <span class="section__pretitle">Centro de Soporte Técnico</span>
-                    <h2 class="section__title">Consultas Frecuentes</h2>
-                    <div class="title-underline mx-auto mt-3"></div>
-                </div>
 
                 <div class="faq-wrapper mt-5">
                     <div class="faq-category-header">
@@ -92,7 +120,7 @@
                         <div class="accordion-item question-item">
                             <h2 class="accordion-header" id="general3">
                                 <button class="accordion-button question-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeneral3">
-                                    ¿Dónde están ubicadas sus instalaciones?
+                                    ¿Desde donde operamos?
                                 </button>
                             </h2>
                             <div id="collapseGeneral3" class="accordion-collapse collapse" data-bs-parent="#faqGeneral">
@@ -172,8 +200,7 @@
                 <ul class="footer-links">
                     <li><a href="faq.html" class="highlight-link">Centro de Ayuda / FAQ</a></li>
                     <li><a href="contacto.html">Solicitar Cotización</a></li>
-                    <li><a href="especificaciones_tecnicas.html">Especificaciones Técnicas</a></li>
-                    <li><a href="politicas_calidad.html">Política de Calidad</a></li>
+
                 </ul>
             </div>
 
