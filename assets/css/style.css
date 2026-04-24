@@ -488,6 +488,24 @@ body {
     color: var(--brand-dark);
 }
 /* --- SECCIÓN DE CONFIANZA --- */
+/* --- REDUCCIÓN DE ESPACIO EN SECCIÓN CONFIANZA --- */
+
+/* 1. Ajuste del contenedor principal (Antes tenía 100px) */
+.trust-section.section-padding {
+    padding-top: 40px !important;    /* Ajusta este valor a tu gusto */
+    padding-bottom: 40px !important; /* Ajusta este valor a tu gusto */
+}
+
+/* 2. Reducir el margen inferior del título */
+.trust-section .services__header {
+    margin-bottom: 20px; /* Estaba usando el estándar de 50px o 80px */
+}
+
+/* 3. Reducir el padding interno del slider viewport */
+.trust-section .logo-slider-viewport {
+    padding: 10px 0; /* Antes tenía 40px o 20px */
+}
+
 .trust-grid { background-color: var(--bg-white); }
 
 .trust-impact {
@@ -746,7 +764,6 @@ body {
 
 /* Hover sutil */
 .heritage__image-container:hover .heritage__img {
-    filter: grayscale(0%);
     transform: scale(1.02);
 }
 
@@ -1534,7 +1551,7 @@ body {
 
 /* --- CONTROL MAESTRO DE ESPACIADO DE SECCIONES --- */
 .section-padding {
-    padding: 100px 0; /* Espacio generoso en escritorio para un look premium */
+    padding: 70px 0; /* Espacio generoso en escritorio para un look premium */
 }
 
 /* En tu CSS vi que usas un max-width: 768px, así que ajustamos ahí */
@@ -1561,3 +1578,40 @@ body {
     padding-top: 80px; /* Un poco menos que los 100px estándar para mayor fluidez */
 }
 
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    pointer-events: none; /* Crucial: permite que el dedo toque el slider a través del contenedor */
+    z-index: 5;
+}
+
+.nav-btn {
+    pointer-events: auto; /* Permite clics solo en los botones */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: var(--brand-light);
+    color: white;
+}
+
+/* En móvil, podemos hacer las flechas más pequeñas o dejarlas igual */
+@media screen and (max-width: 768px) {
+    .nav-btn { width: 35px; height: 35px; opacity: 0.8; }
+}

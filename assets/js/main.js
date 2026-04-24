@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!viewport || !track) return;
 
-        // 1. CLONAR CONTENIDO
+        // 1. CLONAR CONTENIDO (Tu lógica original)
         const slides = Array.from(track.children);
         slides.forEach(slide => {
             const clone = slide.cloneNode(true);
@@ -112,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         let isDragging = false;
+        let isMovingViaArrow = false; // Nueva: para no pelear con la animación suave
         let startX;
         let scrollLeft;
         let animationId = null;
@@ -128,7 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function step() {
-            if (!isDragging) {
+            // El automático solo corre si no estamos arrastrando ni usando flechas
+            if (!isDragging && !isMovingViaArrow) {
                 currentTranslate -= speed;
                 checkLoop();
                 track.style.transform = `translateX(${currentTranslate}px)`;
@@ -136,10 +138,40 @@ document.addEventListener('DOMContentLoaded', () => {
             animationId = requestAnimationFrame(step);
         }
 
-        function startDrag(e) {
-            // Evita que el navegador intente "arrastrar" la imagen como archivo
-            if (e.type === 'mousedown') e.preventDefault(); 
+        // --- LÓGICA DE FLECHAS (Integrada con el Drag) ---
+        function moveViaArrow(direction) {
+            if (isMovingViaArrow) return; 
+
+            isMovingViaArrow = true;
+            const jump = 350; // Píxeles que avanza la flecha
             
+            // Aplicamos transición solo para este movimiento
+            track.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+            
+            currentTranslate += (direction * jump);
+            checkLoop();
+            
+            track.style.transform = `translateX(${currentTranslate}px)`;
+
+            // Al terminar la transición, devolvemos el control al automático/drag
+            setTimeout(() => {
+                track.style.transition = 'none';
+                isMovingViaArrow = false;
+            }, 600);
+        }
+
+        // Asignar eventos a las flechas dentro de este slider
+        const btnPrev = viewport.querySelector('.prev');
+        const btnNext = viewport.querySelector('.next');
+
+        if (btnPrev) btnPrev.addEventListener('click', () => moveViaArrow(1));
+        if (btnNext) btnNext.addEventListener('click', () => moveViaArrow(-1));
+
+        // --- LÓGICA DE DRAG (Mantiene tu funcionalidad de dedo/mouse) ---
+        function startDrag(e) {
+            if (isMovingViaArrow) return; // Si se está moviendo por flecha, esperamos
+            
+            if (e.type === 'mousedown') e.preventDefault(); 
             isDragging = true;
             viewport.style.cursor = 'grabbing';
             
@@ -150,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
             scrollLeft = currentTranslate;
+            track.style.transition = 'none'; // Aseguramos que no haya lag al arrastrar
         }
 
         function drag(e) {
@@ -172,17 +205,16 @@ document.addEventListener('DOMContentLoaded', () => {
             animationId = requestAnimationFrame(step);
         }
 
-        // Eventos del Viewport
+        // Listeners del Viewport
         viewport.addEventListener('mousedown', startDrag);
         viewport.addEventListener('touchstart', startDrag, {passive: true});
 
-        // Eventos Globales (para capturar el "soltar" fuera del área)
+        // Listeners Globales
         window.addEventListener('mousemove', drag);
         window.addEventListener('touchmove', drag, {passive: true});
         window.addEventListener('mouseup', endDrag);
         window.addEventListener('touchend', endDrag);
         
-        // Evitar que las imágenes se vuelvan "arrastrables" nativamente
         track.querySelectorAll('img').forEach(img => {
             img.addEventListener('dragstart', (e) => e.preventDefault());
         });
