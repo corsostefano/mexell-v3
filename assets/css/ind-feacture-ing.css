@@ -19,13 +19,7 @@
     letter-spacing: -1px;
 }
 
-/* Estilo para el subrayado del título centrado */
-.title-underline {
-    width: 60px;
-    height: 3px;
-    background-color: var(--ind-blue);
-    margin: 0 auto 40px auto; /* Centrado y con espacio hacia las listas */
-}
+
 
 /* --- Lista Técnica Estilo Catálogo --- */
 .ind-feature__list {

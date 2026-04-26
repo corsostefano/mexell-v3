@@ -1,7 +1,7 @@
 /* =========================================
    1. LAYOUT Y UTILIDADES
    ========================================= */
-.section-padding { padding: 90px 0; }
+.section-padding { padding: 60px 0; }
 
 .bg-dark { background-color: var(--brand-dark) !important; }
 .bg-dark .section__title { color: white; }
@@ -13,12 +13,13 @@
    2. TIPOGRAFÍA GLOBAL
    ========================================= */
 .section__title {
-     font-size: 1.8rem;
-    font-weight: 500;
-    letter-spacing: -0.5px;
-    margin-bottom: 5px;
-    color: var(--ind-text-main);
+      font-weight: 800;
+    color: var(--brand-dark);
+    margin-bottom: 10px;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    line-height: 1.1;
     text-transform: uppercase;
+    letter-spacing: -1px;
 }
 
 .title-underline {
@@ -383,7 +384,7 @@
    8. CTA
    ========================================= */
 .about-cta {
-    padding: 100px 0;
+    padding: 40px 0;
     background-color: var(--bg-white);
     color: var(--bg-dark);
     text-align: center;
@@ -1438,6 +1439,7 @@
 
 .about-history {
     position: relative;
+    padding: 60px 0;
 }
 
 /* Título */
@@ -1482,10 +1484,7 @@
     transition: filter 0.4s ease;
 }
 
-/* Hover elegante */
-.history-img-clean:hover {
-    filter: grayscale(0%);
-}
+
 
 /* ===== RESPONSIVE ===== */
 
@@ -1759,8 +1758,64 @@
 /* ==========================================================================
    SECCIÓN: SISTEMAS (Fabricación de Equipos)
    ========================================================================== */
+
 .ind-systems .row {
+    align-items: stretch;
+}
+
+/* Columnas como contenedores flex */
+.ind-systems .col-lg-7,
+.ind-systems .col-lg-5 {
     display: flex;
+}
+
+/* Columna izquierda vertical */
+.ind-systems .col-lg-7 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 🔥 clave */
+}
+
+/* 🔥 BOTONES AL FONDO */
+.ind-systems__actions {
+    margin-top: auto;
+}
+
+.ind-systems__content {
+    max-width: 90%;
+}
+
+/* 🔥 IMÁGENES OCUPAN TODA LA ALTURA */
+.tech-comparison {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* 🔥 DISTRIBUCIÓN DE LAS DOS IMÁGENES */
+.tech-comparison__box {
+    flex: 1;
+    display: flex;
+}
+
+.tech-comparison__img-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.tech-comparison__img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Flecha centrada */
+.tech-comparison__arrow {
+    margin: 10px 0;
+}
+.ind-systems__description {
+    margin-bottom: 20px;
 }
 
 /* --- MODO ESCRITORIO --- */
@@ -1768,7 +1823,6 @@
     /* Forzamos que los botones ignoren el flujo de la columna de imágenes 
        y se posicionen justo debajo del texto de la order-1 */
     .ind-systems .order-3 {
-        margin-top: -120px; /* Incrementado para asegurar cercanía al texto */
         position: relative;
         z-index: 10;
         pointer-events: all;
@@ -1944,4 +1998,144 @@
     .retro-stack__img-container {
         aspect-ratio: 4 / 3; /* Un poco más cuadrada en móvil para no ocupar tanto alto */
     }
+}
+/* =========================================
+   MEXELL V4: THE INDUSTRIAL MATRIX
+   ========================================= */
+
+.mex-v4-section {
+    padding: 60px 0;
+}
+
+.mex-v4-header {
+    border-left: 4px solid var(--brand-dark);
+    padding-left: 20px;
+    margin-bottom: 50px;
+}
+
+.mex-v4-title {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+}
+
+.mex-v4-desc {
+    font-size: 0.95rem;
+    max-width: 600px;
+    color: var(--text-gray);
+    line-height: 1.5;
+}
+
+/* -- Matrix Grid (Desktop) -- */
+.mex-v4-matrix {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background-color: #e0e0e0;
+    border: 1px solid #e0e0e0;
+}
+
+.mex-v4-item {
+    background-color: #fff;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 120px;
+    transition: all 0.3s ease;
+}
+
+.mex-v4-id {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--brand-light);
+    letter-spacing: 1px;
+}
+
+.mex-v4-label {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    margin: 0;
+    color: var(--brand-dark);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.mex-v4-label::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 25px;
+    height: 3px;
+    background-color: var(--brand-dark);
+}
+
+.mex-v4-item:hover {
+    background-color: #f8f9fa;
+}
+
+
+/* =========================================
+   UX MOBILE: TRANSFORMACIÓN A LISTA
+   ========================================= */
+@media (max-width: 991px) {
+    .mex-v4-matrix {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .mex-v4-section { padding: 40px 0; }
+    .mex-v4-header { margin-bottom: 30px; }
+
+    /* Convertimos el Grid en una Lista Vertical */
+    .mex-v4-matrix {
+        display: flex;
+        flex-direction: column;
+        gap: 0; /* Eliminamos el espacio entre ítems para que se vea como lista */
+        background-color: transparent; /* Quitamos el fondo gris del grid */
+        border: none;
+        border-top: 1px solid #e0e0e0; /* Una sola línea superior para empezar la lista */
+    }
+
+    .mex-v4-item {
+        flex-direction: row; /* ID y Texto en la misma línea */
+        align-items: center;
+        justify-content: flex-start;
+        min-height: auto; /* Quitamos la altura de "card" */
+        padding: 20px 0; /* Espaciado más vertical de lista */
+        border-bottom: 1px solid #e0e0e0; /* Línea divisoria de lista */
+        border-right: none;
+    }
+
+    .mex-v4-id {
+        margin-right: 20px; /* Separación del ID con el texto */
+        min-width: 50px; /* Ancho fijo para que los textos queden alineados */
+    }
+
+    .mex-v4-label {
+        padding-bottom: 0; /* Quitamos el padding inferior en móvil */
+        font-size: 0.95rem;
+    }
+
+    /* Ocultamos la línea de acento en móvil para que se vea más como lista pura 
+       o la mantenemos muy pequeña al final del texto. Aquí la ajustamos: */
+    .mex-v4-label::after {
+        display: none; /* En formato lista, la línea debajo suele ensuciar el diseño */
+    }
+
+    /* Ajuste para que el último elemento no se vea centrado (comportamiento de lista) */
+    .mex-v4-item:last-child {
+        grid-column: auto;
+        align-items: center;
+        text-align: left;
+    }
+
+    .mex-v4-title { font-size: 1.5rem; }
 }

@@ -91,21 +91,26 @@
     letter-spacing: 0.5px;
     line-height: 1.4;
 }
+.work-flow-item:not(:last-child)::after {
+    content: "";
+    border-right-style: solid;
+    border-bottom-style: solid;
+    /* --- MEJORAS DE CUERPO Y COLOR --- */
+    border-color: #0b3558; /* Tu azul corporativo al 100% */
+    border-width: 4px;      /* Duplicamos el grosor (antes 2px) */
+    opacity: 1;            /* Eliminamos transparencia (antes 0.4) */
+}
 
 /* --- INDICADOR DE FLUJO (Flecha) --- */
 @media (min-width: 992px) {
     /* La flecha aparece después del primer y segundo item */
-    .work-flow-item:not(:last-child)::after {
-        content: "";
+  .work-flow-item:not(:last-child)::after {
         position: absolute;
-        right: -2rem; /* Centrada en el gap */
-        top: 40%;    /* Centrada con la imagen */
-        width: 15px;
-        height: 15px;
-        border-right: 2px solid #0b3558;
-        border-bottom: 2px solid #0b3558;
+        right: -2.2rem; /* Ajustado ligeramente por el mayor grosor */
+        top: 40%;
+        width: 18px;    /* Un poco más grandes */
+        height: 18px;   /* Un poco más grandes */
         transform: translateY(-50%) rotate(-45deg);
-        opacity: 0.4;
     }
 }
 
@@ -117,27 +122,291 @@
     }
 
     /* Creamos la flecha hacia abajo entre cada item */
-    .work-flow-item:not(:last-child)::after {
-        content: "";
-        position: relative; /* Cambiamos de absolute a relative para que ocupe espacio */
+   .work-flow-item:not(:last-child)::after {
+        position: relative;
         display: block;
-        margin: 20px auto; /* Espaciado vertical entre la descripción y la siguiente imagen */
-        width: 12px;
-        height: 12px;
-        border-right: 2px solid #0b3558;
-        border-bottom: 2px solid #0b3558;
-        
-        /* Rotamos 45 grados para que apunte hacia abajo */
-        transform: rotate(45deg); 
-        
-        opacity: 0.5;
-        /* Limpiamos valores del modo desktop */
-        right: auto;
-        top: auto;
+        margin: 30px auto; /* Más espacio para que respire */
+        width: 14px;
+        height: 14px;
+        transform: rotate(45deg);
+        border-color: #0b3558; /* Azul intenso */
     }
     
     .work-flow-caption {
         margin-top: 1rem;
         width: 100%; /* Asegura que el texto use todo el ancho antes de la flecha */
+    }
+}
+
+/* =========================================
+   WORKFLOW INDUSTRIAL (WF)
+   ========================================= */
+
+.wf-section {
+    overflow: hidden;
+}
+
+/* HEADER */
+.wf-header {
+    margin-bottom: 50px;
+    max-width: 700px;
+}
+
+.wf-desc {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* GRID */
+.wf-flow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    position: relative;
+}
+
+/* Línea horizontal (timeline sutil) */
+.wf-flow::before {
+    content: '';
+    position: absolute;
+    top: 38%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #e5e5e5;
+    z-index: 0;
+}
+
+/* ITEM */
+.wf-item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+/* IMAGEN */
+.wf-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #f4f4f5;
+    border: 1px solid #e5e5e5;
+    transition: all 0.3s ease;
+}
+
+.wf-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* HOVER IMAGEN */
+.wf-item:hover .wf-image {
+    border-color: var(--brand-light);
+}
+
+/* CAPTION */
+.wf-caption {
+    margin-top: 1.2rem;
+}
+
+/* STEP */
+.wf-step {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--brand-light);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+/* TEXTO */
+.wf-caption h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--brand-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Línea inferior técnica */
+.wf-caption h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 25px;
+    height: 3px;
+    background: var(--brand-dark);
+}
+
+/* FLECHAS ENTRE ITEMS */
+.wf-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -1.5rem;
+    top: 40%;
+    width: 14px;
+    height: 14px;
+    border-right: 4px solid #0b3558;
+    border-bottom: 4px solid #0b3558;
+    transform: rotate(-45deg); 
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 991px) {
+
+    .wf-flow {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .wf-flow::before {
+        display: none;
+    }
+
+    .wf-item {
+        align-items: center;
+        text-align: center;
+    }
+
+    .wf-item:not(:last-child)::after {
+        position: relative;
+        margin: 25px auto;
+        right: auto;
+        top: auto;
+        transform: rotate(45deg);
+    }
+
+    .wf-caption h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* =========================
+CONTENEDOR GENERAL
+========================= */
+.gallery-section {
+    position: relative;
+}
+
+.gallery-section.section-padding {
+    padding: 100px 0;
+}
+
+.gallery-header {
+    margin-bottom: 30px;
+}
+
+/* =========================
+GRID LIMPIO INDUSTRIAL
+========================= */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* =========================
+CARD
+========================= */
+.gallery-card {
+    display: block;
+    text-decoration: none;
+    position: relative;
+}
+
+.gallery-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #f4f4f5;
+}
+
+/* IMAGEN */
+.gallery-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* =========================
+OVERLAY (SIN TEXTO PESADO)
+========================= */
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0)
+    );
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.gallery-overlay span {
+    font-size: 0.8rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255,255,255,0.6);
+    padding-bottom: 4px;
+}
+
+/* =========================
+HOVER PREMIUM
+========================= */
+.gallery-card:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-card:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* =========================
+ANCLAS (SCROLL SUAVE)
+========================= */
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .gallery-grid {
+        gap: 1.2rem;
+    }
+
+    .gallery-overlay {
+        opacity: 1; /* en móvil siempre visible */
+        background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.25),
+            rgba(0,0,0,0)
+        );
+    }
+
+    .gallery-overlay span {
+        font-size: 0.7rem;
     }
 }
