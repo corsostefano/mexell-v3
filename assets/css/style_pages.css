@@ -2000,27 +2000,14 @@
     }
 }
 /* =========================================
-   MEXELL V4: THE INDUSTRIAL MATRIX
-   ========================================= */
+   MEXELL V4 – INDUSTRIAL MATRIX (PRO FINAL)
+========================================= */
 
 .mex-v4-section {
     padding: 60px 0;
 }
 
-.mex-v4-header {
-    border-left: 4px solid var(--brand-dark);
-    padding-left: 20px;
-    margin-bottom: 50px;
-}
-
-.mex-v4-title {
-    font-weight: 900;
-    text-transform: uppercase;
-    font-size: 1.8rem;
-    letter-spacing: -0.5px;
-    margin-bottom: 10px;
-}
-
+/* TEXTO */
 .mex-v4-desc {
     font-size: 0.95rem;
     max-width: 600px;
@@ -2028,114 +2015,195 @@
     line-height: 1.5;
 }
 
-/* -- Matrix Grid (Desktop) -- */
+/* =========================================
+   GRID DESKTOP
+========================================= */
+
 .mex-v4-matrix {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 1px;
-    background-color: #e0e0e0;
-    border: 1px solid #e0e0e0;
+    gap: 0;
+    border-top: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
 }
 
+/* ITEM BASE */
 .mex-v4-item {
+    justify-content: flex-start; /* 🔥 antes space-between */
+    gap: 12px;
     background-color: #fff;
-    padding: 30px 20px;
+    padding: 35px 25px;
+    min-height: 140px;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 120px;
-    transition: all 0.3s ease;
+    align-items: flex-start;
+
+    border-right: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+
+    position: relative;
+    overflow: hidden;
+
+    text-align: left;
+    transition: all 0.25s ease;
+
 }
 
-.mex-v4-id {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.65rem;
-    font-weight: 800;
-    color: var(--brand-light);
-    letter-spacing: 1px;
+/* EFECTO LATERAL */
+.mex-v4-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 0%;
+    background: var(--brand-dark);
+    transition: height 0.25s ease;
 }
+
+.mex-v4-item:hover::before {
+    height: 100%;
+}
+
+/* HOVER */
+.mex-v4-item:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   ELIMINAMOS "//" COMO ELEMENTO SEPARADO
+========================================= */
+
+.mex-v4-id {
+    display: none;
+}
+
+/* =========================================
+   LABEL (CON "//" INTEGRADO)
+========================================= */
 
 .mex-v4-label {
     font-weight: 800;
     text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
+    font-size: 0.95rem;
+    letter-spacing: 0.6px;
     margin: 0;
     color: var(--brand-dark);
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
+     min-height: 48px; /* 🔥 fuerza consistencia */
+    display: flex;
+    align-items: flex-end;
 }
 
+/* "//" como prefijo real */
+.mex-v4-label::before {
+     content: "//";
+    font-family: 'Courier New', monospace;
+    color: var(--brand-light);
+    opacity: 0.7;
+    margin-right: 8px;
+    display: inline-block;
+    width: 20px; /* 🔥 clave para alineación */
+}
+
+/* línea inferior */
 .mex-v4-label::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 25px;
+    width: 30px;
     height: 3px;
     background-color: var(--brand-dark);
+    transition: width 0.25s ease;
 }
 
-.mex-v4-item:hover {
-    background-color: #f8f9fa;
+.mex-v4-item:hover .mex-v4-label::after {
+    width: 50px;
 }
-
 
 /* =========================================
-   UX MOBILE: TRANSFORMACIÓN A LISTA
-   ========================================= */
+   FEATURED (EQUILIBRADO Y PRO)
+========================================= */
+
+.mex-v4-item.featured {
+    grid-column: span 2;
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+}
+
+.mex-v4-item.featured .mex-v4-label {
+    color: var(--brand-dark);
+}
+
+.mex-v4-item.featured .mex-v4-label::after {
+    background: var(--brand-dark);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
 @media (max-width: 991px) {
     .mex-v4-matrix {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    .mex-v4-item.featured {
+        grid-column: span 3;
+    }
 }
 
-@media (max-width: 767px) {
-    .mex-v4-section { padding: 40px 0; }
-    .mex-v4-header { margin-bottom: 30px; }
+/* =========================================
+   MOBILE (LISTA PRO LIMPIA)
+========================================= */
 
-    /* Convertimos el Grid en una Lista Vertical */
+@media (max-width: 767px) {
+
+    .mex-v4-section {
+        padding: 40px 0;
+    }
+
     .mex-v4-matrix {
         display: flex;
         flex-direction: column;
-        gap: 0; /* Eliminamos el espacio entre ítems para que se vea como lista */
-        background-color: transparent; /* Quitamos el fondo gris del grid */
         border: none;
-        border-top: 1px solid #e0e0e0; /* Una sola línea superior para empezar la lista */
     }
 
     .mex-v4-item {
-        flex-direction: row; /* ID y Texto en la misma línea */
+        flex-direction: row;
         align-items: center;
-        justify-content: flex-start;
-        min-height: auto; /* Quitamos la altura de "card" */
-        padding: 20px 0; /* Espaciado más vertical de lista */
-        border-bottom: 1px solid #e0e0e0; /* Línea divisoria de lista */
+        padding: 16px 0;
+        border-bottom: 1px solid #e0e0e0;
         border-right: none;
+        background: transparent;
+        transform: none;
     }
 
-    .mex-v4-id {
-        margin-right: 20px; /* Separación del ID con el texto */
-        min-width: 50px; /* Ancho fijo para que los textos queden alineados */
+    .mex-v4-item::before {
+        display: none;
     }
 
     .mex-v4-label {
-        padding-bottom: 0; /* Quitamos el padding inferior en móvil */
+        padding: 0;
         font-size: 0.95rem;
     }
 
-    /* Ocultamos la línea de acento en móvil para que se vea más como lista pura 
-       o la mantenemos muy pequeña al final del texto. Aquí la ajustamos: */
+    .mex-v4-label::before {
+        opacity: 0.6;
+    }
+
     .mex-v4-label::after {
-        display: none; /* En formato lista, la línea debajo suele ensuciar el diseño */
+        display: none;
     }
 
-    /* Ajuste para que el último elemento no se vea centrado (comportamiento de lista) */
-    .mex-v4-item:last-child {
-        grid-column: auto;
-        align-items: center;
-        text-align: left;
+    /* eliminar jerarquía visual en mobile */
+    .mex-v4-item.featured {
+        background: transparent;
+        border: none;
     }
-
-    .mex-v4-title { font-size: 1.5rem; }
 }
