@@ -124,11 +124,21 @@
         </section>
 
         <section class="quickshift-video-section">
-            <video autoplay muted loop playsinline poster="imagen-de-respaldo.jpg" class="video-background">
-                <source src="https://res.cloudinary.com/dfgs3uyiu/video/upload/q_auto/f_auto/v1775411269/video_02_unzvcu.webm" type="video/webm">
+            <video 
+                class="video-background"
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                webkit-playsinline
+                preload="auto"
+                poster="imagen-de-respaldo.jpg"
+            >
+                <source src="https://res.cloudinary.com/dfgs3uyiu/video/upload/q_auto,f_auto/v1775411269/video_02_unzvcu.mp4" type="video/mp4">
                 
-                <source src="https://res.cloudinary.com/dfgs3uyiu/video/upload/q_auto/f_auto/v1775411269/video_02_unzvcu.mp4" type="video/mp4">
-                
+                <!-- WebM opcional (para Chrome, pero Safari lo ignora) -->
+                <source src="https://res.cloudinary.com/dfgs3uyiu/video/upload/q_auto,f_auto/v1775411269/video_02_unzvcu.webm" type="video/webm">
+
                 Tu navegador no soporta videos.
             </video>
 
