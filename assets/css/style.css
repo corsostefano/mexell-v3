@@ -1615,6 +1615,3 @@ body {
 @media screen and (max-width: 768px) {
     .nav-btn { width: 35px; height: 35px; opacity: 0.8; }
 }
-.video-fallback {
-    display: none;
-}

@@ -302,15 +302,6 @@ document.addEventListener('DOMContentLoaded', function() {
     itemsToReveal.forEach(el => observer.observe(el));
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const video = document.querySelector(".hero-video");
-
-    if (video) {
-        video.play().catch(() => {
-            video.classList.add("video-fallback");
-        });
-    }
-});
 
 document.addEventListener("DOMContentLoaded", () => {
     const video = document.querySelector(".video-background");
