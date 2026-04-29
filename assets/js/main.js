@@ -269,14 +269,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const langLinks = document.querySelectorAll('.lang-link');
-    const path = window.location.pathname;
+    const pathParts = window.location.pathname.split('/');
+    
+    const isEnglish = pathParts.includes('en');
 
     langLinks.forEach(link => {
-        const href = link.getAttribute('href');
+        const isLinkEnglish = link.getAttribute('href').includes('/en/');
 
-        if (path.includes('/en/') && href.includes('/en/')) {
-            link.classList.add('active');
-        } else if (!path.includes('/en/') && !href.includes('/en/')) {
+        if (isEnglish === isLinkEnglish) {
             link.classList.add('active');
         } else {
             link.classList.remove('active');
