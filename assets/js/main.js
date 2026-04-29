@@ -274,9 +274,14 @@ document.addEventListener('DOMContentLoaded', () => {
     langLinks.forEach(link => {
         const href = link.getAttribute('href');
 
-        if (path.includes('/en/') && href.includes('/en/')) {
+        // path siempre tendrá barras porque viene del navegador (ej. /mi-repo/en/index.html)
+        const isEnglishPage = path.includes('/en/');
+        // Evaluamos el href buscando 'en/' para que funcione con ./en/ y con ../en/
+        const isEnglishLink = href.includes('en/'); 
+
+        if (isEnglishPage && isEnglishLink) {
             link.classList.add('active');
-        } else if (!path.includes('/en/') && !href.includes('/en/')) {
+        } else if (!isEnglishPage && !isEnglishLink) {
             link.classList.add('active');
         } else {
             link.classList.remove('active');
