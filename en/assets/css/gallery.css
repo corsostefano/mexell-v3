@@ -1,0 +1,412 @@
+/* Contenedor principal usando CSS Grid */
+.industrial-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem; /* Espaciado limpio entre imágenes. El espacio vacío reemplaza los marcos */
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Tarjeta sin marco */
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background: transparent; 
+  border: none; /* Ausencia estricta de marcos y bordes */
+}
+
+/* Contenedor de la imagen para asegurar proporciones exactas */
+.image-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3; /* Unifica el tamaño visual de todas las imágenes sin distorsionarlas */
+  overflow: hidden;
+  background-color: #f4f4f5; /* Tono técnico muy sutil mientras carga la imagen */
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garantiza que todas las imágenes llenen el espacio exactamente igual */
+  display: block;
+}
+
+/* Descripción de la imagen en azul y con tamaño uniforme */
+.gallery-caption {
+  margin-top: 1.2rem;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Tipografía limpia */
+  font-size: 1rem; /* Tamaño de letra estricto y totalmente unificado */
+  font-weight: 500;
+  color: #004A99; /* Azul técnico/acero, profesional y sobrio */
+  text-align: left; /* Alineación a la izquierda, típica de planos y manuales técnicos */
+  line-height: 1.5;
+}
+
+
+.work-flow-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    background-color: transparent; /* Mantiene la estética limpia */
+}
+
+/* Item de la Galería */
+.work-flow-item {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    position: relative; /* Necesario para la flecha */
+}
+
+/* Caja de Imagen con Proporción Fija */
+.work-flow-image-box {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: #f4f4f5;
+    border: 1px solid #eee; /* Define el límite técnico de la imagen */
+}
+
+.work-flow-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Caption Estilo Ingeniería */
+.work-flow-caption {
+    margin-top: 1.2rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #0b3558; /* Tu azul corporativo */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+.work-flow-item:not(:last-child)::after {
+    content: "";
+    border-right-style: solid;
+    border-bottom-style: solid;
+    /* --- MEJORAS DE CUERPO Y COLOR --- */
+    border-color: #0b3558; /* Tu azul corporativo al 100% */
+    border-width: 4px;      /* Duplicamos el grosor (antes 2px) */
+    opacity: 1;            /* Eliminamos transparencia (antes 0.4) */
+}
+
+/* --- INDICADOR DE FLUJO (Flecha) --- */
+@media (min-width: 992px) {
+    /* La flecha aparece después del primer y segundo item */
+  .work-flow-item:not(:last-child)::after {
+        position: absolute;
+        right: -2.2rem; /* Ajustado ligeramente por el mayor grosor */
+        top: 40%;
+        width: 18px;    /* Un poco más grandes */
+        height: 18px;   /* Un poco más grandes */
+        transform: translateY(-50%) rotate(-45deg);
+    }
+}
+
+@media (max-width: 991px) {
+    /* Centramos el contenido para que el flujo vertical sea claro */
+    .work-flow-item {
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Creamos la flecha hacia abajo entre cada item */
+   .work-flow-item:not(:last-child)::after {
+        position: relative;
+        display: block;
+        margin: 30px auto; /* Más espacio para que respire */
+        width: 14px;
+        height: 14px;
+        transform: rotate(45deg);
+        border-color: #0b3558; /* Azul intenso */
+    }
+    
+    .work-flow-caption {
+        margin-top: 1rem;
+        width: 100%; /* Asegura que el texto use todo el ancho antes de la flecha */
+    }
+}
+
+/* =========================================
+   WORKFLOW INDUSTRIAL (WF)
+   ========================================= */
+
+.wf-section {
+    overflow: hidden;
+}
+
+/* HEADER */
+.wf-header {
+    margin-bottom: 50px;
+    max-width: 700px;
+}
+
+.wf-desc {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* GRID */
+.wf-flow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    position: relative;
+}
+
+/* Línea horizontal (timeline sutil) */
+.wf-flow::before {
+    content: '';
+    position: absolute;
+    top: 38%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #e5e5e5;
+    z-index: 0;
+}
+
+/* ITEM */
+.wf-item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+/* IMAGEN */
+.wf-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #f4f4f5;
+    border: 1px solid #e5e5e5;
+    transition: all 0.3s ease;
+}
+
+.wf-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* HOVER IMAGEN */
+.wf-item:hover .wf-image {
+    border-color: var(--brand-light);
+}
+
+/* CAPTION */
+.wf-caption {
+    margin-top: 1.2rem;
+}
+
+/* STEP */
+.wf-step {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--brand-light);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+/* TEXTO */
+.wf-caption h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--brand-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Línea inferior técnica */
+.wf-caption h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 25px;
+    height: 3px;
+    background: var(--brand-dark);
+}
+
+/* FLECHAS ENTRE ITEMS */
+.wf-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -1.5rem;
+    top: 40%;
+    width: 14px;
+    height: 14px;
+    border-right: 4px solid #0b3558;
+    border-bottom: 4px solid #0b3558;
+    transform: rotate(-45deg); 
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 991px) {
+
+    .wf-flow {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .wf-flow::before {
+        display: none;
+    }
+
+    .wf-item {
+        align-items: center;
+        text-align: center;
+    }
+
+    .wf-item:not(:last-child)::after {
+        position: relative;
+        margin: 25px auto;
+        right: auto;
+        top: auto;
+        transform: rotate(45deg);
+    }
+
+    .wf-caption h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* =========================
+CONTENEDOR GENERAL
+========================= */
+.gallery-section {
+    position: relative;
+}
+
+.gallery-section.section-padding {
+    padding: 100px 0;
+}
+
+.gallery-header {
+    margin-bottom: 30px;
+}
+
+/* =========================
+GRID LIMPIO INDUSTRIAL
+========================= */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* =========================
+CARD
+========================= */
+.gallery-card {
+    display: block;
+    text-decoration: none;
+    position: relative;
+}
+
+.gallery-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #f4f4f5;
+}
+
+/* IMAGEN */
+.gallery-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* =========================
+OVERLAY (SIN TEXTO PESADO)
+========================= */
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0)
+    );
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.gallery-overlay span {
+    font-size: 0.8rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255,255,255,0.6);
+    padding-bottom: 4px;
+}
+
+/* =========================
+HOVER PREMIUM
+========================= */
+.gallery-card:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-card:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* =========================
+ANCLAS (SCROLL SUAVE)
+========================= */
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .gallery-grid {
+        gap: 1.2rem;
+    }
+
+    .gallery-overlay {
+        opacity: 1; /* en móvil siempre visible */
+        background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.25),
+            rgba(0,0,0,0)
+        );
+    }
+
+    .gallery-overlay span {
+        font-size: 0.7rem;
+    }
+}

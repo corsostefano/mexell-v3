@@ -267,36 +267,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
-// --- Lógica de Selector de Idiomas (Estilo Sandvik) ---
 document.addEventListener('DOMContentLoaded', () => {
     const langLinks = document.querySelectorAll('.lang-link');
-    
-    // 1. Detectar el idioma actual por la URL (ej: ?lang=en)
-    const urlParams = new URLSearchParams(window.location.search);
-    const currentLang = urlParams.get('lang') || 'es'; // 'es' por defecto
+    const path = window.location.pathname;
 
-    // 2. Marcar como activo el idioma correspondiente al cargar la página
     langLinks.forEach(link => {
-        const langTarget = link.getAttribute('href').split('=')[1];
-        if (langTarget === currentLang) {
+        const href = link.getAttribute('href');
+
+        if (path.includes('/en/') && href.includes('/en/')) {
+            link.classList.add('active');
+        } else if (!path.includes('/en/') && !href.includes('/en/')) {
             link.classList.add('active');
         } else {
             link.classList.remove('active');
         }
-
-        // 3. Efecto visual inmediato al hacer clic
-        link.addEventListener('click', (e) => {
-            // Si el menú móvil está abierto, lo cerramos al cambiar idioma
-            if (navWrapper.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                navWrapper.classList.remove('active');
-                body.style.overflow = '';
-            }
-            
-            langLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-        });
     });
 });
 

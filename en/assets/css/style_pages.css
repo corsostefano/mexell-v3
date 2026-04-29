@@ -1,0 +1,2209 @@
+/* =========================================
+   1. LAYOUT Y UTILIDADES
+   ========================================= */
+.section-padding { padding: 60px 0; }
+
+.bg-dark { background-color: var(--brand-dark) !important; }
+.bg-dark .section__title { color: white; }
+.bg-dark .title-underline { background-color: var(--brand-light); }
+
+.text-accent {   color: #3bb3e6; }
+
+/* =========================================
+   2. TIPOGRAFÍA GLOBAL
+   ========================================= */
+.section__title {
+      font-weight: 800;
+    color: var(--brand-dark);
+    margin-bottom: 10px;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.title-underline {
+    width: 60px;
+    height: 4px;
+    background-color: var(--brand-light);
+    margin-top: 15px;
+}
+
+.about-text p {
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+}
+
+.about-text strong {
+    color: var(--brand-dark);
+}
+
+/* Agrupamos pretítulos idénticos */
+.about-pretitle, 
+.service-pretitle {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--brand-light);
+    margin-bottom: 12px;
+}
+
+.about-pretitle {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* =========================================
+   3. HEROS (ESTRUCTURA UNIFICADA ESTILO SANDVIK)
+   ========================================= */
+/* Declaramos la base visual una sola vez para TODOS los Heros */
+.about-hero, 
+.engineering-hero, 
+.fabrication-hero, 
+.maintenance-hero, 
+.oee-hero {
+    height: 80vh;
+    min-height: 550px;
+
+    background: 
+        linear-gradient(
+            90deg,
+            rgba(11, 53, 88, 0.98) 0%,
+            rgba(11, 53, 88, 0.85) 35%,
+            rgba(11, 53, 88, 0.55) 60%,
+            rgba(11, 53, 88, 0.2) 80%,
+            transparent 100%
+        ),
+        var(--bg-img);
+
+    background-size: cover;
+    background-position: center right;
+    display: flex;
+    align-items: center;
+    color: var(--bg-white);
+    position: relative;
+}
+.about-hero__content {
+    max-width: 680px;
+    text-align: left;
+}
+
+/* Asignamos solo la imagen a cada clase específica */
+.about-hero       { --bg-img: url('https://res.cloudinary.com/dfgs3uyiu/image/upload/q_auto/f_auto/v1762523086/hero2_ev1esj.jpg'); }
+.engineering-hero { --bg-img: url('https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523106/ingenieria-diseno_hero_sistema-completo_ubwqdm.jpg'); }
+.fabrication-hero { --bg-img: url('https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523082/fabricacion_hero_proceso-avanzado-2_v3jyly.jpg'); }
+.maintenance-hero { --bg-img: url('https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523152/mantenimiento_hero_equipo-en-accion_final_f92qvd.jpg'); }
+.oee-hero         { --bg-img: url('https://res.cloudinary.com/dfgs3uyiu/image/upload/v1764595513/portada_1_ihxiad.png'); }
+
+/* Estilos de contenido interno aplicados a todos los Heros */
+.about-hero .service-hero__content,
+.engineering-hero .service-hero__content,
+.fabrication-hero .service-hero__content,
+.maintenance-hero .service-hero__content,
+.oee-hero .service-hero__content {
+    border-left: 5px solid var(--brand-light);
+    padding-left: 30px;
+    max-width: 700px;
+}
+
+.about-hero h1,
+.engineering-hero h1,
+.fabrication-hero h1,
+.maintenance-hero h1,
+.oee-hero h1 {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    line-height: 1;
+}
+.about-hero h1 {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+
+.service-hero p {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    color: rgba(255,255,255,0.9);
+    margin-top: 15px;
+    max-width: 520px;
+}
+
+/* =========================================
+   4. IMÁGENES Y GALERÍAS
+   ========================================= */
+.image-frame {
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    position: relative;
+    background: var(--bg-white);
+    
+    /* Mantiene una proporción 4:5 (ideal para retratos/historia) */
+    aspect-ratio: 4 / 5; 
+    display: flex;
+}
+
+.history-img-clean {
+    width: 100%;
+    /* Mantenemos la proporción técnica 4:5 que tenías */
+    aspect-ratio: 4 / 5; 
+    object-fit: cover;
+    object-position: center;
+    
+    /* Eliminamos bordes, paddings y sombras si las hubiera */
+    border: none;
+    padding: 0;
+    
+    /* Opcional: un detalle de "precisión" sutil */
+    filter: contrast(1.05); 
+}
+.industrial-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Evita que la imagen se estire, la recorta sutilmente para llenar el marco */
+    object-position: center;
+}
+
+
+
+
+.col-3 img,
+.grayscale-hover {
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.col-3 img:hover {
+    transform: scale(1.05);
+}
+
+.grayscale-hover {
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.grayscale-hover:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+    border-color: var(--brand-light);
+}
+
+/* =========================================
+   5. COMPONENTES: GRIDS Y LISTAS
+   ========================================= */
+.method-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background-color: #ededed; 
+    border: 1px solid #ededed;
+    margin-top: 50px;
+}
+
+.method-card {
+    background-color: var(--bg-white);
+    padding: 45px 35px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.method-card:hover {
+    background-color: var(--brand-dark);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(11, 53, 88, 0.15);
+}
+
+.method-card:hover * { color: var(--bg-white); }
+
+.method-number {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--brand-light);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.method-card h4 {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+
+.method-card p {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    line-height: 1.5;
+}
+
+.technical-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.technical-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: var(--text-gray);
+    font-weight: 500;
+    line-height: 1.4;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0 15px 30px;
+}
+
+.technical-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--brand-light);
+}
+
+.technical-list li:last-child {
+    border-bottom: none;
+}
+
+/* =========================================
+   6. SECCIÓN INGENIERÍA EN ACCIÓN
+   ========================================= */
+.process-title {
+    font-weight: 700;
+    color: var(--brand-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    border-left: 4px solid var(--brand-light);
+    padding-left: 15px;
+}
+
+.action-grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.action-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    background: var(--brand-dark);
+}
+
+.action-card img {
+    width: 100%;
+    height: 300px; 
+    object-fit: cover;
+    filter: grayscale(10%) contrast(1.05);
+    display: block;
+}
+
+.action-legend {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(11, 53, 88, 0.95);
+    color: var(--bg-white);
+    padding: 15px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    border-top: 2px solid var(--brand-light);
+}
+
+.text-small {
+    font-size: 0.85rem;
+    padding: 10px 5px;
+}
+
+/* =========================================
+   7. SECCIÓN DE VIDEO QUICKSHIFT
+   ========================================= */
+.quickshift-video-section {
+    position: relative;
+    width: 100%;
+    min-height: 70vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--brand-dark);
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(11, 53, 88, 0.85) 0%, rgba(11, 53, 88, 0.4) 100%);
+    z-index: 1;
+}
+
+.video-content {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    max-width: 900px;
+    padding: 0 20px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.badge-patented {
+    /* Mantengo la clase aunque no tenías estilos definidos para ella en tu CSS original, excepto en el media query */
+    display: inline-block;
+}
+
+/* =========================================
+   8. CTA
+   ========================================= */
+.about-cta {
+    padding: 40px 0;
+    background-color: var(--bg-white);
+    color: var(--bg-dark);
+    text-align: center;
+}
+
+.about-cta h2 {
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+}
+
+.btn-industrial-lg {
+    display: inline-block;
+    padding: 18px 40px;
+    background-color: var(--brand-light);
+    color: var(--bg-white);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    border: 2px solid var(--brand-light);
+    transition: all 0.3s ease;
+}
+
+.btn-industrial-lg:hover {
+    background-color: transparent;
+    color: var(--bg-white);
+    border-color: var(--bg-white);
+}
+
+/* =========================================
+   9. RESPONSIVE MASTER
+   ========================================= */
+@media (max-width: 991px) {
+    .section-padding { padding: 60px 0; }
+    .method-grid { grid-template-columns: repeat(3, 1fr); }
+    .industrial-img { 
+        height: 400px; /* Un poco más de aire para tablets */
+        object-fit: cover; 
+        object-position: top; /* Prioriza ver la cara del fundador si es retrato */
+        width: 100%;
+    }
+    .action-grid-5 { grid-template-columns: repeat(3, 1fr); }
+    .action-card img { height: 250px; }
+    .order-lg-2 { order: 1 !important; }
+    .order-lg-1 { order: 2 !important; }
+}
+
+@media (max-width: 767px) {
+    .section-padding { padding: 50px 0; }
+    
+    /* Heros en móvil */
+    .about-hero, 
+    .engineering-hero, 
+    .fabrication-hero, 
+    .maintenance-hero, 
+    .oee-hero {
+        height: 65vh;
+        min-height: 420px;
+
+        /* overlay más fuerte en mobile */
+        background: 
+            linear-gradient(
+                to bottom,
+                rgba(11, 53, 88, 0.95) 0%,
+                rgba(11, 53, 88, 0.85) 50%,
+                rgba(11, 53, 88, 0.6) 100%
+            ),
+            var(--bg-img);
+
+        background-position: center;
+    }
+
+    
+    .about-hero h1, .engineering-hero h1, .fabrication-hero h1, .maintenance-hero h1, .oee-hero h1, .service-hero h1 { 
+        font-size: 1.8rem; 
+        letter-spacing: -0.8px; 
+    }
+     .about-hero__content {
+        padding: 0 10px;
+        max-width: 100%;
+    }
+
+    .about-hero h1 {
+        font-size: 1.9rem;
+        line-height: 1.1;
+    }
+
+    .about-hero p {
+        font-size: 0.95rem;
+    }
+
+    .about-pretitle {
+        font-size: 0.75rem;
+    }
+
+    /* Grids en móvil */
+    .method-grid { grid-template-columns: repeat(2, 1fr); }
+    .method-card { padding: 25px 20px; }
+    .method-card.full-mobile { grid-column: span 2; text-align: center; align-items: center; }
+    .method-number { margin-bottom: 10px; }
+
+    .action-grid-5 { grid-template-columns: 1fr; }
+    .action-card img { height: 220px; }
+
+    /* Imágenes y extras */
+    .image-frame { 
+        padding: 8px; 
+        margin-top: 20px; /* Separa la imagen del texto que quedó arriba */
+    }
+    .image-frame::after { 
+        width: 40px; 
+        height: 40px; 
+        top: -5px; 
+        right: -5px; 
+        border-top-width: 3px; /* Bordes un poco más finos para móvil */
+        border-right-width: 3px;
+    }
+    .industrial-img { 
+        /* En lugar de altura fija, usamos una proporción visual */
+        height: auto;
+        aspect-ratio: 1 / 1; /* La hace cuadrada en móviles para que luzca como ficha técnica */
+        object-fit: cover;
+    }
+
+    .section__title { font-size: 1.5rem; }
+    .technical-list li { font-size: 0.95rem; }
+    .badge-patented { font-size: 0.65rem; }
+
+    /* CTA en móvil */
+    .btn-industrial-lg { width: 100%; text-align: center; padding: 15px 20px; }
+
+    /* Video en móvil */
+    .quickshift-video-section { min-height: 60vh; }
+    .video-overlay {
+        background: linear-gradient(to bottom, rgba(11, 53, 88, 0.9) 0%, rgba(11, 53, 88, 0.6) 100%);
+    }
+}
+
+@media (max-width: 380px) {
+    .method-grid { grid-template-columns: 1fr; }
+    .method-card.full-mobile { grid-column: span 1; }
+}
+
+/* ========== 1. HERO GALERÍA (Estilo Sandvik Lateral) ========== */
+.gallery-hero {
+    /* Usamos la imagen CNC solicitada: hero2_rrkkgt.png */
+    background-image: linear-gradient(
+        90deg, 
+        rgba(11, 53, 88, 0.98) 0%, 
+        rgba(11, 53, 88, 0.6) 45%, 
+        transparent 100%
+    ), 
+    url('https://res.cloudinary.com/dfgs3uyiu/image/upload/v1775417007/hero2_rrkkgt.png');
+    
+    /* Reutilizamos las propiedades base de tus otros Heros actualizados */
+    height: 80vh; 
+    min-height: 550px;
+    background-size: cover;
+    background-position: center right;
+    display: flex;
+    align-items: center;
+    color: var(--bg-white);
+    position: relative;
+    border-bottom: none;
+}
+
+/* Reutilizamos la tipografía compacta Sandvik */
+.gallery-hero h1 {
+    font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+}
+
+/* ========== 2. ESTILOS DE LA GRILLA DE GALERÍA ========== */
+
+/* Forzamos que todas las imágenes tengan el mismo tamaño (Aspect Ratio técnico) */
+.gallery-item {
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    /* Sandvik usa un aspect ratio muy horizontal o cuadrado. 
+       4:3 es perfecto para mostrar maquinaria en grilla. */
+    aspect-ratio: 4 / 3; 
+    object-fit: cover; /* Clave para no deformar */
+    display: block;
+    /* Look sobrio inicial */
+    filter: grayscale(20%) contrast(1.05); 
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+/* Efecto Hover Sobrio (Sandvik Style) */
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(11, 53, 88, 0.1);
+    z-index: 1; /* Para que la sombra no pise a las vecinas */
+}
+
+.gallery-item:hover img {
+    filter: grayscale(0%) contrast(1.1); /* Recupera color y gana nitidez */
+}
+
+/* Ajuste de la leyenda técnica (Reutilizada de Ingenieria) */
+.gallery-item .action-legend {
+    font-size: 0.85rem; /* Ligeramente más pequeña para look técnico */
+    padding: 12px 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: rgba(11, 53, 88, 0.98); /* Azul casi sólido */
+}
+
+/* ========== 3. RESPONSIVE MASTER ========== */
+
+@media (max-width: 991px) {
+    /* Bootstrap ya maneja el cambio de 3 a 2 columnas con col-md-6 */
+    .gallery-item img {
+        aspect-ratio: 16 / 9; /* En tablet, un formato más ancho queda mejor */
+    }
+}
+
+@media (max-width: 767px) {
+    .gallery-hero {
+        height: 55vh;
+        min-height: 380px;
+    }
+
+    /* Bootstrap ya maneja el cambio a 1 columna con col-12 por defecto */
+    .gallery-item img {
+        aspect-ratio: 16 / 9; /* Mantenemos formato ancho en móvil */
+    }
+    
+    .gallery-item .action-legend {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+}
+
+/* --- CONTACT HERO --- */
+.contact-hero {
+    background-color: var(--bg-white);
+    color: var(--bg-white);
+    /* Se cambió padding-top a un valor que asegure visibilidad y padding-bottom para balance */
+    border-bottom: 8px solid var(--brand-light);
+    height: auto;
+}
+
+.hero-label {
+    text-transform: uppercase;
+    letter-spacing: 4px; /* Un toque más de aire industrial */
+    font-size: 0.8rem;
+    color: var(--brand-light);
+    font-weight: 700;
+    display: block; /* Asegura que respete márgenes */
+}
+
+.contact-hero h1 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem); /* Un poco más agresivo el tamaño máximo */
+    font-weight: 600; /* Estilo Sandvik es muy pesado/bold */
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 0;
+    color: var(--brand-dark);
+}
+
+.hero-subtitle {
+    max-width: 650px;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    opacity: 0.85;
+    margin-top: 30px;
+    color: var(--brand-dark);
+}
+
+/* --- GRID DE CONTACTO --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr; /* Ligero ajuste de proporción */
+    gap: 100px; /* Más espacio para dejar respirar la info técnica */
+    padding: 100px 0;
+}
+
+/* --- FORMULARIO INDUSTRIAL --- */
+.industrial-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px; /* Espacio entre columnas */
+    margin-bottom: 15px;
+}
+
+.form-row .form-group {
+    flex: 1; /* Hace que ambos campos midan lo mismo */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--brand-dark); /* Texto más oscuro para mejor lectura */
+    letter-spacing: 1.5px;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    padding: 18px;
+    border: 1px solid #e0e0e0; /* Gris más sutil */
+    background: #fcfcfc;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--brand-dark);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0; /* Estética ortogonal obligatoria */
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--brand-dark);
+    background: #fff;
+    /* Sombra más técnica y plana */
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.02); 
+}
+
+.btn-industrial {
+    padding: 22px 50px;
+    background: var(--brand-dark);
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-industrial:hover {
+    background: var(--brand-light);
+    transform: translateY(-2px); /* Efecto de elevación técnica */
+}
+
+/* --- PANEL DE INFO --- */
+.info-block {
+    margin-bottom: 50px;
+    border-left: 4px solid var(--brand-light); /* Más grueso para mayor impacto */
+    padding-left: 25px;
+}
+
+.info-block h3 {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: #999; /* Título de sección más sutil */
+}
+
+.info-link {
+    display: block;
+    color: var(--brand-dark);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-top: 8px;
+    transition: all 0.3s ease;
+}
+
+.info-link:hover { 
+    color: var(--brand-light);
+    transform: translateX(5px);
+}
+
+/* --- ESTADO DEL FORMULARIO --- */
+.form-status-message {
+    margin-top: 25px;
+    padding: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 0;
+}
+
+.form-status-message.success {
+    display: block;
+    background-color: #f0fff4;
+    color: #276749;
+    border-left: 5px solid #48bb78;
+}
+
+.form-status-message.error {
+    display: block;
+    background-color: #fff5f5;
+    color: #9b2c2c;
+    border-left: 5px solid #f56565;
+}
+
+
+/* --- OPTIMIZACIÓN RESPONSIVE (MÓVIL) --- */
+@media screen and (max-width: 992px) {
+    /* 1. Hero: Menos espacio arriba, más impacto visual */
+    .contact-hero {
+        padding: 120px 20px 60px; /* Reducimos padding para que el contenido suba */
+        text-align: left;
+    }
+
+    .contact-hero h1 {
+        font-size: 2.5rem; /* Forzamos un tamaño legible pero imponente */
+        line-height: 1.1;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-top: 20px;
+    }
+
+    /* 2. Grid: Reordenamos para que el formulario no sea lo único que se vea */
+    .contact-grid {
+        display: flex;
+        flex-direction: column; /* Cambiamos grid por flex para mayor control */
+        gap: 50px;
+        padding: 50px 15px;
+    }
+
+    /* 3. Formulario: Ajustes de inputs */
+    .industrial-form {
+        gap: 20px;
+        order: 1; /* El formulario queda arriba */
+    }
+
+  .form-row {
+        flex-direction: column; /* En móviles se apilan */
+        gap: 0;
+    }
+
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+        padding: 14px; /* Un poco más pequeño para ganar espacio en pantalla */
+        font-size: 16px; /* Evita que iOS haga zoom automático al clickear */
+    }
+
+    .btn-industrial {
+        width: 100%; /* Botón de acción principal en todo el ancho */
+        padding: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* 4. Panel de Información: Estilo más compacto */
+    .contact-info-panel {
+        order: 2; /* Info debajo del formulario */
+        background: #f9f9f9; /* Un fondo sutil para diferenciar secciones */
+        padding: 30px 20px;
+        margin: 0 -15px; /* Rompemos el padding del contenedor para que toque los bordes */
+    }
+
+    .info-block {
+        margin-bottom: 35px;
+    }
+
+    .info-link {
+        font-size: 1.1rem; /* Números de teléfono y emails fáciles de tocar */
+        padding: 5px 0;
+    }
+
+    /* 5. Mapa: Ajuste de altura para no cansar el scroll */
+    .contact-map {
+        margin-top: 20px;
+        height: 200px;
+    }
+}
+
+/* Ajuste extra para celulares muy pequeños (iPhone SE, etc) */
+@media screen and (max-width: 380px) {
+    .contact-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .trust-impact.compact .number {
+        font-size: 1.8rem;
+    }
+}
+
+/* --- PAGINA DE ESPECIFICACIONES (BASE) --- */
+.specs-page {
+    background-color: #fff;
+    color: var(--brand-dark);
+    overflow-x: hidden; /* Evita scrolls horizontales accidentales */
+}
+
+/* --- HERO: AJUSTE DINÁMICO --- */
+.specs-hero {
+    padding: clamp(120px, 15vh, 180px) 0 80px;
+    background-color: var(--brand-dark);
+    color: #fff;
+    border-bottom: 8px solid var(--brand-light);
+}
+
+.specs-meta {
+    font-family: monospace;
+    color: var(--brand-light);
+    letter-spacing: 2px;
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.specs-hero h1 {
+    font-size: clamp(2rem, 8vw, 4.5rem);
+    text-transform: uppercase;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.hero-description {
+    max-width: 600px;
+    margin-top: 20px;
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    opacity: 0.8;
+}
+
+/* --- SECCIONES --- */
+.specs-section { 
+    padding: clamp(60px, 8vw, 100px) 0; 
+    border-bottom: 1px solid #eee; 
+}
+
+.dark-bg { 
+    background-color: var(--brand-dark); 
+    color: #fff; 
+}
+
+.section-tag {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    color: #999;
+}
+.section-tag.light { color: var(--brand-light); }
+
+/* --- TABLAS RESPONSIVE (SOLUCIÓN DEFINITIVA) --- */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto; /* Permite scroll lateral en móviles */
+    -webkit-overflow-scrolling: touch;
+    margin-top: 20px;
+    border: 1px solid #eee; /* Contenedor sutil para el scroll */
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px; /* Asegura que los datos no se amontonen en móviles */
+}
+
+.specs-table th {
+    text-align: left;
+    padding: 20px;
+    background: #f4f4f4;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--brand-dark);
+    white-space: nowrap;
+}
+
+.specs-table td {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+}
+
+/* --- GRID DE MATERIALES --- */
+.materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.material-card {
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 35px;
+    transition: 0.3s ease;
+    background: rgba(255,255,255,0.02);
+}
+
+.material-card:hover { 
+    border-color: var(--brand-light); 
+    background: rgba(255,255,255,0.05);
+}
+
+/* --- METROLOGÍA Y BLUEPRINT (RESPONSIVE GRID) --- */
+.metrology-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.blueprint-box {
+    width: 100%;
+    height: 350px;
+    background-color: #f0f0f0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+}
+
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(#ddd 1px, transparent 1px),
+        linear-gradient(90deg, #ddd 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.4;
+}
+
+.tech-piece-draw {
+    width: clamp(140px, 20vw, 200px);
+    height: clamp(100px, 15vw, 140px);
+    border: 2px solid var(--brand-dark);
+    position: relative;
+    background: rgba(255,255,255,0.9);
+    z-index: 2;
+}
+
+.precision-label {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    font-family: monospace;
+    font-size: 0.65rem;
+    background: var(--brand-dark);
+    color: #fff;
+    padding: 4px 8px;
+    z-index: 3;
+}
+
+/* --- BOTONES --- */
+.btn-download {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 18px 35px;
+    border: 2px solid var(--brand-dark);
+    text-decoration: none;
+    color: var(--brand-dark);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.btn-download:hover {
+    background: var(--brand-dark);
+    color: #fff;
+}
+
+/* --- MEDIA QUERIES (100% RESPONSIVE) --- */
+
+@media (max-width: 992px) {
+    .metrology-layout {
+        grid-template-columns: 1fr; /* Colapsa a una columna */
+        gap: 40px;
+    }
+    
+    .metrology-visual {
+        order: -1; /* El dibujo técnico sube para ser visualizado antes del texto */
+    }
+}
+
+@media (max-width: 768px) {
+    .specs-hero {
+        padding-top: 140px;
+        text-align: center;
+    }
+    
+    .hero-description {
+        margin: 20px auto 0;
+    }
+
+    .material-card {
+        padding: 25px;
+    }
+    
+    .btn-download {
+        width: 100%; /* Botón ancho completo en móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    .specs-section {
+        padding: 50px 0;
+    }
+    
+    .section-tag {
+        margin-bottom: 30px;
+    }
+
+    .blueprint-box {
+        height: 250px; /* Altura reducida en pantallas muy pequeñas */
+    }
+    
+    /* Ajuste para las cotas de medición en móvil */
+    .measure-line-side {
+        right: -35px;
+        font-size: 8px;
+    }
+}
+
+/* --- PAGINA DE CALIDAD (OPTIMIZADA) --- */
+.quality-page {
+    background-color: #fff;
+    color: var(--brand-dark);
+    overflow-x: hidden;
+}
+
+/* --- HERO: ADAPTABLE --- */
+.quality-hero {
+    /* Padding dinámico para que el texto nunca quede pegado al navbar en móvil */
+    padding: clamp(120px, 15vh, 200px) 5% 80px; 
+    background-color: var(--brand-dark);
+    color: #fff;
+    text-align: left;
+    position: relative;
+}
+
+.quality-label {
+    color: var(--brand-light);
+    text-transform: uppercase;
+    letter-spacing: clamp(2px, 1vw, 4px);
+    font-weight: 700;
+    font-size: 0.75rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.quality-hero h1 {
+    font-size: clamp(2.2rem, 8vw, 4.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.quality-intro {
+    max-width: 650px;
+    margin-top: clamp(20px, 4vw, 30px);
+    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+    opacity: 0.85;
+    line-height: 1.6;
+}
+
+/* --- GRID DE POLÍTICAS: LIMPIEZA TÉCNICA --- */
+.policy-grid-section {
+    padding: clamp(60px, 10vw, 120px) 0;
+}
+
+.policy-header {
+    margin-bottom: clamp(40px, 8vw, 80px);
+}
+
+.policy-header h2 {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+}
+
+.divider-line {
+    width: 60px;
+    height: 6px;
+    background: var(--brand-light);
+}
+
+/* Grid que se adapta de 1 a 3 columnas automáticamente */
+.policy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(30px, 5vw, 60px);
+}
+
+.policy-item {
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.policy-item:hover {
+    border-top-color: var(--brand-dark);
+    transform: translateY(-5px);
+}
+
+.policy-num {
+    font-family: 'Inter', monospace;
+    color: var(--brand-light);
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.policy-item h3 {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    color: var(--brand-dark);
+}
+
+.policy-item p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* --- BANNER ISO: FLEXIBILIDAD TOTAL --- */
+.iso-banner {
+    background-color: #f9f9f9;
+    padding: clamp(60px, 8vw, 100px) 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.iso-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(40px, 6vw, 80px);
+}
+
+.iso-badge {
+    background: var(--brand-dark);
+    color: #fff;
+    padding: 8px 16px;
+    font-weight: 800;
+    display: inline-block;
+    margin-bottom: 25px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+.iso-text h2 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.iso-text p {
+    max-width: 600px;
+    color: #555;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* El Sello ISO ahora es proporcional al tamaño de pantalla */
+.seal-circle {
+    flex-shrink: 0; /* Evita que se aplaste */
+    width: clamp(140px, 15vw, 180px);
+    height: clamp(140px, 15vw, 180px);
+    border: clamp(3px, 0.5vw, 5px) solid var(--brand-dark);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--brand-dark);
+    letter-spacing: 1px;
+    background: #fff;
+    box-shadow: 15px 15px 0px rgba(0,0,0,0.03);
+}
+
+.seal-year {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    color: var(--brand-light);
+    line-height: 1;
+}
+
+/* --- AJUSTES ESPECÍFICOS PARA DISPOSITIVOS --- */
+
+@media (max-width: 992px) {
+    .iso-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .iso-text p {
+        margin: 0 auto;
+    }
+    
+    .seal-circle {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .quality-hero {
+        padding-bottom: 60px;
+    }
+    
+    .policy-grid {
+        grid-template-columns: 1fr; /* Forzamos una columna en móviles medianos */
+    }
+    
+    .policy-item {
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .quality-hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .quality-intro {
+        font-size: 1rem;
+    }
+    
+    .iso-text h2 {
+        font-size: 1.4rem;
+    }
+}
+
+/* --- Galería de Precisión Mexell --- */
+.mx-tech-gallery {
+    padding-bottom: 5rem;
+    background-color: var(--bg-white);
+}
+
+.border-color-main {
+    border-color: var(--border-color) !important;
+}
+
+.mx-gallery-item {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+    background-color: var(--bg-dark); /* Fondo para cuando la imagen está filtrada */
+}
+
+.mx-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+    opacity: 0.7;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Si usas la Opción 1, este estilo ayuda a la caja de texto */
+.bg-light-gray {
+    background-color: var(--bg-light-gray);
+}
+
+/* Etiquetas Superiores (Look de especificación técnica) */
+.mx-item-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    padding: 10px 15px;
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mx-num {
+    color: var(--brand-light);
+    font-weight: 800;
+    font-size: 0.75rem;
+}
+
+.mx-label {
+    color: var(--brand-dark);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-left: 5px;
+    text-transform: uppercase;
+}
+
+/* Pie de imagen (Solo aparece en Hover) */
+.mx-item-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background: var(--brand-dark);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 400;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+/* --- Estados Hover --- */
+.mx-gallery-item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.mx-gallery-item:hover .mx-item-footer {
+    transform: translateY(0);
+}
+
+/* Ajustes Responsivos */
+@media (max-width: 768px) {
+    .mx-gallery-item {
+        height: 250px;
+    }
+    .mx-item-footer {
+        transform: translateY(0);
+        background: rgba(11, 53, 88, 0.9); /* var(--brand-dark) con transparencia */
+    }
+}
+
+/*sobre nosotros*/
+/* ===== SECCIÓN HISTORIA ===== */
+
+.about-history {
+    position: relative;
+    padding: 60px 0;
+}
+
+/* Título */
+.section__title-history {
+    max-width: 600px;
+}
+
+/* Texto */
+.about-text-history {
+    max-width: 520px;
+}
+
+.about-text-history p {
+    line-height: 1.7;
+    color: #4a4a4a;
+}
+
+.about-text-history .lead {
+    font-size: 1.2rem;
+    color: #1a1a1a;
+}
+
+/* Wrapper de imagen */
+.history-img-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+/* Imagen */
+.history-img-clean {
+    width: 100%;
+    max-width: 360px;
+    height: 420px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin-left: auto;
+
+    /* estilo industrial */
+    filter: grayscale(100%) contrast(1.1) brightness(0.95);
+    transition: filter 0.4s ease;
+}
+
+
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 991px) {
+    .about-history .row {
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .about-text-history {
+        max-width: 100%;
+    }
+
+    .history-img-wrapper {
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .history-img-clean {
+        max-width: 100%;
+        height: auto;          /* 👈 clave */
+        object-fit: contain;   /* 👈 evita recorte */
+        margin: 0 auto;
+    }
+}
+
+/* ===== MOBILE EXTRA ===== */
+
+@media (max-width: 576px) {
+    .section__title-history {
+        font-size: 1.8rem;
+    }
+
+    .about-text-history .lead {
+        font-size: 1.1rem;
+    }
+
+    .history-img-clean {
+        height: 260px;
+    }
+}
+
+
+
+
+:root {
+    --ind-blue: #0b3558;
+    --ind-text-main: #0B3558;
+    --ind-text-soft: #666666;
+    --ind-accent: #0b3558; /* Ajustable al azul de acción si prefieres */
+}
+
+/* --- Estructura Base --- */
+.ind-hero {
+    background-color: #ffffff;
+    padding-top: clamp(80px, 12vh, 150px);
+    overflow: hidden;
+}
+
+.ind-hero__container {
+    margin-top: -60px;
+    margin-bottom: 60px; /* Espacio antes de la franja de imagen */
+}
+
+/* --- Breadcrumbs --- */
+.ind-hero__breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.ind-hero__breadcrumbs a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.ind-hero__breadcrumbs a:hover {
+    color: var(--ind-blue);
+}
+
+.ind-hero__sep {
+    color: #ddd;
+}
+
+.ind-hero__current {
+    color: var(--ind-blue);
+    font-weight: 700;
+}
+
+/* --- Grilla de Texto --- */
+.ind-hero__grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 50px;
+    align-items: flex-end; /* Alineación base tipo plano técnico */
+}
+
+.ind-hero__main-title {
+   
+    font-size: clamp(3rem, 8vw, 4rem); 
+    font-weight: 500; 
+    line-height: 1.0; 
+    letter-spacing: -2px; 
+    color: var(--ind-text-main);
+    margin: 0;
+    text-transform: none;
+}
+
+.ind-hero__statement {
+    border-left: 4px solid var(--ind-blue);
+    padding: 5px 0 5px 30px;
+    max-width: 450px;
+}
+
+.ind-hero__highlight {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--ind-blue);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+.ind-hero__copy {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--ind-text-soft);
+    margin: 0;
+}
+
+/* --- La Franja Visual (Ajustada) --- */
+.ind-hero__visual {
+    width: 100%;
+    height: 450px; /* Altura de franja fija para desktop */
+    overflow: hidden;
+    background-color: #f0f0f0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.ind-hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%; /* Ajusta esto para centrar lo mejor de tu foto */
+    filter: contrast(1.05) brightness(1);
+    transition: transform 0.8s ease;
+}
+
+.ind-hero:hover .ind-hero__img {
+    transform: scale(1.02);
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .ind-hero__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        align-items: flex-start;
+    }
+    
+    .ind-hero__main-title {
+        letter-spacing: -2px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ind-hero {
+        padding-top: 100px;
+    }
+
+    .ind-hero__visual {
+        height: 300px; /* Franja más delgada en móviles */
+    }
+
+    .ind-hero__main-title {
+       line-height: 1.05; /* En móvil necesitamos un poco más de aire */
+        letter-spacing: -1.5px;
+    }
+
+    .ind-hero__statement {
+        padding-left: 20px;
+    }
+}
+
+
+/*Modificaciones contacto*/
+.hr_contact {
+    border: none;
+    border-top: 2px solid var(--brand-light);
+    margin: 60px 0;
+}
+.contact-main-section{
+    margin-top: -90px;
+}
+
+
+/* ==========================================================================
+   SECCIÓN: MÉTODOS (Tratamientos Anti-desgaste)
+   ========================================================================== */
+.ind-methods.section-padding {
+    padding: 60px 0;
+}
+
+.ind-methods__title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    margin-bottom: 5px;
+    color: var(--ind-text-main);
+    text-transform: uppercase;
+}
+
+.ind-methods__desc {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Lista Técnica */
+.method-compact-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #ddd;
+}
+
+.method-item {
+    padding: 18px 25px;
+    border-bottom: 1px solid #eee;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: transparent;
+}
+
+.method-number {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--ind-blue);
+    opacity: 0.5;
+    font-family: monospace;
+    min-width: 25px;
+}
+
+.method-name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+}
+
+/* Interacción sutil */
+.method-item:hover {
+    background-color: #f9f9f9;
+    padding-left: 35px;
+    box-shadow: inset 4px 0 0 var(--ind-blue);
+}
+
+.method-item:hover .method-name {
+    color: var(--ind-blue);
+}
+
+/* ==========================================================================
+   SECCIÓN: SISTEMAS (Fabricación de Equipos)
+   ========================================================================== */
+
+.ind-systems .row {
+    align-items: stretch;
+}
+
+/* Columnas como contenedores flex */
+.ind-systems .col-lg-7,
+.ind-systems .col-lg-5 {
+    display: flex;
+}
+
+/* Columna izquierda vertical */
+.ind-systems .col-lg-7 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 🔥 clave */
+}
+
+/* 🔥 BOTONES AL FONDO */
+.ind-systems__actions {
+    margin-top: auto;
+}
+
+.ind-systems__content {
+    max-width: 90%;
+}
+
+/* 🔥 IMÁGENES OCUPAN TODA LA ALTURA */
+.tech-comparison {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* 🔥 DISTRIBUCIÓN DE LAS DOS IMÁGENES */
+.tech-comparison__box {
+    flex: 1;
+    display: flex;
+}
+
+.tech-comparison__img-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.tech-comparison__img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Flecha centrada */
+.tech-comparison__arrow {
+    margin: 10px 0;
+}
+.ind-systems__description {
+    margin-bottom: 20px;
+}
+
+/* --- MODO ESCRITORIO --- */
+@media (min-width: 992px) {
+    /* Forzamos que los botones ignoren el flujo de la columna de imágenes 
+       y se posicionen justo debajo del texto de la order-1 */
+    .ind-systems .order-3 {
+        position: relative;
+        z-index: 10;
+        pointer-events: all;
+    }
+}
+
+/* --- MODO MÓVIL (Texto -> Imágenes -> Botones) --- */
+@media (max-width: 991px) {
+    .ind-methods.section-padding {
+        padding: 40px 0;
+    }
+
+    .ind-systems .row {
+        flex-direction: column !important;
+    }
+
+    /* Reordenamiento estricto */
+    .ind-systems .order-1 { order: 1 !important; } /* Título/Texto */
+    .ind-systems .order-2 { order: 2 !important; } /* Imágenes */
+    .ind-systems .order-3 { order: 3 !important; } /* Botones */
+
+    .tech-comparison {
+        margin: 30px 0;
+    }
+
+    .ind-systems__actions {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .btn-industrial {
+        width: 100%;
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .method-compact-list {
+        margin-top: 25px;
+    }
+}
+
+/* --- Estética de Comparativa --- */
+.tech-comparison__img-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+    background: #f8f8f8;
+}
+
+.tech-comparison__img-wrapper--final {
+    border: 2px solid var(--ind-blue);
+}
+
+.tech-comparison__img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tech-comparison__label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    font-size: 0.65rem;
+    padding: 5px 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* --- Estructura Base --- */
+.ind-retro .row {
+    display: flex;
+}
+
+/* --- Lista Técnica Estilo Mexell --- */
+.ind-retro__technical-list {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid #eee;
+}
+
+.ind-retro__technical-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    color: #444;
+    display: flex;
+    align-items: center;
+}
+
+.ind-retro__technical-list li::before {
+    content: "";
+    width: 12px;
+    height: 1px;
+    background-color: var(--ind-blue);
+    margin-right: 15px;
+}
+
+/* --- Stack de Imágenes (Comparativa Vertical) --- */
+.retro-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.retro-stack__img-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid #eee;
+    background: #f8f8f8;
+}
+
+.retro-stack__img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.retro-stack__img-container--highlight {
+    border: 2px solid var(--ind-blue);
+}
+
+.retro-stack__divider {
+    text-align: center;
+    color: var(--ind-blue);
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1;
+    margin: -5px 0;
+}
+
+.retro-stack__tag {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    font-size: 0.65rem;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+/* --- Responsive --- */
+@media (min-width: 992px) {
+    .ind-retro__order-text { order: 1; }
+    .ind-retro__order-visual { order: 2; }
+}
+
+@media (max-width: 991px) {
+    .ind-retro.section-padding {
+        padding: 40px 0;
+    }
+
+    .ind-retro__order-text { order: 1 !important; }
+    .ind-retro__order-visual { 
+        order: 2 !important; 
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    .retro-stack__img-container {
+        aspect-ratio: 4 / 3; /* Un poco más cuadrada en móvil para no ocupar tanto alto */
+    }
+}
+/* =========================================
+   MEXELL V4 – INDUSTRIAL MATRIX (PRO FINAL)
+========================================= */
+
+.mex-v4-section {
+    padding: 60px 0;
+}
+
+/* TEXTO */
+.mex-v4-desc {
+    font-size: 0.95rem;
+    max-width: 600px;
+    color: var(--text-gray);
+    line-height: 1.5;
+}
+
+/* =========================================
+   GRID DESKTOP
+========================================= */
+
+.mex-v4-matrix {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+}
+
+/* ITEM BASE */
+.mex-v4-item {
+    justify-content: flex-start; /* 🔥 antes space-between */
+    gap: 12px;
+    background-color: #fff;
+    padding: 35px 25px;
+    min-height: 140px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    border-right: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+
+    position: relative;
+    overflow: hidden;
+
+    text-align: left;
+    transition: all 0.25s ease;
+
+}
+
+/* EFECTO LATERAL */
+.mex-v4-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 0%;
+    background: var(--brand-dark);
+    transition: height 0.25s ease;
+}
+
+.mex-v4-item:hover::before {
+    height: 100%;
+}
+
+/* HOVER */
+.mex-v4-item:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   ELIMINAMOS "//" COMO ELEMENTO SEPARADO
+========================================= */
+
+.mex-v4-id {
+    display: none;
+}
+
+/* =========================================
+   LABEL (CON "//" INTEGRADO)
+========================================= */
+
+.mex-v4-label {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 0.6px;
+    margin: 0;
+    color: var(--brand-dark);
+    position: relative;
+    padding-bottom: 12px;
+     min-height: 48px; /* 🔥 fuerza consistencia */
+    display: flex;
+    align-items: flex-end;
+}
+
+/* "//" como prefijo real */
+.mex-v4-label::before {
+     content: "//";
+    font-family: 'Courier New', monospace;
+    color: var(--brand-light);
+    opacity: 0.7;
+    margin-right: 8px;
+    display: inline-block;
+    width: 20px; /* 🔥 clave para alineación */
+}
+
+/* línea inferior */
+.mex-v4-label::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 3px;
+    background-color: var(--brand-dark);
+    transition: width 0.25s ease;
+}
+
+.mex-v4-item:hover .mex-v4-label::after {
+    width: 50px;
+}
+
+/* =========================================
+   FEATURED (EQUILIBRADO Y PRO)
+========================================= */
+
+.mex-v4-item.featured {
+    grid-column: span 2;
+    background: #fff;
+    border: 2px solid var(--brand-dark);
+}
+
+.mex-v4-item.featured .mex-v4-label {
+    color: var(--brand-dark);
+}
+
+.mex-v4-item.featured .mex-v4-label::after {
+    background: var(--brand-dark);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 991px) {
+    .mex-v4-matrix {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .mex-v4-item.featured {
+        grid-column: span 3;
+    }
+}
+
+/* =========================================
+   MOBILE (LISTA PRO LIMPIA)
+========================================= */
+
+@media (max-width: 767px) {
+
+    .mex-v4-section {
+        padding: 40px 0;
+    }
+
+    .mex-v4-matrix {
+        display: flex;
+        flex-direction: column;
+        border: none;
+    }
+
+    .mex-v4-item {
+        flex-direction: row;
+        align-items: center;
+        padding: 16px 0;
+        border-bottom: 1px solid #e0e0e0;
+        border-right: none;
+        background: transparent;
+        transform: none;
+    }
+
+    .mex-v4-item::before {
+        display: none;
+    }
+
+    .mex-v4-label {
+        padding: 0;
+        font-size: 0.95rem;
+    }
+
+    .mex-v4-label::before {
+        opacity: 0.6;
+    }
+
+    .mex-v4-label::after {
+        display: none;
+    }
+
+    /* eliminar jerarquía visual en mobile */
+    .mex-v4-item.featured {
+        background: transparent;
+        border: none;
+    }
+}
