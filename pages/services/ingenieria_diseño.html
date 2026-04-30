@@ -1,269 +1,336 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--====== Favicon ======-->
-    <link rel="shortcut icon" href="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523081/favicon_zqeiyy.png" type="image/x-icon">
-    <!--====== BOOTSTRAP CSS ======-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- SEO -->
+    <title>Ingeniería y diseño industrial a medida | Mexell</title>
+    <meta name="description" content="Servicios de ingeniería y diseño industrial a medida. Desarrollo de soluciones, modelado CAD, ingeniería inversa y optimización de procesos productivos.">
+    <meta name="keywords" content="ingeniería industrial, diseño industrial, ingeniería inversa, modelado CAD, optimización de procesos, Mexell">
+    <meta name="author" content="Mexell S.A.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.mexell.com.ar/servicios/ingenieria_diseño.html">
+
+    <!-- Idioma -->
+    <meta http-equiv="content-language" content="es-AR">
+    <link rel="alternate" hreflang="es" href="https://www.mexell.com.ar/servicios/ingenieria_diseño.html">
+    <link rel="alternate" hreflang="en" href="https://www.mexell.com.ar/en/custom-engineering-design.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ingeniería y diseño industrial | Mexell">
+    <meta property="og:description" content="Desarrollo de soluciones industriales, ingeniería inversa y optimización de componentes.">
+    <meta property="og:image" content="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1777035515/hero_ingenieria_y_dise%C3%B1o_vkx6mt.png">
+    <meta property="og:url" content="https://www.mexell.com.ar/servicios/ingenieria_diseño.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_AR">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523081/favicon_zqeiyy.png">
+
+    <!-- Performance -->
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS propio -->
     <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/style_pages.css">
     <link rel="stylesheet" href="../../assets/css/gallery.css">
-     <link rel="stylesheet" href="../../assets/css/ind-feacture-ing.css">
-    <title>Mexell - Ingeniería y Diseño</title>
+    <link rel="stylesheet" href="../../assets/css/ind-feacture-ing.css">
+
+    <!-- Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Ingeniería y diseño industrial",
+      "provider": {
+        "@type": "Organization",
+        "name": "Mexell S.A.",
+        "url": "https://www.mexell.com.ar"
+      },
+      "description": "Servicios de ingeniería, diseño CAD, ingeniería inversa y optimización de procesos industriales.",
+      "areaServed": "LatAm",
+      "serviceType": "EngineeringService"
+    }
+    </script>
 </head>
+
 <body>
-   <nav class="mx-navbar">
-        <div class="mx-nav-container">
-            <a class="logo" href="../../index.html#inicio">
-                <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523120/logo_original_bj5ajq.png" class="logo-dark" alt="Mexell Logo">
-            </a>
-            
-            <div class="mx-nav-wrapper">
-                <ul class="mx-nav-links">
-                    <li><a href="../../index.html#inicio">Inicio</a></li>
-                    <li><a href="../sobre_nosotros.html">Sobre Nosotros</a></li>
-                    <li class="mx-dropdown">
-                        <a href="../../index.html#servicios">Servicios</a>
-                        <ul class="mx-dropdown-menu">
-                            <li><a href="ingenieria_diseño.html">Ingeniería y Diseño a medida</a></li>
-                            <li><a href="fabricacion_mecanizado.html">Fabricación y Mecanizado de Precisión</a></li>
-                            <li><a href="optimizacion.html">Optimización (OEE) y Cambios de Formato (SMED) - Tecnología QUICKSHIFT®</a></li>
-                            <li><a href="mantenimiento_reparaciones.html">Mantenimiento, Reparaciones y Retrofitting</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="../contacto.html" class="separator">Contacto</a></li>
-                </ul>
-                
-                <div class="mx-nav-phone">
-                    <a href="tel:+1234567890">+54 (011) 4542-7353</a>
-                    <a href="mailto:mexell@mexell.com.ar">mexell@mexell.com.ar</a>
-                </div>
-                <div class="mx-lang-selector">
-                    <a href="ingenieria_diseño.html" class="lang-link">
-                        <img src="https://flagcdn.com/es.svg" alt="Español" class="lang-flag">
-                        ES
-                    </a>
-                    <span class="lang-divider">|</span>
-                    <a href="../../en/custom-engineering-design.html" class="lang-link">
-                        <!-- Usa "gb" (Reino Unido) o "us" (Estados Unidos) según prefieras -->
-                        <img src="https://flagcdn.com/us.svg" alt="English" class="lang-flag">
-                        EN
-                    </a>
-                </div>
-            </div>
 
-            <div class="hamburger">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-    </nav>
-    <main>
+<nav class="mx-navbar">
+    <div class="mx-nav-container">
+        <a class="logo" href="../../index.html#inicio">
+            <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523120/logo_original_bj5ajq.png"
+                 class="logo-dark"
+                 alt="Mexell ingeniería industrial y diseño de soluciones"
+                 loading="eager">
+        </a>
 
-         <section class="ind-hero">
-            <div class="ind-hero__container container">
-                <nav class="ind-hero__breadcrumbs">
-                    <a href="../../index.html#inicio">Inicio</a> 
-                    <span class="ind-hero__sep">/</span> 
+        <div class="mx-nav-wrapper">
+            <ul class="mx-nav-links">
+                <li><a href="../../index.html#inicio">Inicio</a></li>
+                <li><a href="../sobre_nosotros.html">Sobre Nosotros</a></li>
+                <li class="mx-dropdown">
                     <a href="../../index.html#servicios">Servicios</a>
-                    <span class="ind-hero__sep">/</span> 
-                    <span class="ind-hero__current">Ingeniería y Diseño</span>
-                </nav>
+                    <ul class="mx-dropdown-menu">
+                        <li><a href="ingenieria_diseño.html">Ingeniería y Diseño a medida</a></li>
+                        <li><a href="fabricacion_mecanizado.html">Fabricación y Mecanizado de Precisión</a></li>
+                        <li><a href="optimizacion.html">Optimización (OEE) y Cambios de Formato (SMED) - Tecnología QUICKSHIFT®</a></li>
+                        <li><a href="mantenimiento_reparaciones.html">Mantenimiento, Reparaciones y Retrofitting</a></li>
+                    </ul>
+                </li>
+                <li><a href="../contacto.html" class="separator">Contacto</a></li>
+            </ul>
 
-                <div class="ind-hero__grid">
-                    <div class="ind-hero__left">
-                        <h1 class="ind-hero__main-title"> Ingeniería y Diseño</h1>
-                    </div>
-                    
-                    <div class="ind-hero__right">
-                        <div class="ind-hero__statement">
-                            <span class="ind-hero__highlight">Desarrollo de soluciones para mejoras de producción.</span>
-                            <p class="ind-hero__copy">
-                                Incorporación de tecnología e innovación.
-                            </p>
-                        </div>
-                    </div>
+            <div class="mx-nav-phone">
+                <a href="tel:+1234567890">+54 (011) 4542-7353</a>
+                <a href="mailto:mexell@mexell.com.ar">mexell@mexell.com.ar</a>
+            </div>
+
+            <div class="mx-lang-selector">
+                <a href="ingenieria_diseño.html" class="lang-link">
+                    <img src="https://flagcdn.com/es.svg" alt="Idioma Español" class="lang-flag" loading="lazy">
+                    ES
+                </a>
+                <span class="lang-divider">|</span>
+                <a href="../../en/custom-engineering-design.html" class="lang-link">
+                    <img src="https://flagcdn.com/us.svg" alt="English language" class="lang-flag" loading="lazy">
+                    EN
+                </a>
+            </div>
+        </div>
+
+        <div class="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+<section class="ind-hero">
+    <div class="ind-hero__container container">
+        <nav class="ind-hero__breadcrumbs" aria-label="breadcrumb">
+            <a href="../../index.html#inicio">Inicio</a>
+            <span class="ind-hero__sep">/</span>
+            <a href="../../index.html#servicios">Servicios</a>
+            <span class="ind-hero__sep">/</span>
+            <span class="ind-hero__current">Ingeniería y Diseño</span>
+        </nav>
+
+        <div class="ind-hero__grid">
+            <div class="ind-hero__left">
+                <h1 class="ind-hero__main-title"> Ingeniería y Diseño</h1>
+            </div>
+
+            <div class="ind-hero__right">
+                <div class="ind-hero__statement">
+                    <span class="ind-hero__highlight">Desarrollo de soluciones para mejoras de producción.</span>
+                    <p class="ind-hero__copy">
+                        Incorporación de tecnología e innovación.
+                    </p>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="ind-hero__visual text-center bg-white">
-                <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1777035515/hero_ingenieria_y_dise%C3%B1o_vkx6mt.png" 
-                    alt="Ingeniería Mexell" 
-                    class="ind-hero__img"
-                    style=" width:100%">
-                  
+    <div class="ind-hero__visual text-center bg-white">
+        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1777035515/hero_ingenieria_y_dise%C3%B1o_vkx6mt.png"
+             alt="Ingeniería y diseño industrial aplicado a soluciones productivas"
+             class="ind-hero__img"
+             loading="eager"
+             style="width:100%">
+    </div>
+</section>
+
+<section class="ind-feature section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-5">
+                <h2 class="section__title">¿Qué Hacemos?</h2>
+                <div class="title-underline"></div>
             </div>
-        </section>
-        
 
-        <section class="ind-feature section-padding">
-            <div class="container">
+            <div class="col-12">
                 <div class="row">
-                    <div class="col-12 mb-5">
-                            <h2 class="section__title">¿Qué Hacemos?</h2>
-                            <div class="title-underline"></div>
+                    <div class="col-md-6">
+                        <ul class="ind-feature__list">
+                            <li>Diagnóstico técnico de equipos y procesos</li>
+                            <li>Diseño y desarrollo de soluciones especiales</li>
+                            <li>Ingeniería Inversa y Optimización de Componentes </li>
+                            <li>Modelado CAD y planos de producción</li>
+                        </ul>
                     </div>
-
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="ind-feature__list">
-                                    <li>Diagnóstico técnico de equipos y procesos</li>
-                                    <li>Diseño y desarrollo de soluciones especiales</li>
-                                    <li>Ingeniería Inversa y Optimización de Componentes </li>
-                                    <li>Modelado CAD y planos de producción</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <ul class="ind-feature__list">
-                                    <li>Diseño y fabricación de piezas y componentes</li>
-                                    <li>Adaptación a nuevas condiciones operativas</li>
-                                    <li>Mejora del rendimiento de componentes</li>
-                                    </ul>
-                            </div>
-                        </div>
+                    <div class="col-md-6">
+                        <ul class="ind-feature__list">
+                            <li>Diseño y fabricación de piezas y componentes</li>
+                            <li>Adaptación a nuevas condiciones operativas</li>
+                            <li>Mejora del rendimiento de componentes</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <section class="section-padding bg-light">
-            <div class="container">
-                <div class="mb-5">
-                    <h2 class="section__title">Ingeniería en Acción</h2>
-                    <div class="title-underline"></div>
-                </div>  
-
-                <div class="work-flow-group mb-5">
-                    <h3 class="process-title">Desarrollo desde cero</h3>
-                    
-                    <section class="work-flow-gallery">
-                        <figure class="work-flow-item">
-                            <div class="work-flow-image-box">
-                                <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1777034008/servicios_dise%C3%B1o_cra32k.png" alt="Análisis del problema">
-                            </div>
-                            <figcaption class="work-flow-caption">Análisis del problema</figcaption>
-                        </figure>
-
-                        <figure class="work-flow-item">
-                            <div class="work-flow-image-box">
-                                <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523105/ingenieria-diseno_conceptual_02_solido_y34fjg.jpg" alt="Diseño de la solución">
-                            </div>
-                            <figcaption class="work-flow-caption">Diseño de la solución</figcaption>
-                        </figure>
-
-                        <figure class="work-flow-item">
-                            <div class="work-flow-image-box">
-                                <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523106/ingenieria-diseno_conceptual_03_fabricacion-real_no2r7n.jpg" alt="Fabricación y validación">
-                            </div>
-                            <figcaption class="work-flow-caption">Fabricación y validación</figcaption>
-                        </figure>
-                    </section>
-                </div>
-
-               <div class="work-flow-group mb-5">
-                    <h3 class="process-title">Optimización de componentes existentes</h3>
-
-                    <section class="work-flow-gallery">
-                        <figure class="work-flow-item">
-                            <div class="work-flow-image-box">
-                                <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1777145016/galeria-n1_j3jxzm.png" alt="Relevamiento y digitalización">
-                            </div>
-                            <figcaption class="work-flow-caption">Relevamiento y digitalización precisa</figcaption>
-                        </figure>
-
-                        <figure class="work-flow-item">
-                            <div class="work-flow-image-box">
-                                <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523105/ingenieria-diseno_inversa_02_modelado_uxztzc.png" alt="Modelado y adaptación">
-                            </div>
-                            <figcaption class="work-flow-caption">Modelado y adaptación de componentes</figcaption>
-                        </figure>
-
-                        <figure class="work-flow-item">
-                            <div class="work-flow-image-box">
-                                <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1777145330/ingenieria-diseno_inversa_03_analisis_pby94m.png" alt="Análisis dimensional">
-                            </div>
-                            <figcaption class="work-flow-caption">Análisis dimensional y de tolerancias</figcaption>
-                        </figure>
-
-                        <figure class="work-flow-item">
-                            <div class="work-flow-image-box">
-                                <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1777145427/ingenieria_g76vjf.jpg" alt="Validación y documentación">
-                            </div>
-                            <figcaption class="work-flow-caption">Validación y documentación</figcaption>
-                        </figure>
-
-                        <figure class="work-flow-item">
-                            <div class="work-flow-image-box">
-                                <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1777145511/Ingenieria_zrelog.jpg" alt="Fabricación de la solución">
-                            </div>
-                            <figcaption class="work-flow-caption">Fabricación de la solución</figcaption>
-                        </figure>
-                    </section>
-                </div>
-            </div>
-        </section>
-
-        <section class="about-cta">
-            <div class="container text-center">
-                <h2>¿Enfrenta un desafío de ingeniería complejo?</h2>
-                <a href="../contacto.html" class="btn-industrial">Contáctenos</a>
-            </div>
-        </section>
-    </main>
-    <footer class="main-footer">
-        <div class="container footer-grid">
-            
-            <div class="footer-col brand-col">
-                <h2 class="footer-logo">MEXELL</h2>
-                <p class="footer-tagline">Ingeniería y soluciones metalúrgicas de precisión para la industria. Innovación eficiencia y calidad al servicio de su producción.</p>
-                <div class="footer-social">
-                    <a href="#" aria-label="LinkedIn"><i class="ri-linkedin-box-fill"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h3 class="footer-title js-footer-toggle">Navegación</h3>
-                <ul class="footer-links">
-                    <li><a href="../../index.html">Inicio</a></li>
-                    <li><a href="../sobre_nosotros.html">Nuestra Historia</a></li>
-                    <li><a href="../../index.html#servicios">Capacidades Técnicas</a></li>
-                    <li><a href="../contacto.html">Contacto</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h3 class="footer-title js-footer-toggle">Soporte Técnico</h3>
-                <ul class="footer-links">
-                    <li><a href="../faq.html" class="highlight-link">Centro de Ayuda / FAQ</a></li>
-                    <li><a href="../contacto.html">Solicitar Cotización</a></li>
-
-                </ul>
-            </div>
-
-            <div class="footer-col">
-              
-                <p class="footer-location">Buenos Aires, Argentina.</p>
-            </div>
-
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="mb-5">
+            <h2 class="section__title">Ingeniería en Acción</h2>
+            <div class="title-underline"></div>
         </div>
 
-        <div class="footer-bottom">
-            <div class="container bottom-content">
-                <p>&copy; 2026 Mexell S.A. Todos los derechos reservados.</p>
-               
-            </div>
-        </div>
-    </footer>
+        <div class="work-flow-group mb-5">
+            <h3 class="process-title">Desarrollo desde cero</h3>
 
-    <!--====== BOOTSTRAP ======-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/main.js"></script>
+            <section class="work-flow-gallery">
+                <figure class="work-flow-item">
+                    <div class="work-flow-image-box">
+                        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1777034008/servicios_dise%C3%B1o_cra32k.png"
+                             alt="Análisis del problema en ingeniería industrial"
+                             loading="lazy">
+                    </div>
+                    <figcaption class="work-flow-caption">Análisis del problema</figcaption>
+                </figure>
+
+                <figure class="work-flow-item">
+                    <div class="work-flow-image-box">
+                        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523105/ingenieria-diseno_conceptual_02_solido_y34fjg.jpg"
+                             alt="Diseño de soluciones industriales mediante CAD"
+                             loading="lazy">
+                    </div>
+                    <figcaption class="work-flow-caption">Diseño de la solución</figcaption>
+                </figure>
+
+                <figure class="work-flow-item">
+                    <div class="work-flow-image-box">
+                        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523106/ingenieria-diseno_conceptual_03_fabricacion-real_no2r7n.jpg"
+                             alt="Fabricación y validación de soluciones industriales"
+                             loading="lazy">
+                    </div>
+                    <figcaption class="work-flow-caption">Fabricación y validación</figcaption>
+                </figure>
+            </section>
+        </div>
+
+        <div class="work-flow-group mb-5">
+            <h3 class="process-title">Optimización de componentes existentes</h3>
+
+            <section class="work-flow-gallery">
+                <figure class="work-flow-item">
+                    <div class="work-flow-image-box">
+                        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1777145016/galeria-n1_j3jxzm.png"
+                             alt="Relevamiento y digitalización de componentes industriales"
+                             loading="lazy">
+                    </div>
+                    <figcaption class="work-flow-caption">Relevamiento y digitalización precisa</figcaption>
+                </figure>
+
+                <figure class="work-flow-item">
+                    <div class="work-flow-image-box">
+                        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523105/ingenieria-diseno_inversa_02_modelado_uxztzc.png"
+                             alt="Modelado y adaptación de piezas industriales"
+                             loading="lazy">
+                    </div>
+                    <figcaption class="work-flow-caption">Modelado y adaptación de componentes</figcaption>
+                </figure>
+
+                <figure class="work-flow-item">
+                    <div class="work-flow-image-box">
+                        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1777145330/ingenieria-diseno_inversa_03_analisis_pby94m.png"
+                             alt="Análisis dimensional y tolerancias en ingeniería"
+                             loading="lazy">
+                    </div>
+                    <figcaption class="work-flow-caption">Análisis dimensional y de tolerancias</figcaption>
+                </figure>
+
+                <figure class="work-flow-item">
+                    <div class="work-flow-image-box">
+                        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1777145427/ingenieria_g76vjf.jpg"
+                             alt="Validación y documentación técnica"
+                             loading="lazy">
+                    </div>
+                    <figcaption class="work-flow-caption">Validación y documentación</figcaption>
+                </figure>
+
+                <figure class="work-flow-item">
+                    <div class="work-flow-image-box">
+                        <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1777145511/Ingenieria_zrelog.jpg"
+                             alt="Fabricación de soluciones optimizadas"
+                             loading="lazy">
+                    </div>
+                    <figcaption class="work-flow-caption">Fabricación de la solución</figcaption>
+                </figure>
+            </section>
+        </div>
+    </div>
+</section>
+
+<section class="about-cta">
+    <div class="container text-center">
+        <h2>¿Enfrenta un desafío de ingeniería complejo?</h2>
+        <a href="../contacto.html" class="btn-industrial">Contáctenos</a>
+    </div>
+</section>
+
+</main>
+
+<footer class="main-footer">
+    <div class="container footer-grid">
+
+        <div class="footer-col brand-col">
+            <h2 class="footer-logo">MEXELL</h2>
+            <p class="footer-tagline">Ingeniería y soluciones metalúrgicas de precisión para la industria. Innovación eficiencia y calidad al servicio de su producción.</p>
+        </div>
+
+        <div class="footer-col">
+            <h3 class="footer-title js-footer-toggle">Navegación</h3>
+            <ul class="footer-links">
+                <li><a href="../../index.html">Inicio</a></li>
+                <li><a href="../sobre_nosotros.html">Nuestra Historia</a></li>
+                <li><a href="../../index.html#servicios">Capacidades Técnicas</a></li>
+                <li><a href="../contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3 class="footer-title js-footer-toggle">Soporte Técnico</h3>
+            <ul class="footer-links">
+                <li><a href="../faq.html" class="highlight-link">Centro de Ayuda / FAQ</a></li>
+                <li><a href="../contacto.html">Solicitar Cotización</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <p class="footer-location">Buenos Aires, Argentina.</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container bottom-content">
+            <p>&copy; 2026 Mexell S.A. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/js/main.js"></script>
+
 </body>
 </html>

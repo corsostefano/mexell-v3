@@ -3,26 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--====== Favicon ======-->
+
+    <!-- SEO BASE -->
+    <title>Mexell - Galería de Imágenes | Proyectos y Aplicaciones Industriales</title>
+    <meta name="description" content="Galería de proyectos, piezas, maquinaria y soluciones industriales desarrolladas por Mexell. Ingeniería de precisión aplicada a la industria.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.mexell.com.ar/galeria.html">
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="Mexell - Galería de Proyectos y Aplicaciones">
+    <meta property="og:description" content="Explore piezas, maquinaria y soluciones industriales desarrolladas por Mexell.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mexell.com.ar/galeria.html">
+    <meta property="og:image" content="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1776529463/hero_galeria_sopmvm.png">
+
+    <!-- TWITTER -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mexell - Galería Industrial">
+    <meta name="twitter:description" content="Proyectos, piezas y maquinaria desarrollados por Mexell.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1776529463/hero_galeria_sopmvm.png">
+
+    <!-- FAVICON -->
     <link rel="shortcut icon" href="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523081/favicon_zqeiyy.png" type="image/x-icon">
-    <!--====== BOOTSTRAP CSS ======-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- PRECONNECT -->
+    <link rel="preconnect" href="https://res.cloudinary.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS CRÍTICO -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- CSS LOCAL -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/style_pages.css">
     <link rel="stylesheet" href="../assets/css/gallery.css"> 
-    <title>Mexell - Galería de Imágenes</title>
+
+    <!-- SCHEMA -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Mexell",
+        "url": "https://www.mexell.com.ar",
+        "logo": "https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523120/logo_original_bj5ajq.png",
+        "description": "Ingeniería y soluciones metalúrgicas de precisión para la industria.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Buenos Aires",
+            "addressCountry": "AR"
+        }
+    }
+    </script>
+
 </head>
 <body>
    <nav class="mx-navbar">
         <div class="mx-nav-container">
             <a class="logo" href="../index.html#inicio">
-                <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523120/logo_original_bj5ajq.png" class="logo-dark" alt="Mexell Logo">
+                <img src="https://res.cloudinary.com/dfgs3uyiu/image/upload/v1762523120/logo_original_bj5ajq.png" 
+                    class="logo-dark" 
+                    alt="Mexell Logo"
+                    loading="eager"
+                    decoding="async">
             </a>
-            
+
             <div class="mx-nav-wrapper">
                 <ul class="mx-nav-links">
                     <li><a href="../index.html#inicio">Inicio</a></li>
@@ -38,25 +88,23 @@
                     </li>
                     <li><a href="contacto.html" class="separator">Contacto</a></li>
                 </ul>
-                
+
                 <div class="mx-nav-phone">
                     <a href="tel:+1234567890">+54 (011) 4542-7353</a>
                     <a href="mailto:mexell@mexell.com.ar">mexell@mexell.com.ar</a>
                 </div>
-                  
-                 <div class="mx-lang-selector">
+
+                <div class="mx-lang-selector">
                     <a href="galeria.html" class="lang-link">
-                        <img src="https://flagcdn.com/es.svg" alt="Español" class="lang-flag">
+                        <img src="https://flagcdn.com/es.svg" alt="Español" class="lang-flag" loading="lazy">
                         ES
                     </a>
                     <span class="lang-divider">|</span>
                     <a href="../en/gallery.html" class="lang-link">
-                        <!-- Usa "gb" (Reino Unido) o "us" (Estados Unidos) según prefieras -->
-                        <img src="https://flagcdn.com/us.svg" alt="English" class="lang-flag">
+                        <img src="https://flagcdn.com/us.svg" alt="English" class="lang-flag" loading="lazy">
                         EN
                     </a>
                 </div>
- 
             </div>
 
             <div class="hamburger">
@@ -343,8 +391,8 @@
         </div>
     </footer>
 
-    <!--====== BOOTSTRAP ======-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/main.js"></script>
+    <!-- JS OPTIMIZADO -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
 </body>
 </html>
